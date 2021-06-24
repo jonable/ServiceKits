@@ -1,0 +1,312 @@
+{% load eventinfo_extras static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Servicekit Status | SER Service Kits</title>
+
+	<link rel="stylesheet" href="/static/kitforms/css/vendor/remodal.css">
+	<link rel="stylesheet" href="/static/kitforms/css/vendor/remodal-default-theme.css">
+	<link rel="stylesheet" href="/static/kitforms/css/styles.css">
+	<script type="text/javascript" src="/static/admin/js/core.js"></script>
+	<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+	<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+	<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+	<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+	<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+	<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+	<script> window.$  = window.jQuery = django.jQuery;</script>
+	<script type="text/javascript" src="/static/kitforms/js/vendor/remodal.js"></script>
+		{{sort_sk_form.media}}
+		{{ status_message_form.media }}
+		{{servicekits_filterform.media}}	
+</head>
+<body>	
+	<header>
+		<hgroup>
+			<h1>SER exposition services</h1>
+			<h2>ServiceKit Status</h2>
+		</hgroup>
+	</header>
+	{% if messages %}
+	<ul class="messagelist">
+		{% for message in messages %}
+		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		{% endfor %}	
+	</ul>
+	{% endif %}	
+    <nav>
+    	<h3>Menu</h3>
+        <ul>
+        	<li><a href="{% url 'kitcreate_home' %} ">Home</a></li>
+            <li><a href="{% url 'servicekit_wizard2_new' %}">Create A Service Kit</a></li>
+            <li><a href="{% url 'storefrontstatus_list' %}?search=&amp;servicekitstatus=approved_goshow&amp;storefrontstatus=pending">View Storefronts</a></li>
+            <li><a href="{% url 'servicekitforms_listview' %}">Edit Service Kit Forms</a></li>
+			<li>
+				<a href="{% url 'admin:pricelists_pricelist_changelist' %}">Pricelists</a>
+			</li>
+            
+            <li><a href="{% url 'account_logout' %}" title="Logout of Service Kit App">Logout</a>
+        </ul>
+    </nav>	
+	<section>
+	<h3>Service Kits</h3>
+	<table style="width:80%;">
+		<tr>
+			<td colspan="7" style="text-align:center;">	
+				<form action="./" method="GET" id="filter-form">					
+					<table style="border-bottom: 1px solid #b1b1b1; width: 100%;">
+						<tr>
+							<td style="font-size:12px;">								
+								{{servicekits_filterform.search_text}}
+								|
+								<label for="start_date">filter by date range:</label>
+								{{servicekits_filterform.start_date}}
+								<label for="end_date">-</label>					 
+								{{servicekits_filterform.end_date}}
+								|
+								{# status #}
+								servicekit status {{servicekits_filterform.servicekitstatus}} 	
+							</td>						
+						</tr>
+						<tr>
+							<td style="text-align:center; font-size:12px;">
+								order by {{servicekits_filterform.order_by}}
+								<input type="submit" class="fake-btn" id="filter" name="filter" value="filter">					 
+								<input type="submit" class="fake-btn" id="download" name="download" value="download">
+								<a href="./" class="fake-btn">Clear</a>							
+							</td>
+						</tr> 
+					 </table>
+				 </form>
+			</td>
+	   </tr>
+	   <tr>
+	   		<th></th>
+			<th style="text-align:left; padding: 8px;">Event</th>
+			<th style="text-align:left; padding: 8px;">Event Date</th>
+			<th style="text-align:left; padding: 8px;">AE</th>
+			<th style="text-align:left; padding: 8px;">Service Kit Status</th>
+			<th style="text-align:left; padding: 8px;">Status Updated</th>
+			<th style="text-align:left; padding: 8px;"></th>
+		</tr>        
+	{% for eventinfo in object_list %}
+		<tr class="{% cycle 'row-odd' 'row-even' %}">
+			<td style="background-color:{{eventinfo.servicekitstatus_html_color}}; width:5px;"></td>
+			<td><a href="{% url 'servicekit_complete' pk=eventinfo.pk %}">{{eventinfo.event_name.description}}</a></td>
+			<td>{{eventinfo.get_event_date}}</td>
+			<td>{{eventinfo.salesperson.title}}</td>
+			<td>
+				<form action="{% url 'serviceskitstatus_status_update' pk=eventinfo.pk %}" data-statusmessageform-action="{% url 'send_status_message' pk=eventinfo.pk %}" method="post">	
+					{% csrf_token %}
+					<select data-defaultgroup="1" data-eventinfo="{{eventinfo.pk}}" id="id_servicekitstatus__{{eventinfo.pk}}" name="servicekitstatus" title="Servicekit Status: {{eventinfo.get_servicekitstatus_display}}" style="width:100px;">						
+						<option value="" {% if not eventinfo.servicekitstatus %}selected="selected"{% endif %}>----</option>
+						<option {% if eventinfo.servicekitstatus == 'ae_pulled'%}selected="selected"{% endif %}  value="ae_pulled">AE Pulled</option>
+						<option {% if eventinfo.servicekitstatus == 'given_to_ae'%}selected="selected"{% endif %}  value="given_to_ae">Given to AE</option>
+						<option {% if eventinfo.servicekitstatus == 'completed_by_ae'%}selected="selected"{% endif %}  value="completed_by_ae">Completed by AE</option>
+						<option {% if eventinfo.servicekitstatus == 'proofed_by_exhibitor_services'%}selected="selected"{% endif %}  value="proofed_by_exhibitor_services">Proofed by Exhibitor services</option>
+						<option {% if eventinfo.servicekitstatus == 'sent_to_sm'%}selected="selected"{% endif %}  value="sent_to_sm">Sent to SM</option>
+						<option {% if eventinfo.servicekitstatus == 'approved_goshow'%}selected="selected"{% endif %}  value="approved_goshow">Approved, Ready For GoShow</option>
+						<option {% if eventinfo.servicekitstatus == 'list_received'%}selected="selected"{% endif %}  value="list_received">List received</option>
+						<option {% if eventinfo.servicekitstatus == 'published'%}selected="selected"{% endif %}  value="published">Published, Sent To Exhibitors</option>
+						<option {% if eventinfo.servicekitstatus == 'expired'%}selected="selected"{% endif %}  value="expired">Expired/Archived</option>
+					</select>	
+					<input type="hidden" name="search_query" value="{{ request.GET.urlencode }}">
+					<input type="hidden" name="send_notification" value="">				
+				</form>
+			</td>
+			<td>{% show_servicekitstatus_date eventinfo %}</td>
+			<td>				
+                {% if eventinfo.get_pdf_url %}
+                    {# <a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" class="fake-btn" title="View PDF in Browser">View PDF</a> #}
+                    <a href="{% url 'view_service_kit' pk=eventinfo.pk %}" class="fake-btn"  target="_blank" title="View PDF in Browser">View PDF</a>
+
+                {% endif %}				
+			</td>			
+		</tr>
+	{% endfor %}
+	{% if not object_list %}
+		<tr><td>No events found</td></tr>
+	{% endif %}
+	</table>
+	</section>	
+	<section>
+	{% if is_paginated or page_obj %}
+		<div class="pagination">
+			<span class="page-links">
+				{% if page_obj.has_previous %}					
+					<a href="./?{% url_replace page=page_obj.previous_page_number %}">previous</a>
+				{% endif %}
+				<span class="page-current">
+					Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+				</span>
+				{% if page_obj.has_next %}
+					<a href="./?{% url_replace page=page_obj.next_page_number %}">next</a>
+				{% endif %}
+			</span>
+		</div>
+	{% endif %}	
+   </section>
+
+
+
+<div class="remodal" data-remodal-id="send-status">
+  <button data-remodal-action="cancel" class="remodal-close"></button>
+  <p>Send status update?</p>
+  <br>
+  <!--<button data-remodal-action="confirm" class="remodal-alt" id="modal-sendstatus-btn-edit" style="margin-right:150px;">Edit Notification</button>-->
+  <a class="remodal-alt" href="#edit-notification" style="margin-right:150px;">Edit Notification</a>
+  <button type="button" id="modal-sendstatus-btn-yes" data-remodal-action="confirm" class="remodal-confirm" >Yes</button>
+  <button type="button" id="modal-sendstatus-btn-no" data-remodal-action="cancel" class="remodal-cancel">No</button>
+</div>
+
+<div class="remodal" data-remodal-id="edit-notification">
+  <button data-remodal-action="cancel" class="remodal-close"></button>  
+  <form action="" method="POST">
+  	{% csrf_token %}
+	<table style="text-align:left;">
+		<tr>
+			<td>{% for hidden in statusmessageform.hidden_fields %}{{ hidden }}{% endfor %}</td>
+			<td><h3>Send Status</h3></td>
+		</tr>
+		{% for field in statusmessageform.visible_fields %}
+		<tr>
+			<td>{{field.label}}</td><td>{{field}}</td><td>{{field.error}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td></td>
+			<td style="text-align:right;">
+				<button type="submit" class="remodal-confirm" id="modal-editmessage-btn-send">Send</button>
+				<button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+			</td>
+		</tr>
+	</table>
+  </form>
+</div>
+
+   <script>
+	// onchange="this.form.submit()"
+	// 
+	// show send notification on select change.
+	// send_notification is the field...
+	// if canceled reset value.
+	// if edit, show edit form.	
+	function set_previous_value($ele, value){
+		$ele.data('previous_value', value);
+	}
+	function get_previous_value($ele){
+		return $ele.data('previous_value');
+	}
+	function use_previous_value($ele){
+		var value = get_previous_value($ele);
+		$ele.val(value);
+	}
+	django.jQuery('select[data-eventinfo]').each(function(){
+		var $this = $(this);
+		set_previous_value($this, $this.val());
+		$this.on('change', function(){
+			var inst = django.jQuery('[data-remodal-id=send-status]').remodal();
+			var value = this.value;	
+					
+			// var defaultgroup = django.jQuery(this).data('defaultgroup');
+			var defaultgroup = '';
+			django.jQuery('#statusmessageform__status_type').val('servicekitstatus');
+			django.jQuery('#statusmessageform__group').val(defaultgroup);
+			django.jQuery("#statusmessageform__group").trigger('change');			
+			django.jQuery('#statusmessageform__status').val(value);	
+			django.jQuery("#statusmessageform__status").attr("readonly", true);	
+
+			inst.$modal.data('servicekitstatus_select_obj', $this);			
+			inst.open();
+		});
+		// django.jQuery('#statusmessageform__group').trigger('change');			
+	});
+
+	django.jQuery(document).on('opened', '[data-remodal-id=send-status]', function(){
+		var $servicekitstatus_select_obj = django.jQuery('[data-remodal-id=send-status]').data('servicekitstatus_select_obj');
+		// close the modal if nothing was selected...
+		if (typeof $servicekitstatus_select_obj === "undefined"){
+			django.jQuery(this).remodal().close();
+			return false;
+		}		
+	})
+	// edit notification form.
+	django.jQuery(document).on('opened', '[data-remodal-id="edit-notification"]', function () {
+		var $form = django.jQuery(django.jQuery(this).find('form'));			
+		$form.attr('action', '');		
+		var $servicekitstatus_select_obj = django.jQuery('[data-remodal-id=send-status]').data('servicekitstatus_select_obj');
+		// $servicekitstatus_select_obj[0].form.data('statusmessageform-action')
+		// close the modal if nothing was selected...
+		if (typeof $servicekitstatus_select_obj === "undefined"){
+			django.jQuery(this).remodal().close();
+			return false;
+		}
+		var form_action = $servicekitstatus_select_obj.parent('form').data('statusmessageform-action');
+		$form.attr('action', form_action);
+			
+	});
+	django.jQuery('#modal-sendstatus-btn-yes').on('click', function(e){
+		var $servicekitstatus_select_obj = django.jQuery('[data-remodal-id=send-status]').data('servicekitstatus_select_obj');
+		$servicekitstatus_select_obj[0].form.elements['send_notification'].value = "send_notification";
+		$servicekitstatus_select_obj[0].form.submit();
+	});
+	django.jQuery('#modal-sendstatus-btn-no').on('click', function(e){		
+		var $servicekitstatus_select_obj = django.jQuery('[data-remodal-id=send-status]').data('servicekitstatus_select_obj');		
+		$servicekitstatus_select_obj[0].form.submit();
+	});
+	django.jQuery(document).on('cancellation', '[data-remodal-id="edit-notification"]', function () {
+		var $servicekitstatus_select_obj = django.jQuery('[data-remodal-id="send-status"]').data('servicekitstatus_select_obj');
+		use_previous_value($servicekitstatus_select_obj);
+		console.log('send edit notification cancelled')
+	});
+	django.jQuery(document).on('cancellation', '[data-remodal-id="send-status"]', function () {
+		var $servicekitstatus_select_obj = django.jQuery(this).data('servicekitstatus_select_obj');
+		use_previous_value($servicekitstatus_select_obj);
+		console.log('send status cancelled');
+	});	
+
+
+	// filtering options
+	// django.jQuery("#id_servicekitstatus")
+	// django.jQuery("#id_order_by")
+	// validate start date is less than end date.
+	// document.getElementById('id_storefrontstatus').onchange = function (){this.form.submit();}   
+	// document.getElementById('id_status').onchange = function (){this.form.submit();}
+	$("#filter").on('click', function(){
+		var start_date = new Date($('#id_start_date').val());
+		var end_date = new Date($('#id_end_date').val());
+		if(isNaN(start_date.getDate()) == false && isNaN(end_date.getDate()) == false){
+			if(start_date > end_date){
+				alert('Validation Error: Date Range: Start date can not be greater than End Date.');
+				$('#id_end_date').val("");
+				$('#id_end_date').focus();
+				return false;
+			}		
+		}
+	});
+	// Assuming a search query was submitted so it just jumps to the filter form.
+	if (window.location.href.includes("?")){
+		window.location = "#filter-form";
+	}
+	// things get a little funky with change and inputs, 
+	// so when user exits a form input submit.
+	$("#filter-form").find("input, textarea").on('blur', function(){
+		var $form = $(this.form);
+		// var href = $form.attr('attribute');
+		window.location = "#filter-form";
+		this.form.submit();
+	});
+	// change is more distinct.
+	$("#filter-form").find("select").on('change', function(){
+		var $form = $(this.form)
+		// var href = $form.attr('attribute');
+		window.location = "#filter-form";
+		this.form.submit();
+	});	
+   </script>
+
+</body>
+</html>
+

@@ -1,0 +1,315 @@
+{% load eventinfo_extras static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{eventinfo}} | Service Kit Info</title>
+
+<link rel="stylesheet" href="/static/kitforms/css/vendor/remodal.css">
+<link rel="stylesheet" href="/static/kitforms/css/vendor/remodal-default-theme.css">
+<link rel="stylesheet" href="/static/kitforms/css/styles.css">
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+<script> window.$  = window.jQuery = django.jQuery;</script>
+<script type="text/javascript" src="/static/kitforms/js/vendor/remodal.js"></script>
+	{{sort_sk_form.media}}
+	{{ status_message_form.media }}
+</head>
+<body>	
+<nav id="nav-bar">
+<a href="/">Home</a> 
+|
+{% if not is_editable %}
+<a href="{% url 'servicekit_wizard_change' pk=eventinfo.pk %}" class="not-active" onclick="return false;" title="{{eventinfo.status}} Service Kits are not editable">Edit Kit</a> 
+{% else %}
+<a href="{% url 'servicekit_wizard_change' pk=eventinfo.pk %}">Edit Kit</a> 
+{% endif %}
+|	
+{% if pdf_exists %}
+<a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" target="_blank" title="View PDF in Browser">View PDF</a>
+|
+{% endif %}
+<a href="{% url 'quick_export_form' pk=eventinfo.pk %}" title="Export selected forms">Quick Export</a>
+|
+<form id="update_kit_status" style="display:inline;" action="{% url 'update_kit_status' eventinfo.pk %}" method="POST">{% csrf_token %}{{status_form.status}}{{status_form.notify}}</form>
+
+{% if messages %}
+<ul class="messagelist">
+	{% for message in messages %}
+	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+</nav>
+<section>
+	<ul>
+	{% for file in archive %}
+		<li>
+			<a href="{{file.url}}" title="Download a zip containing all of this service kits forms">{{file.archive_date_verbose}}</a> 
+			- 
+			<a href="{% url 'view_kit_archive' pk=eventinfo.pk %}?archive_filename={{file.filename}}" title="Download the archived PDF only">[PDF]</a>
+		</li>
+	{% endfor %}
+	</ul>
+</section>
+<footer style="position:relative;border-top:3px solid black; padding:20px 10px 20px 0px;" id="footer">
+	<div style="display:inline;">
+		<a href="/">Home</a> 
+		|
+		{% if not is_editable %}
+		<a href="{% url 'servicekit_wizard_change' pk=eventinfo.pk %}" class="not-active" onclick="return false;" title="{{eventinfo.status}} Service Kits are not editable">Edit Kit</a> 
+		{% else %}
+		<a href="{% url 'servicekit_wizard_change' pk=eventinfo.pk %}">Edit Kit</a> 
+		{% endif %}
+		|	
+		{% if pdf_exists %}
+		<a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" target="_blank" title="View PDF in Browser">View PDF</a>
+		|
+		{% endif %}
+		<a href="{% url 'quick_export_form' pk=eventinfo.pk %}" title="Export selected forms">Quick Export</a>
+		|
+		<form id="update_kit_status" style="display:inline;" action="{% url 'update_kit_status' eventinfo.pk %}" method="POST">{% csrf_token %}{{status_form.status}}{{status_form.notify}}</form>
+	</div>		
+	<div style="display:inline; position:absolute; right:25px">
+					
+	</div>
+</footer>
+<div class="block-out">
+	<div class="loader-container">
+	<div class="loader"></div>
+	<div class="loader-text"><p>Your request is being processed. This may take several minutes.</p></div>
+	</div>
+</div>
+
+<div class="remodal" data-remodal-id="rerender-forms">
+  <button data-remodal-action="close" class="remodal-close"></button>
+    <h3>Re-render forms?</h3>
+    <p></p>
+    <p>Click "Yes" to re-render this service kit's forms.*</p>
+    <p>Click "No" to to use previously rendered forms.</p>
+    <p><small><i>*Manual adjustments made to forms outside the application will be overwritten.</i></small></p>
+    <!--<ul>
+    	<li>Click "Yes" to re-render forms.</li>
+    	<li>Click "No" to use existing forms</li>
+    </ul>-->
+    <div style="position: relative;">
+    	<div style="position:absolute; left:0px; display:inline;">
+    		<!--<button id="modal-overwrite-btn-cancel" class="fake-btn">Cancel</button>-->
+    		<button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+    	</div>
+    	<div style="float:right; display:inline;">
+    		<button id="modal-overwrite-btn-yes" class="remodal-confirm">Yes</button>
+    		<button id="modal-overwrite-btn-no" class="remodal-confirm">No</button>    	    	    		  
+    	  		<!--<button data-remodal-action="confirm" class="remodal-confirm">OK</button>-->
+    	</div> 
+    </div>
+</div>
+
+<div class="remodal" data-remodal-id="edit-notification">
+  <button data-remodal-action="cancel" class="remodal-close"></button>  
+  <form action="{% url 'send_status_message' eventinfo.pk %} " method="POST">
+  	{% csrf_token %}
+	<table style="text-align:left;">
+		<tr>
+			<td>{% for hidden in status_message_form.hidden_fields %}{{ hidden }}{% endfor %}</td>
+			<td><h3>Send Status</h3></td>
+		</tr>
+		{% for field in status_message_form.visible_fields %}
+		<tr>
+			<td>{{field.label}}</td><td>{{field}}</td><td>{{field.error}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td></td>
+			<td style="text-align:right;">
+				<button type="submit" class="remodal-confirm" id="modal-editmessage-btn-send">Send</button>
+				<button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+			</td>
+		</tr>
+	</table>
+  </form>
+</div>
+
+<div class="remodal" data-remodal-id="send-status">
+  <button data-remodal-action="cancel" class="remodal-close"></button>
+  <p>Send status update?</p>
+  <br>
+  <!--<button data-remodal-action="confirm" class="remodal-alt" id="modal-sendstatus-btn-edit" style="margin-right:150px;">Edit Notification</button>-->
+  <a class="remodal-alt" href="#edit-notification" style="margin-right:150px;">Edit Notification</a>
+  <button type="button" id="modal-sendstatus-btn-yes" data-remodal-action="confirm" class="remodal-confirm" >Yes</button>
+  <button type="button" id="modal-sendstatus-btn-no" data-remodal-action="cancel" class="remodal-cancel">No</button>
+</div>
+
+<div class="remodal" data-remodal-id="send-storefrontstatus">
+  <button data-remodal-action="cancel" class="remodal-close"></button>
+  <p>Send status update?</p>
+  <br>
+  <!--<button data-remodal-action="confirm" class="remodal-alt" id="modal-sendstatus-btn-edit" style="margin-right:150px;">Edit Notification</button>-->
+  <a class="remodal-alt" href="#edit-notification" style="margin-right:150px;">Edit Notification</a>
+  <button type="button" id="modal-sendstorfrontstatus-btn-yes" data-remodal-action="confirm" class="remodal-confirm" >Yes</button>
+  <button type="button" id="modal-sendstorfrontstatus-btn-no" data-remodal-action="cancel" class="remodal-cancel">No</button>
+</div>
+<script>
+	// overlay functions
+	function show_blockout(){
+		var blockout = django.jQuery('.block-out')[0];
+		blockout.style.display = 'block';
+	}
+	function hide_blockout(){
+		var blockout = django.jQuery('.block-out')[0];
+		blockout.style.display = 'hide';	
+	}
+	$(function(){
+		$(document).on('confirmation', '.remodal', function () {
+			console.log('Confirmation button is clicked');
+		});
+		// helper method to submit createservicekit form
+		function submit_createservicekit(overwrite){
+			show_blockout();
+			django.jQuery('#eventinfo-overwrite').val(overwrite);
+			django.jQuery('#form-createservicekit').submit();
+			// django.jQuery('#eventinfo-create').click();
+		}	
+		function submit_kitstatus(notify){
+			django.jQuery('[name="notify"').each(function(){
+				this.value = notify;		
+			});				
+			django.jQuery("#update_kit_status").submit();
+		}
+		function submit_storefrontstatus(notify){
+			django.jQuery('[name="notify2"').each(function(){
+				this.value = notify;		
+			});				
+			$("#storefrontstatus_update").submit();
+		}
+		function set_previous_values(){
+			django.jQuery('#id_status').each(function (){			
+				// this.previous_value = this.value;
+				var value = this.value;
+				django.jQuery('select[name="status"]').each(function(){
+					$(this).data('previous_value', value);
+				});
+			});	
+			django.jQuery('#id_storefrontstatus').each(function (){			
+				// this.previous_value = this.value;
+				var value = this.value;
+				django.jQuery('select[name="storefrontstatus"]').each(function(){
+					$(this).data('previous_value', value);
+				});
+			});
+		}											
+		function set_previous_status(){
+			django.jQuery('select[name="status"]').each(function(){
+				this.value = $(this).data('previous_value');
+			});	
+		}	
+		function set_previous_storefrontstatus(){
+			django.jQuery('select[name="storefrontstatus"]').each(function(){
+				this.value = $(this).data('previous_value');
+			});	
+		}	
+		// cache previous status value
+		django.jQuery('select[name="status"]').on('focus', function (){			
+			// this.previous_value = this.value;
+			var value = this.value;
+			django.jQuery('select[name="status"]').each(function(){
+				$(this).data('previous_value', value);
+			});
+		});
+		django.jQuery('select[name="status"]').on('change', function(){
+			var inst = django.jQuery('[data-remodal-id=send-status]').remodal();
+			var value = this.value;			
+			var defaultgroup = $(this).data('defaultgroup');
+			django.jQuery('select[name="status"]').each(function(){
+				this.value = value;
+			})
+			django.jQuery('#statusmessageform__status_type').val('status');
+			django.jQuery('#statusmessageform__group').val(defaultgroup);			
+			inst.open();
+			$('#statusmessageform__group').trigger('change');
+		});
+		django.jQuery(document).on('opened', '[data-remodal-id="edit-notification"]', function () {
+			var $form = $($(this).find('form'));
+			if(django.jQuery('#statusmessageform__status_type').val() == 'storefrontstatus'){
+				$('#statusmessageform__status').val(django.jQuery('#id_storefrontstatus').val());
+			}else{
+				$('#statusmessageform__status').val(django.jQuery('#id_status').val());
+			}
+			$("#statusmessageform__status").attr("readonly", true);
+		});
+		django.jQuery(document).on('cancellation', '[data-remodal-id="edit-notification"]', function () {
+			set_previous_status();
+			set_previous_storefrontstatus();
+		});
+		django.jQuery(document).on('cancellation', '[data-remodal-id="send-status"]', function () {
+			set_previous_status();
+		});
+		django.jQuery(document).on('cancellation', '[data-remodal-id="send-storefrontstatus"]', function () {
+			set_previous_storefrontstatus();
+		});	
+		django.jQuery("#modal-sendstatus-btn-edit").on("click",function(){		
+			var inst = django.jQuery('[data-remodal-id=edit-notification]').remodal();
+			inst.open();
+		});
+		django.jQuery("#modal-overwrite-btn-no").on("click",function(){
+			console.log('No Clicked');
+			var inst = django.jQuery('[data-remodal-id=rerender-forms]').remodal();
+			inst.close();				
+			return submit_createservicekit(null);
+		});	
+		django.jQuery("#modal-overwrite-btn-yes").on("click", function(){
+			var inst = django.jQuery('[data-remodal-id=rerender-forms]').remodal();
+			inst.close();				
+			return submit_createservicekit(true);
+		});		
+		django.jQuery("#modal-sendstatus-btn-yes").on('click', function(){
+			// django.jQuery('#id_notify').value = true;
+			submit_kitstatus(true);
+		});
+		django.jQuery("#modal-sendstatus-btn-no").on("click",function(){
+			// django.jQuery('#id_notify').value = false;
+			submit_kitstatus(false);
+		});
+
+		django.jQuery("#modal-sendstorfrontstatus-btn-yes").on('click', function(){
+			// django.jQuery('#id_notify').value = true;
+			submit_storefrontstatus(true);
+		});
+		django.jQuery("#modal-sendstorfrontstatus-btn-no").on("click",function(){
+			// django.jQuery('#id_notify').value = false;
+			submit_storefrontstatus(false);
+		});
+		// On Storefront Status change
+		django.jQuery('#id_storefrontstatus').on('focus', function (){
+			$(this).data('previous_value', this.value);
+		});
+		
+		django.jQuery('#id_storefrontstatus').on('change', function (){	
+			var inst = django.jQuery('[data-remodal-id="send-storefrontstatus"]').remodal();
+			// django.jQuery('[data-remodal-id="send-storefrontstatus"]').data('status_type', 'storefrontstatus');
+			var defaultgroup = $(this).data('defaultgroup');
+			django.jQuery('#statusmessageform__status_type').val('storefrontstatus');
+
+
+			django.jQuery('#statusmessageform__group').val(defaultgroup);
+			console.log(defaultgroup, django.jQuery('#statusmessageform__group').val());			
+			inst.open();
+			$("#statusmessageform__group").trigger('change');
+
+		});	
+
+		$('#statusmessageform__emails').on('change', function(){
+			$("#statusmessageform__group").val("");
+			$("#statusmessageform__group").trigger('change');
+		});	
+		set_previous_values();
+	});
+</script>
+</body>
+</html>

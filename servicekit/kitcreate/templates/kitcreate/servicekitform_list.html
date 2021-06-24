@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SER | Select a Form</title>
+    <link rel="stylesheet" href="/static/kitforms/css/styles.css">
+</head>
+<body>
+    <header>
+        <hgroup>
+            {% if not is_popup %}<a href="/">Home</a>{% endif %}
+            <h2>Service Kits Forms</h2>
+        </hgroup>
+    </header>
+    <nav>
+    	<h3>Menu</h3>
+        <ul>
+            <li>
+                <a href="{% url 'file_upload_form' %}{% if is_popup %}?_popup=1{% endif %}" class="addlink" title="Click here to upload a file to the system.">Upload A Service Kit Form</a>
+            </li>   
+        </ul>
+    </nav>
+    <section>
+        {% if messages %}
+        <ul class="messagelist">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}    
+        </ul>
+        {% endif %}
+    </section>
+	<section>
+	<table>
+		<tr>
+            <td>
+                <form action="{% url 'servicekitforms_listview' %}" method="GET">
+                    <input type="text" name="search" value="{{search}}">
+                    <input type="submit" value="?">
+                    {% if is_popup %}
+                        <input type="hidden" name="_popup" value="1">
+                    {% endif %}                
+                </form>
+            </td>
+        </tr>
+       <tr>
+            <th style="text-align:left; padding: 8px;">Form Name</th>
+        </tr>	
+    {% for servicekitform in object_list %}
+		<tr class="{% cycle 'row-odd' 'row-even' %}" >
+			<td>
+                <!--<a href="{% url 'admin:kitcreate_servicekitform_change' servicekitform.pk %}" {% if is_popup %}onclick="opener.dismissRelatedLookupPopup(window, '{{servicekitform.pk}}', '{{servicekitform}}'); return false;"{% endif %}>{{servicekitform.title}}</a> -->
+                <a href="{% url 'file_edit_form' pk=servicekitform.pk %}{% if is_popup %}?_popup=1{% endif %}" {% if is_popup %}onclick="opener.dismissRelatedLookupPopup(window, '{{servicekitform.pk}}', '{{servicekitform}}'); return false;"{% endif %}>{{servicekitform.title}}</a>
+            </td>        
+            <td>
+            {% if not is_popup %}
+                <a href="{% url 'file_edit_form' pk=servicekitform.pk %}">edit</a>
+            {% endif %}                
+            </td>
+		</tr>
+	{% endfor %}
+	</table>
+	</section>	
+	<section>
+ 	{% if is_paginated or page_obj %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url 'servicekitforms_listview' %}?page={{ page_obj.previous_page_number }}&amp;_popup={{is_popup}}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url 'servicekitforms_listview' %}?page={{ page_obj.next_page_number }}&amp;_popup={{is_popup}}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}	
+   </section>
+</body>
+</html>
+

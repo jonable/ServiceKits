@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home | SER Service Kits</title>
+    <link rel="stylesheet" href="/static/kitforms/css/styles.css">
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>SER exposition services</h1>
+            <h2>Home</h2>
+        </hgroup>
+    </header>
+    <nav>
+    	<h3>Menu</h3>
+        <ul>
+            <li><a href="{% url 'servicekit_wizard2_new' %}">Create A Service Kit</a></li>
+            <li><a href="{% url 'storefrontstatus_list' %}?search=&amp;servicekitstatus=approved_goshow&amp;storefrontstatus=pending">View Storefronts</a></li>
+            <li><a href="{% url 'servicekitforms_listview' %}">Edit Service Kit Forms</a></li>            
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        </ul>
+    </nav>
+	<section>
+    <h3>Service Kits</h3>
+	<table style="width:80%;">
+		<tr>
+            <td colspan="3">
+                <form action="/" method="GET">
+                    <input type="text" name="search" placeholder="Search Kits" value="{{search}}">
+                    <input type="submit" value="?">
+                </form>
+            </td>
+        </tr>
+	   <tr>
+            <th style="width:10px; padding:0px; margin:0px;" class="sorted-th">
+                <a href="#" title="{% if asc %}Ascending{% else %}Descending{% endif %} Ordering for field: {{order_by_field}}" class="toggle {% if asc %}ascending{% else %}descending{% endif %}"></a href="#" title="">
+            </th>
+            <th class="sorted-th">
+                <a style="text-decoration:none;" class="{% if order_by_field == 'event_name__event_code' %}active{% endif %}" href="./?_o={{asc}}event_name__event_code{% if search %}&search={{search}}{% endif %}">Event</a>                
+            </th>
+            <!--<th class="sorted-th">Event Date</th>-->
+            <th class="sorted-th">
+                <a style="text-decoration:none;" class="{% if order_by_field == 'event_date' %}active{% endif %}" href="./?_o={{asc}}event_date{% if search %}&search={{search}}{% endif %}">Event Date</a>
+            </th>
+            <th class="sorted-th">
+                <a style="text-decoration:none;" class="{% if order_by_field == 'facility__title' %}active{% endif %}" href="./?_o={{asc}}facility__title{% if search %}&search={{search}}{% endif %}">Facility</a>
+            </th>
+            <th class="sorted-th">
+                <a style="text-decoration:none;" class="{% if order_by_field == 'salesperson__title' %}active{% endif %}" href="./?_o={{asc}}salesperson__title{% if search %}&search={{search}}{% endif %}">Acct Mgr</a>
+            </th>
+            <th class="sorted-th">
+                <a style="text-decoration:none;" class="{% if order_by_field == 'status' %}active{% endif %}" href="./?_o={{asc}}status{% if search %}&search={{search}}{% endif %}">Status</a>
+            </th>
+            <th class="sorted-th"></th>
+            <th class="sorted-th"></th>
+        </tr>
+    {% for eventinfo in object_list %}
+		<tr class="{% cycle 'row-odd' 'row-even' %}" >
+			<td style="width:10px; padding:0px; margin:0px;"><div></div></td>
+            <td><a href="{% url 'servicekit_complete' pk=eventinfo.pk %}" title="{{eventinfo.event_name.description}}">{{eventinfo.event_name}}</a></td>
+			<td>{{eventinfo.get_event_date}}</td>
+			<td>{{eventinfo.facility}}</td>
+			<td>{{eventinfo.salesperson}}</td>
+            <td>{{eventinfo.status|upper}}</td>
+            <td>
+                {% if eventinfo.get_pdf_url %}
+                    <a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" class="fake-btn" title="View PDF in Browser">View PDF</a>
+                {% endif %}
+            </td>
+            <td><a class="fake-btn" href="{% url 'delete_service_kit' pk=eventinfo.pk %}">Delete</a></td>
+		</tr>
+	{% endfor %}
+	</table>
+	</section>	
+	<section>
+ 	{% if is_paginated or page_obj %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}	
+   </section>
+</body>
+</html>
+

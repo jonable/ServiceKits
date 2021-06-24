@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Storefront Status | SER Service Kits</title>
+	<link rel="stylesheet" href="/static/kitforms/css/styles.css">
+</head>
+<body>
+	<header>
+		<hgroup>
+			<h1>SER exposition services</h1>
+			<h2>Storefront Status</h2>
+		</hgroup>
+	</header>
+	<nav>
+		<h3>Menu</h3>
+		<ul>
+			<li><a href="{% url 'kitcreate_home' %} ">Home</a></li>
+			<li><a href="{% url 'admin:index' %}">Admin</a></li>
+		</ul>
+	</nav>
+	<section>
+	<h3>Service Kits</h3>
+	<table style="width:80%;">
+		<tr>
+			<td colspan="4">
+				<form action="./" method="GET">					
+					 <input type="text" name="search" id="search" value="{{search_val}}" placeholder="Search Kits" value="{{search}}">
+					 <input type="submit" class="fake-btn" value="filter">
+					 |
+					 Service Kit Status {{status_form.servicekitstatus}} 
+					 |					 
+					 Storefront Status {{storefrontstatus_form.storefrontstatus}}  
+					 |					 
+					 <a href="./" class="fake-btn">Clear</a>
+				 </form>
+			</td>
+	   </tr>
+	   <tr>
+			<th style="text-align:left; padding: 8px;">Event</th>
+			<th style="text-align:left; padding: 8px;">Service Kit Status</th>
+			<th style="text-align:left; padding: 8px;">Storefront Status</th>
+			<th style="text-align:left; padding: 8px;">Storefront Status Last Update</th>            
+		</tr>        
+	{% for eventinfo in object_list %}
+		<tr class="{% cycle 'row-odd' 'row-even' %}" >
+			<td><a href="{% url 'servicekit_complete' pk=eventinfo.pk %}">{{eventinfo.event_name}}</a></td>
+			<td>{{eventinfo.get_servicekitstatus_display|upper}}</td>
+			<td>{{eventinfo.storefrontstatus|upper}}</td>
+			<td>{{eventinfo.storefrontstatus_changed}}</td>           
+		</tr>
+	{% endfor %}
+	{% if not object_list %}
+		<tr><td>No events found</td></tr>
+	{% endif %}
+	</table>
+	</section>	
+	<section>
+	{% if is_paginated or page_obj %}
+		<div class="pagination">
+			<span class="page-links">
+				{% if page_obj.has_previous %}
+					<a href="/?page={{ page_obj.previous_page_number }}">previous</a>
+				{% endif %}
+				<span class="page-current">
+					Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+				</span>
+				{% if page_obj.has_next %}
+					<a href="/?page={{ page_obj.next_page_number }}">next</a>
+				{% endif %}
+			</span>
+		</div>
+	{% endif %}	
+   </section>
+   <script>
+	document.getElementById('id_storefrontstatus').onchange = function (){this.form.submit();}   
+	document.getElementById('id_servicekitstatus').onchange = function (){this.form.submit();}
+   </script>
+
+</body>
+</html>
+

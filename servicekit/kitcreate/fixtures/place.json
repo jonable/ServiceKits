@@ -1,0 +1,3880 @@
+[
+  {
+    "model": "kitcreate.place",
+    "pk": 1,
+    "fields": {
+      "title": "AAA Northeast",
+      "code": "AAANE",
+      "type": "showmgmt",
+      "address1": "110 Royal Little Drive",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02904"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 2,
+    "fields": {
+      "title": "AAA Northeast-New York",
+      "code": "AAANENY",
+      "type": "showmgmt",
+      "address1": "1881 Broadway",
+      "address2": "",
+      "city": "New York City",
+      "state": "New York",
+      "zip": "10023"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 3,
+    "fields": {
+      "title": "ABC Supply Co., Inc.",
+      "code": "ABCSUCOIN",
+      "type": "showmgmt",
+      "address1": "4219 Bethlehem Pike",
+      "address2": "",
+      "city": "Telford",
+      "state": "Pennsylvania",
+      "zip": "18969"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 4,
+    "fields": {
+      "title": "Altered Reality Entertainment",
+      "code": "ALTEREEN",
+      "type": "showmgmt",
+      "address1": "PO Box 51663",
+      "address2": "",
+      "city": "New Bedford",
+      "state": "Massachusetts",
+      "zip": "02745"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 5,
+    "fields": {
+      "title": "American Association of State Highway and Transportation Officials",
+      "code": "AMERASSTHITROF",
+      "type": "showmgmt",
+      "address1": "444 North Capital Street, NW",
+      "address2": "Suite 249",
+      "city": "Washington",
+      "state": "District of Columbia",
+      "zip": "20001"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 6,
+    "fields": {
+      "title": "American Consumer Shows",
+      "code": "AMERCOSH",
+      "type": "showmgmt",
+      "address1": "6901 Jericho Turnpike, Suite 250",
+      "address2": "",
+      "city": "Syosset",
+      "state": "New York",
+      "zip": "11791"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 7,
+    "fields": {
+      "title": "American Events, Inc.",
+      "code": "AMEREV",
+      "type": "showmgmt",
+      "address1": "18037 Southwest Ingrid Terrace",
+      "address2": "",
+      "city": "Beaverton",
+      "state": "Oregon",
+      "zip": "97007"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 8,
+    "fields": {
+      "title": "American Institute of Organbuilders",
+      "code": "AMERINOR",
+      "type": "showmgmt",
+      "address1": "1350 Junior Drive",
+      "address2": "",
+      "city": "Maumee",
+      "state": "Ohio",
+      "zip": "43537"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 9,
+    "fields": {
+      "title": "American Phytopathological Society",
+      "code": "AMERPHSO",
+      "type": "showmgmt",
+      "address1": "3340 Pilot Knob Road",
+      "address2": "",
+      "city": "Saint Paul",
+      "state": "Minnesota",
+      "zip": "55121"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 10,
+    "fields": {
+      "title": "APCO-Atlantic Chapter",
+      "code": "APCOATCH",
+      "type": "showmgmt",
+      "address1": "859 Thousand Oaks Drive",
+      "address2": "",
+      "city": "Brewster",
+      "state": "Massachusetts",
+      "zip": "02631"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 11,
+    "fields": {
+      "title": "ASCLS/CNE",
+      "code": "ASCLCNE",
+      "type": "showmgmt",
+      "address1": "222 Summit Drive",
+      "address2": "",
+      "city": "Cranston",
+      "state": "Rhode Island",
+      "zip": "02920"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 12,
+    "fields": {
+      "title": "AVI Global Corporation",
+      "code": "AVIGL",
+      "type": "showmgmt",
+      "address1": "10006 Cross Creek Boulevard",
+      "address2": "No 81",
+      "city": "Tampa",
+      "state": "Florida",
+      "zip": "33647"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 13,
+    "fields": {
+      "title": "Binnie Media Events",
+      "code": "BINNME",
+      "type": "showmgmt",
+      "address1": "51 Church Street",
+      "address2": "",
+      "city": "Laconia",
+      "state": "New Hampshire",
+      "zip": "03246"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 14,
+    "fields": {
+      "title": "Boston Sea Rovers",
+      "code": "BOSTSERO",
+      "type": "showmgmt",
+      "address1": "14 Blueberry Hill Lane",
+      "address2": "",
+      "city": "Ashland",
+      "state": "Massachusetts",
+      "zip": "01721"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 15,
+    "fields": {
+      "title": "Boston Shoe Travelers Association",
+      "code": "BOSTSHTRAS",
+      "type": "showmgmt",
+      "address1": "144 North Road, Suite 1550",
+      "address2": "",
+      "city": "Sudbury",
+      "state": "Massachusetts",
+      "zip": "01776"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 16,
+    "fields": {
+      "title": "Broder Bros. Company",
+      "code": "BRODBR",
+      "type": "showmgmt",
+      "address1": "Six Neshaminy Interplex, Sixth Floor",
+      "address2": "",
+      "city": "Trevose",
+      "state": "Pennsylvania",
+      "zip": "19053"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 17,
+    "fields": {
+      "title": "Camfour, Inc.",
+      "code": "CAMFOUR",
+      "type": "showmgmt",
+      "address1": "65 Westfield Industrial Park",
+      "address2": "",
+      "city": "Westfield",
+      "state": "Massachusetts",
+      "zip": "01085"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 18,
+    "fields": {
+      "title": "Case Management Society of New England",
+      "code": "CASEMASONEEN",
+      "type": "showmgmt",
+      "address1": "Two Nashua Road",
+      "address2": "",
+      "city": "Pelham",
+      "state": "New Hampshire",
+      "zip": "03076"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 19,
+    "fields": {
+      "title": "Chamber of Commerce of Eastern Connecticut",
+      "code": "CHAMCOECT",
+      "type": "showmgmt",
+      "address1": "914 Hartford Turnpike",
+      "address2": "",
+      "city": "Waterford",
+      "state": "Connecticut",
+      "zip": "06385"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 20,
+    "fields": {
+      "title": "Chevalier Associates, Inc",
+      "code": "CHEVAS",
+      "type": "showmgmt",
+      "address1": "343 Boston Turnpike",
+      "address2": "",
+      "city": "Shrewsbury",
+      "state": "Massachusetts",
+      "zip": "01545"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 21,
+    "fields": {
+      "title": "Circle 3 Group, LLC",
+      "code": "CIRC3GR",
+      "type": "showmgmt",
+      "address1": "One Shawnee Place",
+      "address2": "",
+      "city": "Londonderry",
+      "state": "New Hampshire",
+      "zip": "03053"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 22,
+    "fields": {
+      "title": "Coalition of Outcome Based Benefits",
+      "code": "COALOUBABE",
+      "type": "showmgmt",
+      "address1": "C4 Recovering Solutions",
+      "address2": "926 Cambridge Drive, SE",
+      "city": "Grand Rapids",
+      "state": "Michigan",
+      "zip": "49506"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 23,
+    "fields": {
+      "title": "Commercial Marine Expo, Inc.",
+      "code": "COMAREX",
+      "type": "showmgmt",
+      "address1": "110 Cullen Way",
+      "address2": "",
+      "city": "Newark",
+      "state": "Delaware",
+      "zip": "19711"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 24,
+    "fields": {
+      "title": "Concord Chamber of Commerce",
+      "code": "CONCCHCO",
+      "type": "showmgmt",
+      "address1": "49 South Main Street, Suite 104",
+      "address2": "",
+      "city": "Concord",
+      "state": "New Hampshire",
+      "zip": "03301"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 25,
+    "fields": {
+      "title": "Connecticut Chiropractic Council",
+      "code": "CTCHCO",
+      "type": "showmgmt",
+      "address1": "Eight Tyler Avenue",
+      "address2": "",
+      "city": "Branford",
+      "state": "Connecticut",
+      "zip": "06405"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 26,
+    "fields": {
+      "title": "Connecticut Human Resource Council",
+      "code": "CTHURECO",
+      "type": "showmgmt",
+      "address1": "PO Box 7372",
+      "address2": "",
+      "city": "Kensington",
+      "state": "Connecticut",
+      "zip": "06037"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 27,
+    "fields": {
+      "title": "Connecticut On-Line Computer Center, Inc",
+      "code": "CTONCOCE",
+      "type": "showmgmt",
+      "address1": "135 Darling Drive",
+      "address2": "",
+      "city": "Avon",
+      "state": "Connecticut",
+      "zip": "06001"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 28,
+    "fields": {
+      "title": "Connecticut State Dental Association",
+      "code": "CTSTDEAS",
+      "type": "showmgmt",
+      "address1": "835 West Queen Street",
+      "address2": "",
+      "city": "Southington",
+      "state": "Connecticut",
+      "zip": "06489"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 29,
+    "fields": {
+      "title": "Conventures",
+      "code": "CONVENTURES",
+      "type": "showmgmt",
+      "address1": "One Design Center Place",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02210"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 30,
+    "fields": {
+      "title": "Creative Group, Inc.",
+      "code": "CREAGRIN",
+      "type": "showmgmt",
+      "address1": "1535 Barclay Boulevard",
+      "address2": "",
+      "city": "Buffalo Grove",
+      "state": "Illinois",
+      "zip": "60089"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 31,
+    "fields": {
+      "title": "Credit Union League of Connecticut",
+      "code": "CREDUNLECT",
+      "type": "showmgmt",
+      "address1": "1064 East Main Street, Suite 201",
+      "address2": "",
+      "city": "Meriden",
+      "state": "Connecticut",
+      "zip": "06450"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 32,
+    "fields": {
+      "title": "Cross Insurance Arena",
+      "code": "CROSINAR",
+      "type": "showmgmt",
+      "address1": "One Civic Center Square",
+      "address2": "",
+      "city": "Portland",
+      "state": "Maine",
+      "zip": "04101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 33,
+    "fields": {
+      "title": "CT Florist Association",
+      "code": "CTFLAS",
+      "type": "showmgmt",
+      "address1": "315 Route 32",
+      "address2": "Montville Florists",
+      "city": "Uncasville",
+      "state": "Connecticut",
+      "zip": "06382"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 34,
+    "fields": {
+      "title": "D&H Distributing",
+      "code": "DHDI",
+      "type": "showmgmt",
+      "address1": "2525 North Seventh Street",
+      "address2": "",
+      "city": "Harrisburg",
+      "state": "Pennsylvania",
+      "zip": "17110"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 35,
+    "fields": {
+      "title": "Delaney Meeting and Event Management",
+      "code": "DELAMEEVMA",
+      "type": "showmgmt",
+      "address1": "One Mill Street",
+      "address2": "Suite 316",
+      "city": "Burlington",
+      "state": "Vermont",
+      "zip": "05401"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 36,
+    "fields": {
+      "title": "Dowling’s, Inc.",
+      "code": "DOWLIN",
+      "type": "showmgmt",
+      "address1": "91 Catamount Drive",
+      "address2": "",
+      "city": "Milton",
+      "state": "Vermont",
+      "zip": "05468"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 37,
+    "fields": {
+      "title": "Eastern Outdoor Reps Association",
+      "code": "EOUREAS",
+      "type": "showmgmt",
+      "address1": "PO Box 18297",
+      "address2": "",
+      "city": "Asheville",
+      "state": "North Carolina",
+      "zip": "28814"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 38,
+    "fields": {
+      "title": "Eastern States Exposition",
+      "code": "ESTEX",
+      "type": "showmgmt",
+      "address1": "1305 Memorial Avenue",
+      "address2": "",
+      "city": "West Springfield",
+      "state": "Massachusetts",
+      "zip": "01089"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 39,
+    "fields": {
+      "title": "Educators Rising",
+      "code": "EDUCRI",
+      "type": "showmgmt",
+      "address1": "152 Wilson Boulevard, Suite 705",
+      "address2": "",
+      "city": "Arlington",
+      "state": "Virginia",
+      "zip": "22209"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 40,
+    "fields": {
+      "title": "Efficiency Vermont",
+      "code": "EFFIVT",
+      "type": "showmgmt",
+      "address1": "128 Lakeside Avenue, Suite 401",
+      "address2": "",
+      "city": "Burlington",
+      "state": "Vermont",
+      "zip": "05401"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 41,
+    "fields": {
+      "title": "Emery Waterhouse",
+      "code": "EMERWA",
+      "type": "showmgmt",
+      "address1": "PO Box 659",
+      "address2": "Rand Road",
+      "city": "Portland",
+      "state": "Maine",
+      "zip": "04101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 42,
+    "fields": {
+      "title": "Equine Affaire, Inc.",
+      "code": "EQUIAFIN",
+      "type": "showmgmt",
+      "address1": "2720 State Route 56 SW",
+      "address2": "",
+      "city": "London",
+      "state": "Ohio",
+      "zip": "43140"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 43,
+    "fields": {
+      "title": "Events New Hampshire",
+      "code": "EVNH",
+      "type": "showmgmt",
+      "address1": "55 South Commercial Street",
+      "address2": "",
+      "city": "Manchester",
+      "state": "New Hampshire",
+      "zip": "03101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 44,
+    "fields": {
+      "title": "Expo Management Group",
+      "code": "EXPAMAGR",
+      "type": "showmgmt",
+      "address1": "84 Perry Street, Unit 223",
+      "address2": "",
+      "city": "Putnam",
+      "state": "Connecticut",
+      "zip": "06260"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 45,
+    "fields": {
+      "title": "F+W Trade Shows & Events, LLC",
+      "code": "FWTRSHEV",
+      "type": "showmgmt",
+      "address1": "909 Canterbury Road, Suite F",
+      "address2": "",
+      "city": "Westlake",
+      "state": "Ohio",
+      "zip": "44145"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 46,
+    "fields": {
+      "title": "FEMARA",
+      "code": "FEMARA",
+      "type": "showmgmt",
+      "address1": "85 High Street",
+      "address2": "",
+      "city": "Chelmsford",
+      "state": "Massachusetts",
+      "zip": "01824"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 47,
+    "fields": {
+      "title": "Fire Chiefs Association of Massachusetts",
+      "code": "FIRECHASMA",
+      "type": "showmgmt",
+      "address1": "PO Box 97",
+      "address2": "",
+      "city": "North Andover",
+      "state": "Massachusetts",
+      "zip": "01845"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 48,
+    "fields": {
+      "title": "Flower Show Management",
+      "code": "FLOWSHMA",
+      "type": "showmgmt",
+      "address1": "130 Gano Street",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02906"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 49,
+    "fields": {
+      "title": "Girls with Great Lines Gift Show",
+      "code": "GIRLGRLIGISH",
+      "type": "showmgmt",
+      "address1": "115 Bella Vista Drive",
+      "address2": "",
+      "city": "Pocasset",
+      "state": "Massachusetts",
+      "zip": "02559"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 50,
+    "fields": {
+      "title": "GMIS International",
+      "code": "GMISIN",
+      "type": "showmgmt",
+      "address1": "PO Box 27923",
+      "address2": "",
+      "city": "Austin",
+      "state": "Texas",
+      "zip": "78755"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 51,
+    "fields": {
+      "title": "Gordon Food Service",
+      "code": "GORTDFOSE",
+      "type": "showmgmt",
+      "address1": "1300 Genzon Parkway, SW",
+      "address2": "",
+      "city": "Grand Rapids",
+      "state": "Michigan",
+      "zip": "49509"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 52,
+    "fields": {
+      "title": "Granite State Designers and Installers Association",
+      "code": "GRANSTDEIN",
+      "type": "showmgmt",
+      "address1": "53 Regional Drive, Suite One",
+      "address2": "",
+      "city": "Concord",
+      "state": "New Hampshire",
+      "zip": "03301"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 53,
+    "fields": {
+      "title": "Griffin Greenhouse Supply",
+      "code": "GRIFGRSU",
+      "type": "showmgmt",
+      "address1": "PO Box 36",
+      "address2": "",
+      "city": "Tewksbury",
+      "state": "Massachusetts",
+      "zip": "01876"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 54,
+    "fields": {
+      "title": "GS Media and Events",
+      "code": "GSMEEV",
+      "type": "showmgmt",
+      "address1": "250 Parkway Drive, Suite 270",
+      "address2": "",
+      "city": "Lincolnshire",
+      "state": "Illinois",
+      "zip": "60069"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 55,
+    "fields": {
+      "title": "Hartford Marathon Foundation",
+      "code": "HARTMAFO",
+      "type": "showmgmt",
+      "address1": "41 Sequin Drive",
+      "address2": "",
+      "city": "Glastonbury",
+      "state": "Connecticut",
+      "zip": "06033"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 56,
+    "fields": {
+      "title": "Home Builders of Western Massachusetts",
+      "code": "HOMEBUASWMA",
+      "type": "showmgmt",
+      "address1": "240 Caldwell Drive ",
+      "address2": "",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "zip": "01104"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 57,
+    "fields": {
+      "title": "Huttig Building Products",
+      "code": "HUTTBUPR",
+      "type": "showmgmt",
+      "address1": "370 Creble Road",
+      "address2": "",
+      "city": "Selkirk",
+      "state": "New York",
+      "zip": "12158"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 58,
+    "fields": {
+      "title": "Institute of Noise Control Engineering",
+      "code": "INSTNOCOEN",
+      "type": "showmgmt",
+      "address1": "Engineers for Change, Inc.",
+      "address2": "5012 Macon Road",
+      "city": "Rockville",
+      "state": "Maryland",
+      "zip": "20852"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 59,
+    "fields": {
+      "title": "International Society of Vaccines",
+      "code": "INTESOVA",
+      "type": "showmgmt",
+      "address1": "55 Lake Ave, North",
+      "address2": "S6-862",
+      "city": "Worcester",
+      "state": "Massachusetts",
+      "zip": "01655"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 60,
+    "fields": {
+      "title": "International Wire and Cable Symposium",
+      "code": "INTEWICASY",
+      "type": "showmgmt",
+      "address1": "644 Strewsbury Commons Avenue",
+      "address2": "PMB #250",
+      "city": "Shrewsbury",
+      "state": "Pennsylvania",
+      "zip": "17361"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 61,
+    "fields": {
+      "title": "J. Polep Distribution Services",
+      "code": "JPDISE",
+      "type": "showmgmt",
+      "address1": "705 Meadow Street",
+      "address2": "",
+      "city": "Chicopee",
+      "state": "Massachusetts",
+      "zip": "01013"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 62,
+    "fields": {
+      "title": "Jenks Productions",
+      "code": "JENKPR",
+      "type": "showmgmt",
+      "address1": "100 Great Meadow Road, Suite 702",
+      "address2": "",
+      "city": "Wethersfield",
+      "state": "Connecticut",
+      "zip": "06109"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 63,
+    "fields": {
+      "title": "JHEnterprises",
+      "code": "JHENTERPRISES",
+      "type": "showmgmt",
+      "address1": "PO Box 545",
+      "address2": "",
+      "city": "Randolph",
+      "state": "Massachusetts",
+      "zip": "02368"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 64,
+    "fields": {
+      "title": "Jiffy Mart",
+      "code": "JIFFMA",
+      "type": "showmgmt",
+      "address1": "PO Box 229",
+      "address2": "",
+      "city": "Perkinsville",
+      "state": "Vermont",
+      "zip": "05151"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 65,
+    "fields": {
+      "title": "Johnson & Wales University",
+      "code": "JOHNWAUN",
+      "type": "showmgmt",
+      "address1": "Eight Abbott Park Place",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02903"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 66,
+    "fields": {
+      "title": "LeadingAge Massachusetts",
+      "code": "LEADINGAGEMA",
+      "type": "showmgmt",
+      "address1": "246 Walnut Street, Suite 203  ",
+      "address2": "",
+      "city": "Newtonville",
+      "state": "Massachusetts",
+      "zip": "02460"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 67,
+    "fields": {
+      "title": "MA Recreation & Park Association",
+      "code": "MAREPAAS",
+      "type": "showmgmt",
+      "address1": "PO Box 783",
+      "address2": "",
+      "city": "Westfield",
+      "state": "Massachusetts",
+      "zip": "01086"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 68,
+    "fields": {
+      "title": "Maine Bankers Association",
+      "code": "MEBAAS",
+      "type": "showmgmt",
+      "address1": "489 Congress Street",
+      "address2": "",
+      "city": "Portland",
+      "state": "Maine",
+      "zip": "04101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 69,
+    "fields": {
+      "title": "Maine Restaurant Association",
+      "code": "MEREAS",
+      "type": "showmgmt",
+      "address1": "45 Melville Street, Suite 1",
+      "address2": "",
+      "city": "Augusta",
+      "state": "Maine",
+      "zip": "04330"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 70,
+    "fields": {
+      "title": "Maine Water Utilities Asn",
+      "code": "MEWAUTAS",
+      "type": "showmgmt",
+      "address1": "150 Capital Street",
+      "address2": "Suite 5",
+      "city": "Augusta",
+      "state": "Maine",
+      "zip": "04330"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 71,
+    "fields": {
+      "title": "Mancuso Show Management",
+      "code": "MANCSHMA",
+      "type": "showmgmt",
+      "address1": "PO Box 667",
+      "address2": "",
+      "city": "New Hope",
+      "state": "Pennsylvania",
+      "zip": "18938"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 72,
+    "fields": {
+      "title": "Marketing and Events",
+      "code": "MARKEV",
+      "type": "showmgmt",
+      "address1": "28 Pelham Street",
+      "address2": "",
+      "city": "Newport",
+      "state": "Rhode Island",
+      "zip": "02840"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 73,
+    "fields": {
+      "title": "Mass Concerts",
+      "code": "MACO",
+      "type": "showmgmt",
+      "address1": "20 Lamb Street",
+      "address2": "",
+      "city": "South Hadley",
+      "state": "Massachusetts",
+      "zip": "01075"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 74,
+    "fields": {
+      "title": "Mass HOPE",
+      "code": "MAHO",
+      "type": "showmgmt",
+      "address1": "46 South Road",
+      "address2": "",
+      "city": "Holden",
+      "state": "Massachusetts",
+      "zip": "01520"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 75,
+    "fields": {
+      "title": "Mass-ALA",
+      "code": "MAASLIFAAS",
+      "type": "showmgmt",
+      "address1": "135 Beaver Street",
+      "address2": "",
+      "city": "Waltham",
+      "state": "Massachusetts",
+      "zip": "02452"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 76,
+    "fields": {
+      "title": "Massachusetts Association for Health, Physical Education, Recreation and Dance",
+      "code": "MAASHEPHDA",
+      "type": "showmgmt",
+      "address1": "209 Ridge Street",
+      "address2": "",
+      "city": "Millis",
+      "state": "Massachusetts",
+      "zip": "02054"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 77,
+    "fields": {
+      "title": "Massachusetts Association of Realtors",
+      "code": "MAASRE",
+      "type": "showmgmt",
+      "address1": "1400 Main Street",
+      "address2": "",
+      "city": "Waltham",
+      "state": "Massachusetts",
+      "zip": "02451"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 78,
+    "fields": {
+      "title": "Massachusetts Bankers Association",
+      "code": "MABAAS",
+      "type": "showmgmt",
+      "address1": "One Washington Mall, Eighth Floor",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02108"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 79,
+    "fields": {
+      "title": "Massachusetts Elementary School Principal’s Association",
+      "code": "MAELSCPRAS",
+      "type": "showmgmt",
+      "address1": "28 Lord Road, Suite 125",
+      "address2": "",
+      "city": "Marlborough",
+      "state": "Massachusetts",
+      "zip": "01752"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 80,
+    "fields": {
+      "title": "Massachusetts EMS Conference",
+      "code": "MAEMS",
+      "type": "showmgmt",
+      "address1": "c/o North Adams Ambulance",
+      "address2": "PO Box 1045",
+      "city": "North Adams",
+      "state": "Massachusetts",
+      "zip": "01247"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 81,
+    "fields": {
+      "title": "Massachusetts Higher Education Consortium",
+      "code": "MAHIEDCO",
+      "type": "showmgmt",
+      "address1": "505 East Pleasant Street",
+      "address2": "",
+      "city": "Amherst",
+      "state": "Massachusetts",
+      "zip": "01003"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 82,
+    "fields": {
+      "title": "Massachusetts HIMA",
+      "code": "MAHIMA",
+      "type": "showmgmt",
+      "address1": "PO Box 1149",
+      "address2": "",
+      "city": "Attleboro",
+      "state": "Massachusetts",
+      "zip": "02703"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 83,
+    "fields": {
+      "title": "Massachusetts Library Association",
+      "code": "MALIAS",
+      "type": "showmgmt",
+      "address1": "PO Box 21",
+      "address2": "",
+      "city": "Seekonk",
+      "state": "Massachusetts",
+      "zip": "02771"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 84,
+    "fields": {
+      "title": "Massachusetts Senior Care Association",
+      "code": "MASECA",
+      "type": "showmgmt",
+      "address1": "800 South Street",
+      "address2": "Suite 280",
+      "city": "Waltham",
+      "state": "Massachusetts",
+      "zip": "02453"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 85,
+    "fields": {
+      "title": "Massachusetts Teachers Association",
+      "code": "MATEAS",
+      "type": "showmgmt",
+      "address1": "Two Heritage Drive, Eighth Floor",
+      "address2": "",
+      "city": "Quincy",
+      "state": "Massachusetts",
+      "zip": "02171"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 86,
+    "fields": {
+      "title": "Massachusetts Tree Wardens and Foresters Association",
+      "code": "MATRWAFOAS",
+      "type": "showmgmt",
+      "address1": "PO Box 326",
+      "address2": "",
+      "city": "South Hadley",
+      "state": "Massachusetts",
+      "zip": "01075"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 87,
+    "fields": {
+      "title": "Massive Comicon, LLC",
+      "code": "MASSCO",
+      "type": "showmgmt",
+      "address1": "245 Maple Street, Unit 11",
+      "address2": "",
+      "city": "Manchester",
+      "state": "New Hampshire",
+      "zip": "03103"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 88,
+    "fields": {
+      "title": "McDonald’s Boston ROA",
+      "code": "MCDOBORO",
+      "type": "showmgmt",
+      "address1": "PO Box 84",
+      "address2": "",
+      "city": "Waban",
+      "state": "Massachusetts",
+      "zip": "02468"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 89,
+    "fields": {
+      "title": "MK Events",
+      "code": "MKEV",
+      "type": "showmgmt",
+      "address1": "11301 Wedgefield Court",
+      "address2": "",
+      "city": "Fishers",
+      "state": "Indiana",
+      "zip": "46037"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 90,
+    "fields": {
+      "title": "NACMID/NEASM",
+      "code": "NADMID",
+      "type": "showmgmt",
+      "address1": "NorDx Laboratories",
+      "address2": "301A US Route One",
+      "city": "Scarborough",
+      "state": "Maine",
+      "zip": "04074"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 91,
+    "fields": {
+      "title": "NASPA Region I Conference",
+      "code": "NASPREONCO",
+      "type": "showmgmt",
+      "address1": "Southern New Hampshire University",
+      "address2": "2500 North River Road",
+      "city": "Hooksett",
+      "state": "New Hampshire",
+      "zip": "03106"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 92,
+    "fields": {
+      "title": "National Association for College Admission Counseling",
+      "code": "NATIASCOADCO",
+      "type": "showmgmt",
+      "address1": "1050 North Highland Street, Suite 400",
+      "address2": "",
+      "city": "Arlington",
+      "state": "Virginia",
+      "zip": "22201"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 93,
+    "fields": {
+      "title": "National Association of Educational Buyers New England",
+      "code": "NATIASEDBUNEEN",
+      "type": "showmgmt",
+      "address1": "Western New England College",
+      "address2": "1215 Wilbraham Road",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "zip": "01119"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 94,
+    "fields": {
+      "title": "National Association of Public Insurance Adjusters",
+      "code": "NATIASPUINAD",
+      "type": "showmgmt",
+      "address1": "21165 Whitfield Place, #105",
+      "address2": "",
+      "city": "Sterling",
+      "state": "Virginia",
+      "zip": "20165"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 95,
+    "fields": {
+      "title": "National Federation of Paralegal Associations",
+      "code": "NATIFEPAAS",
+      "type": "showmgmt",
+      "address1": "23607 Highway 99, Suite 2C",
+      "address2": "",
+      "city": "Edmonds",
+      "state": "Washington",
+      "zip": "98026"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 96,
+    "fields": {
+      "title": "Net Impact",
+      "code": "NETIM",
+      "type": "showmgmt",
+      "address1": "1333 Broadway, Suite 250",
+      "address2": "",
+      "city": "Oakland",
+      "state": "California",
+      "zip": "94612"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 97,
+    "fields": {
+      "title": "New England Area Professional  Development Conference",
+      "code": "NEENARPRDECO",
+      "type": "showmgmt",
+      "address1": "c/o Willis Towers Watson",
+      "address2": "3001 Summer Street, Floor 3",
+      "city": "Stamford",
+      "state": "Connecticut",
+      "zip": "06905"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 98,
+    "fields": {
+      "title": "New England Association of Fire Chiefs",
+      "code": "NEENASFICH",
+      "type": "showmgmt",
+      "address1": "PO Box 2483",
+      "address2": "",
+      "city": "Middletown",
+      "state": "Connecticut",
+      "zip": "06457"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 99,
+    "fields": {
+      "title": "New England Cable and Telecommunications Association, Inc.",
+      "code": "NEENCATEAS",
+      "type": "showmgmt",
+      "address1": "Ten Forbes Road, Suite 440W",
+      "address2": "",
+      "city": "Braintree\t",
+      "state": "Massachusetts",
+      "zip": "02184"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 100,
+    "fields": {
+      "title": "New England Chapter,  Society of Cable Telecommunication Engineers",
+      "code": "NEENCHSOCATEEN",
+      "type": "showmgmt",
+      "address1": "Comcast Cable",
+      "address2": "222 New Park Drive",
+      "city": "Berlin",
+      "state": "Connecticut",
+      "zip": "06037"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 101,
+    "fields": {
+      "title": "New England Chapter, American College of Sport Medicine",
+      "code": "NEENCHAMCOSPME",
+      "type": "showmgmt",
+      "address1": "100 Grand Street",
+      "address2": "",
+      "city": "New Britain",
+      "state": "Connecticut",
+      "zip": "06050"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 102,
+    "fields": {
+      "title": "New England Floriculture, Inc. ",
+      "code": "NEENFL",
+      "type": "showmgmt",
+      "address1": "Delaney Meeting and Event Management ",
+      "address2": "One Mill Street, Suite 301",
+      "city": "Burlington",
+      "state": "Vermont",
+      "zip": "05401"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 103,
+    "fields": {
+      "title": "New England Golf Expos",
+      "code": "NEENGOEX",
+      "type": "showmgmt",
+      "address1": "54 Catalina Drive",
+      "address2": "",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "zip": "01128"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 104,
+    "fields": {
+      "title": "New England Healthcare Engineer's Society",
+      "code": "NEENHEENSO",
+      "type": "showmgmt",
+      "address1": "47 Water Street",
+      "address2": "",
+      "city": "Mystic",
+      "state": "Connecticut",
+      "zip": "06355"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 105,
+    "fields": {
+      "title": "New England League of Middle Schools",
+      "code": "NEENLEMISC",
+      "type": "showmgmt",
+      "address1": "120 Water Street, Suite 403",
+      "address2": "",
+      "city": "North Andover",
+      "state": "Massachusetts",
+      "zip": "01845"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 106,
+    "fields": {
+      "title": "New England Library Association",
+      "code": "NEENLIAS",
+      "type": "showmgmt",
+      "address1": "55 North Main Street, Unit 49",
+      "address2": "",
+      "city": "Belchertown",
+      "state": "Massachusetts",
+      "zip": "01007"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 107,
+    "fields": {
+      "title": "New England Museum Association",
+      "code": "NEENMUAS",
+      "type": "showmgmt",
+      "address1": "22 Mill St",
+      "address2": "Suite 409",
+      "city": "Arlington",
+      "state": "Massachusetts",
+      "zip": "02476"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 108,
+    "fields": {
+      "title": "New England Power Sports",
+      "code": "NEENPOSP",
+      "type": "showmgmt",
+      "address1": "19 Massachusetts Avenue",
+      "address2": "",
+      "city": "Lunenburg",
+      "state": "Massachusetts",
+      "zip": "01462"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 109,
+    "fields": {
+      "title": "New England Railroad Club",
+      "code": "NEENRACL",
+      "type": "showmgmt",
+      "address1": "38 Lawrence Street, Apt. #2",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02116"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 110,
+    "fields": {
+      "title": "New England Section of the American Urological Association",
+      "code": "NEENSEAMURAS",
+      "type": "showmgmt",
+      "address1": "500 Cummings Center, Suite 4550",
+      "address2": "",
+      "city": "Beverly",
+      "state": "Massachusetts",
+      "zip": "01915"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 111,
+    "fields": {
+      "title": "New England Sports Reps",
+      "code": "NEENWISPRE",
+      "type": "showmgmt",
+      "address1": "21 South Street, Unit Three",
+      "address2": "",
+      "city": "Westborough",
+      "state": "Massachusetts",
+      "zip": "01581"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 112,
+    "fields": {
+      "title": "New England Tire and Service Association",
+      "code": "NEENTISEAS",
+      "type": "showmgmt",
+      "address1": "39 Winding Way",
+      "address2": "",
+      "city": "Yarmouth",
+      "state": "Maine",
+      "zip": "04096"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 113,
+    "fields": {
+      "title": "New England Water Works Association",
+      "code": "NEENWAWOAS",
+      "type": "showmgmt",
+      "address1": "125 Hopping Brook Road",
+      "address2": "",
+      "city": "Holliston",
+      "state": "Massachusetts",
+      "zip": "01746"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 114,
+    "fields": {
+      "title": "New Hampshire Campground Owners Association",
+      "code": "NHCAOWAS",
+      "type": "showmgmt",
+      "address1": "PO Box 1074",
+      "address2": "",
+      "city": "Epsom",
+      "state": "New Hampshire",
+      "zip": "03234"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 115,
+    "fields": {
+      "title": "New Hampshire Farm and Forest Expo",
+      "code": "NHFAFOEX",
+      "type": "showmgmt",
+      "address1": "25 Capital Street",
+      "address2": "PO Box 2585",
+      "city": "Concord",
+      "state": "New Hampshire",
+      "zip": "03302"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 116,
+    "fields": {
+      "title": "New Hampshire Health Care Association",
+      "code": "NHHECAAS",
+      "type": "showmgmt",
+      "address1": "Five Sheep Davis Road, Suite E",
+      "address2": "",
+      "city": "Suncook",
+      "state": "New Hampshire",
+      "zip": "03275"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 117,
+    "fields": {
+      "title": "New Hampshire Municipal Association",
+      "code": "NHMUNIASSO",
+      "type": "showmgmt",
+      "address1": "25 Triangle Park Drive",
+      "address2": "PO Box 617",
+      "city": "Concord",
+      "state": "New Hampshire",
+      "zip": "03302"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 118,
+    "fields": {
+      "title": "New Hampshire Water Works Association",
+      "code": "NHWAWOAS",
+      "type": "showmgmt",
+      "address1": "18 North Main Street, Suite 308",
+      "address2": "",
+      "city": "Concord",
+      "state": "New Hampshire",
+      "zip": "03301"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 119,
+    "fields": {
+      "title": "Northeast Aquaculture Conference & Expo",
+      "code": "NEAQCOEX",
+      "type": "showmgmt",
+      "address1": "5717 Corbett Hall",
+      "address2": "Room 436",
+      "city": "Orono",
+      "state": "Maine",
+      "zip": "04469"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 120,
+    "fields": {
+      "title": "Northeast Biomass Heating Expo",
+      "code": "NEBIHEEX",
+      "type": "showmgmt",
+      "address1": "PO Box 761",
+      "address2": "",
+      "city": "Westminster",
+      "state": "Massachusetts",
+      "zip": "01473"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 121,
+    "fields": {
+      "title": "Northeast Canvas Products",
+      "code": "NECAPR",
+      "type": "showmgmt",
+      "address1": "c/o Awning Cleaning Industries",
+      "address2": "29 Fitch Street",
+      "city": "New Haven",
+      "state": "Connecticut",
+      "zip": "06515"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 122,
+    "fields": {
+      "title": "Northeast Chapter-American Fence Association",
+      "code": "NECHAMFEAS",
+      "type": "showmgmt",
+      "address1": "Premier Fence, LLC",
+      "address2": "PO Box 593",
+      "city": "Avon",
+      "state": "Massachusetts",
+      "zip": "02322"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 123,
+    "fields": {
+      "title": "Northeast Energy and Commerce Association",
+      "code": "NEENCOAS",
+      "type": "showmgmt",
+      "address1": "1040 Great Plain Avenue",
+      "address2": "",
+      "city": "Needham",
+      "state": "Massachusetts",
+      "zip": "02492"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 124,
+    "fields": {
+      "title": "Northeast Human Resources Association",
+      "code": "NEHUREAS",
+      "type": "showmgmt",
+      "address1": "490 Virginia Road, Suite 32",
+      "address2": "",
+      "city": "Concord",
+      "state": "Massachusetts",
+      "zip": "01742"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 125,
+    "fields": {
+      "title": "Northeast Ice Skating Managers Association",
+      "code": "NEICSKMA",
+      "type": "showmgmt",
+      "address1": "Chase Ice Arena",
+      "address2": "35 Windsor Avenue",
+      "city": "Natick",
+      "state": "Massachusetts",
+      "zip": "01760"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 126,
+    "fields": {
+      "title": "Northeast Lean Conference",
+      "code": "NELECO",
+      "type": "showmgmt",
+      "address1": "60 Austin Street, #102",
+      "address2": "",
+      "city": "Newtonville",
+      "state": "Massachusetts",
+      "zip": "02460"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 127,
+    "fields": {
+      "title": "Northeast Pharmacy Service Corporation",
+      "code": "NEPHSECO",
+      "type": "showmgmt",
+      "address1": "1661 Worcester Road, Suite 405",
+      "address2": "",
+      "city": "Framingham",
+      "state": "Massachusetts",
+      "zip": "01701"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 128,
+    "fields": {
+      "title": "Northeastern Loggers’ Association",
+      "code": "NELOAS",
+      "type": "showmgmt",
+      "address1": "PO Box 69",
+      "address2": "",
+      "city": "Old Forge",
+      "state": "New York",
+      "zip": "13420"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 129,
+    "fields": {
+      "title": "Nuclear Energy Institute",
+      "code": "NECLENIN",
+      "type": "showmgmt",
+      "address1": "1201 F Street NW, Suite 1100",
+      "address2": "",
+      "city": "Washington",
+      "state": "District of Columbia",
+      "zip": "20004"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 130,
+    "fields": {
+      "title": "Pet Food Experts, Inc.",
+      "code": "PETFOEX",
+      "type": "showmgmt",
+      "address1": "PO Box 7119",
+      "address2": "",
+      "city": "Cumberland",
+      "state": "Rhode Island",
+      "zip": "02864"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 131,
+    "fields": {
+      "title": "Phillips Pet Food and Supplies",
+      "code": "PHILPEFOSU",
+      "type": "showmgmt",
+      "address1": "3747 Hecktown Road",
+      "address2": "",
+      "city": "Lawnside",
+      "state": "New Jersey",
+      "zip": "08045"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 132,
+    "fields": {
+      "title": "Pilot Association Client",
+      "code": "Pilot Assoc",
+      "type": "showmgmt",
+      "address1": "123 MAIN ST",
+      "address2": "",
+      "city": "Tampa",
+      "state": "Florida",
+      "zip": "33603"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 133,
+    "fields": {
+      "title": "Propane Gas Association of New England",
+      "code": "PROPGAASNEEN",
+      "type": "showmgmt",
+      "address1": "PO Box 1071",
+      "address2": "",
+      "city": "Epsom",
+      "state": "New Hampshire",
+      "zip": "03234"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 134,
+    "fields": {
+      "title": "Providence College",
+      "code": "PROVCOLL",
+      "type": "showmgmt",
+      "address1": "One Cunningham Square",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02918"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 135,
+    "fields": {
+      "title": "Providence Public Schools Department",
+      "code": "PROVPUSCDE",
+      "type": "showmgmt",
+      "address1": "797 Westminster Street",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02903"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 136,
+    "fields": {
+      "title": "Reinhart Foodservice Company",
+      "code": "REINFOCO",
+      "type": "showmgmt",
+      "address1": "Delaney Meeting and Event Management",
+      "address2": "One Mill Street, Suite 301",
+      "city": "Burlington",
+      "state": "Vermont",
+      "zip": "05401"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 137,
+    "fields": {
+      "title": "Retail Association of Massachusetts",
+      "code": "RETAASMA",
+      "type": "showmgmt",
+      "address1": "18 Tremont Street, Suite 810",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02108"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 138,
+    "fields": {
+      "title": "Rhode Island Health Care Association",
+      "code": "RIHECAAS",
+      "type": "showmgmt",
+      "address1": "57 Kilvert Street, Suite 200",
+      "address2": "",
+      "city": "Warwick",
+      "state": "Rhode Island",
+      "zip": "02886"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 139,
+    "fields": {
+      "title": "Rhode Island League of Cities and Towns",
+      "code": "RILEAGCITITOWN",
+      "type": "showmgmt",
+      "address1": "One State Street",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02908"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 140,
+    "fields": {
+      "title": "Rhode Island Saltwater Anglers Association",
+      "code": "RISAWAANAS",
+      "type": "showmgmt",
+      "address1": "PO Box 1465",
+      "address2": "",
+      "city": "Coventry",
+      "state": "Rhode Island",
+      "zip": "02816"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 141,
+    "fields": {
+      "title": "Rhode Island School of Design",
+      "code": "RISCHODESI",
+      "type": "showmgmt",
+      "address1": "Two College Street",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02903"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 142,
+    "fields": {
+      "title": "Rotary Club of Burlington",
+      "code": "ROTACLBU",
+      "type": "showmgmt",
+      "address1": "PO Box 4598",
+      "address2": "",
+      "city": "Burlington",
+      "state": "Vermont",
+      "zip": "05406"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 143,
+    "fields": {
+      "title": "Safety and Health Council of Northern New England",
+      "code": "SAFEHECONNEEN",
+      "type": "showmgmt",
+      "address1": "405 Western Avenue, #317",
+      "address2": "",
+      "city": "South Portland",
+      "state": "Maine",
+      "zip": "04106"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 144,
+    "fields": {
+      "title": "SAN Group, Inc",
+      "code": "SANGRIN",
+      "type": "showmgmt",
+      "address1": "234 Lafayette Road",
+      "address2": "",
+      "city": "Hampton",
+      "state": "New Hampshire",
+      "zip": "03842"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 145,
+    "fields": {
+      "title": "Scientific Societies",
+      "code": "SCIESO",
+      "type": "showmgmt",
+      "address1": "3340 Pilot Knots Road",
+      "address2": "",
+      "city": "Saint Paul",
+      "state": "Minnesota",
+      "zip": "55121"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 146,
+    "fields": {
+      "title": "Shaw's",
+      "code": "shaw",
+      "type": "showmgmt",
+      "address1": "750 West Center",
+      "address2": "",
+      "city": "Boxborough",
+      "state": "Massachusetts",
+      "zip": "01719"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 147,
+    "fields": {
+      "title": "Society Of Nuclear Medicine",
+      "code": "SOCINUME",
+      "type": "showmgmt",
+      "address1": "Greater NY Chapter",
+      "address2": "360 Cedar Lane",
+      "city": "E Meadow",
+      "state": "New York",
+      "zip": "11554"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 148,
+    "fields": {
+      "title": "Springfield RV, Camping and Outdoor Show",
+      "code": "SPRICAOUSH",
+      "type": "showmgmt",
+      "address1": "Pioneer Valley Chapter 8",
+      "address2": "PO Box 2701",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "zip": "01101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 149,
+    "fields": {
+      "title": "Surface Mount Technology Association",
+      "code": "SURFMOTEAS",
+      "type": "showmgmt",
+      "address1": "131 Knollwood Road",
+      "address2": "",
+      "city": "Newington",
+      "state": "Connecticut",
+      "zip": "06111"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 150,
+    "fields": {
+      "title": "Sysco Boston, LLC",
+      "code": "SYSCBOST",
+      "type": "showmgmt",
+      "address1": "99 Spring Street",
+      "address2": "",
+      "city": "Plympton",
+      "state": "Massachusetts",
+      "zip": "02367"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 151,
+    "fields": {
+      "title": "Sysco of Northern New England",
+      "code": "SYSCNNEEN",
+      "type": "showmgmt",
+      "address1": "PO Box 4657",
+      "address2": "",
+      "city": "Portland",
+      "state": "Maine",
+      "zip": "04112"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 152,
+    "fields": {
+      "title": "The ABR Comapny, LTD",
+      "code": "ABR",
+      "type": "showmgmt",
+      "address1": "ABR House, Prospect Place",
+      "address2": "",
+      "city": "Trowbridge Wiltshire",
+      "state": "--Select State--",
+      "zip": "BA148Q"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 153,
+    "fields": {
+      "title": "The Next Level Beauty Association",
+      "code": "NEXTLEBEAS",
+      "type": "showmgmt",
+      "address1": "20 Sharpe Drive",
+      "address2": "",
+      "city": "Cranston",
+      "state": "Rhode Island",
+      "zip": "02920"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 154,
+    "fields": {
+      "title": "The Providence Journal",
+      "code": "PROVJO",
+      "type": "showmgmt",
+      "address1": "75 Fountain Street",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02903"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 155,
+    "fields": {
+      "title": "The School Nutrition Association of Massachusetts",
+      "code": "SCHONUTRASSOMA",
+      "type": "showmgmt",
+      "address1": "258 Harvard Street, PMB 283",
+      "address2": "",
+      "city": "Brookline",
+      "state": "Massachusetts",
+      "zip": "02446"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 156,
+    "fields": {
+      "title": "Vermont Business Magazine",
+      "code": "VTBUMA",
+      "type": "showmgmt",
+      "address1": "365 Dorset Street",
+      "address2": "",
+      "city": "South Burlington",
+      "state": "Vermont",
+      "zip": "05403"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 157,
+    "fields": {
+      "title": "Vermont Captive Insurance Association",
+      "code": "VTCAINAS",
+      "type": "showmgmt",
+      "address1": "180 Battery Street, Suite 200",
+      "address2": "",
+      "city": "Burlington",
+      "state": "Vermont",
+      "zip": "05401"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 158,
+    "fields": {
+      "title": "Vermont Chamber of Commerce",
+      "code": "VTCHCO",
+      "type": "showmgmt",
+      "address1": "PO Box 37",
+      "address2": "",
+      "city": "Montpelier",
+      "state": "Vermont",
+      "zip": "05601"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 159,
+    "fields": {
+      "title": "Vermont Retail and Grocers Association ",
+      "code": "VTREGRAS",
+      "type": "showmgmt",
+      "address1": "148 State Street",
+      "address2": "",
+      "city": "Montpelier",
+      "state": "Vermont",
+      "zip": "05602"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 160,
+    "fields": {
+      "title": "Yankee Security Convention, Inc",
+      "code": "YANKSECO",
+      "type": "showmgmt",
+      "address1": "Eight Medway Street",
+      "address2": "",
+      "city": "Norfolk",
+      "state": "Massachusetts",
+      "zip": "02056"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 161,
+    "fields": {
+      "title": "Yoffe Exposition Services",
+      "code": "YOFFEXSE",
+      "type": "showmgmt",
+      "address1": "PO Box 719",
+      "address2": "",
+      "city": "Marblehead",
+      "state": "Massachusetts",
+      "zip": "01945"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 162,
+    "fields": {
+      "title": "Boston Convention and Exhibtion Center",
+      "code": "BOSTCOCE",
+      "type": "facility",
+      "address1": "415 Summer St",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02210"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 163,
+    "fields": {
+      "title": "Boston Marriott Long Wharf",
+      "code": "BOSTMALOWH",
+      "type": "facility",
+      "address1": "296 State Street",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02109"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 164,
+    "fields": {
+      "title": "Boston University-Ziskind Lounge",
+      "code": "BOSTUN",
+      "type": "other",
+      "address1": "775 Commonwealth Avenue",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02215"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 165,
+    "fields": {
+      "title": "Champlain Valley Exposition",
+      "code": "CHAMVAEX",
+      "type": "facility",
+      "address1": "105 Pearl St",
+      "address2": "",
+      "city": "Essex Junction",
+      "state": "Vermont",
+      "zip": "05452"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 166,
+    "fields": {
+      "title": "Chelsea Piers",
+      "code": "CHELPI",
+      "type": "other",
+      "address1": "One Blachley Road",
+      "address2": "",
+      "city": "Stamford",
+      "state": "Connecticut",
+      "zip": "06902"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 167,
+    "fields": {
+      "title": "Citizens Bank Park",
+      "code": "CITIBAPA",
+      "type": "other",
+      "address1": "One Citizens Bank Way",
+      "address2": "",
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "zip": "19148"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 168,
+    "fields": {
+      "title": "Connecticut Convention Center",
+      "code": "CTCOCE",
+      "type": "facility",
+      "address1": "100 Columbus Boulevard",
+      "address2": "",
+      "city": "Hartford",
+      "state": "Connecticut",
+      "zip": "06103"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 169,
+    "fields": {
+      "title": "Cross Insurance Arena",
+      "code": "CROSINAR",
+      "type": "facility",
+      "address1": "One Civic Center Square",
+      "address2": "",
+      "city": "Portland",
+      "state": "Maine",
+      "zip": "04101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 170,
+    "fields": {
+      "title": "Crowne Plaza Hotel-Warwick, RI",
+      "code": "CROWPLHOWARI",
+      "type": "facility",
+      "address1": "801 Greenwich Avenue",
+      "address2": "",
+      "city": "Warwick",
+      "state": "Rhode Island",
+      "zip": "02886"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 171,
+    "fields": {
+      "title": "DCU Center",
+      "code": "DCUCE",
+      "type": "facility",
+      "address1": "50 Foster Street",
+      "address2": "",
+      "city": "Worcester",
+      "state": "Massachusetts",
+      "zip": "01608"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 172,
+    "fields": {
+      "title": "Double Tree by Hilton Hotel - Leominster, MA",
+      "code": "DOUBHOLEMA",
+      "type": "facility",
+      "address1": "99 Erdman Way",
+      "address2": "",
+      "city": "Leominster",
+      "state": "Massachusetts",
+      "zip": "01453"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 173,
+    "fields": {
+      "title": "Doubletree by Hilton Boston North Shore-Danvers, MA",
+      "code": "DOUBHIBONSH",
+      "type": "facility",
+      "address1": "50 Ferncroft Road",
+      "address2": "",
+      "city": "Danvers",
+      "state": "Massachusetts",
+      "zip": "01923"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 174,
+    "fields": {
+      "title": "Eastern States Exposition",
+      "code": "ESTEX",
+      "type": "facility",
+      "address1": "1305 Memorial Avenue",
+      "address2": "",
+      "city": "West Springfield",
+      "state": "Massachusetts",
+      "zip": "01089"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 175,
+    "fields": {
+      "title": "Fenway Park",
+      "code": "FENWPA",
+      "type": "other",
+      "address1": "Four Yawkey Way",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02215"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 176,
+    "fields": {
+      "title": "Fox Tower at Foxwoods",
+      "code": "FOXTO",
+      "type": "facility",
+      "address1": "240 Fox Tower Drive ",
+      "address2": "",
+      "city": "Ledyard",
+      "state": "Connecticut",
+      "zip": "06338"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 177,
+    "fields": {
+      "title": "Foxwoods Resort Casino",
+      "code": "FOXWRECA",
+      "type": "facility",
+      "address1": "350 Trolley Line Boulevard",
+      "address2": "",
+      "city": "Mashantucket",
+      "state": "Connecticut",
+      "zip": "06338"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 178,
+    "fields": {
+      "title": "Frank Jones Center",
+      "code": "FRANJOCE",
+      "type": "other",
+      "address1": "400 Route One Bypass ",
+      "address2": "",
+      "city": "Portsmouth",
+      "state": "New Hampshire",
+      "zip": "03801"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 179,
+    "fields": {
+      "title": "Gillette Stadium",
+      "code": "GILLST",
+      "type": "facility",
+      "address1": "One Patriot Place",
+      "address2": "",
+      "city": "Foxboro",
+      "state": "Massachusetts",
+      "zip": "02035"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 180,
+    "fields": {
+      "title": "Grappone Conference Center",
+      "code": "GRAPCOCE",
+      "type": "facility",
+      "address1": "70 Constitution Ave",
+      "address2": "",
+      "city": "Concord",
+      "state": "New Hampshire",
+      "zip": "03301"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 181,
+    "fields": {
+      "title": "Hilton Hotel-Burlington, VT",
+      "code": "HIHOBUVT",
+      "type": "facility",
+      "address1": "60 Battery Street",
+      "address2": "",
+      "city": "Burlington",
+      "state": "Vermont",
+      "zip": "05401"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 182,
+    "fields": {
+      "title": "Hilton Hotel-Stamford, CT",
+      "code": "HILTHOSTAMCT",
+      "type": "facility",
+      "address1": "One First Stamford Place",
+      "address2": "",
+      "city": "Stamford",
+      "state": "Connecticut",
+      "zip": "06902"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 183,
+    "fields": {
+      "title": "Hofstra University",
+      "code": "HOFSUN",
+      "type": "other",
+      "address1": "1000 Fulton Avenue",
+      "address2": "",
+      "city": "Hempstead",
+      "state": "New York",
+      "zip": "11549"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 184,
+    "fields": {
+      "title": "Holiday Inn by the Bay-Portland, ME",
+      "code": "HOLIINBYBA",
+      "type": "facility",
+      "address1": "88 Spring Street",
+      "address2": "",
+      "city": "Portland",
+      "state": "Maine",
+      "zip": "04101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 185,
+    "fields": {
+      "title": "Holiday Inn-Boxboro, MA",
+      "code": "HOLIINBOMA",
+      "type": "facility",
+      "address1": "242 Adams Place",
+      "address2": "",
+      "city": "Boxborough",
+      "state": "Massachusetts",
+      "zip": "01719"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 186,
+    "fields": {
+      "title": "Hyatt Regency Hotel-Atlanta, GA",
+      "code": "HYATREATGA",
+      "type": "facility",
+      "address1": "265 Peachtree Street, NE",
+      "address2": "",
+      "city": "Atlanta",
+      "state": "Georgia",
+      "zip": "30303"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 187,
+    "fields": {
+      "title": "Hyatt Regency Hotel-Newport, RI",
+      "code": "HYATRENEMA",
+      "type": "facility",
+      "address1": "One Goat Island",
+      "address2": "",
+      "city": "Newport",
+      "state": "Rhode Island",
+      "zip": "02840"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 188,
+    "fields": {
+      "title": "John B. Hynes Veterans Memorial Convention Center",
+      "code": "HYNEVEMECOCE",
+      "type": "facility",
+      "address1": "900 Boylston Street",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02115"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 189,
+    "fields": {
+      "title": "Johnson & Wales - Wildcat Center",
+      "code": "JOHNWAUN",
+      "type": "other",
+      "address1": "305 Shipyard Street",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02905"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 190,
+    "fields": {
+      "title": "Las Vegas Expo",
+      "code": "LASVEEX",
+      "type": "terminal",
+      "address1": "4075 East Post Road",
+      "address2": "",
+      "city": "Las Vegas",
+      "state": "Nevada",
+      "zip": "89120"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 191,
+    "fields": {
+      "title": "Marano Trucklines",
+      "code": "MARATR",
+      "type": "terminal",
+      "address1": "9820 Blue Gross Road",
+      "address2": "",
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "zip": "19114"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 192,
+    "fields": {
+      "title": "Marriott Hotel-Albany, NY",
+      "code": "MARRHOALNY",
+      "type": "facility",
+      "address1": "189 Wolf Road",
+      "address2": "",
+      "city": "Albany",
+      "state": "New York",
+      "zip": "12205"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 193,
+    "fields": {
+      "title": "Marriott Hotel-Groton, CT",
+      "code": "MARRHOGRCT",
+      "type": "facility",
+      "address1": "625 North Road",
+      "address2": "",
+      "city": "Groton",
+      "state": "Connecticut",
+      "zip": "06340"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 194,
+    "fields": {
+      "title": "Marriott Hotel-Newport, RI",
+      "code": "MARRHONEMA",
+      "type": "facility",
+      "address1": "25 American Cup Avenue",
+      "address2": "",
+      "city": "Newport",
+      "state": "Rhode Island",
+      "zip": "02840"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 195,
+    "fields": {
+      "title": "Marriott Hotel-Quincy, MA",
+      "code": "MARRHOQUMA",
+      "type": "facility",
+      "address1": "1000 Marriott Drive",
+      "address2": "",
+      "city": "Quincy",
+      "state": "Massachusetts",
+      "zip": "02169"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 196,
+    "fields": {
+      "title": "Massachusetts State Pier",
+      "code": "STATPI",
+      "type": "other",
+      "address1": "93 State Pier",
+      "address2": "",
+      "city": "New Bedford",
+      "state": "Massachusetts",
+      "zip": "02740"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 197,
+    "fields": {
+      "title": "MassMutual Center",
+      "code": "MAMUCE",
+      "type": "facility",
+      "address1": "1277 Main Street",
+      "address2": "",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "zip": "01103"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 198,
+    "fields": {
+      "title": "Mohegan Sun Resort & Casino",
+      "code": "MOHESU",
+      "type": "facility",
+      "address1": "One Mohegan Sun Boulevard",
+      "address2": "",
+      "city": "Uncasville",
+      "state": "Connecticut",
+      "zip": "06382"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 199,
+    "fields": {
+      "title": "Mountain View Grand Resort",
+      "code": "MOUNVIGRRE",
+      "type": "facility",
+      "address1": "101 Mountain View Road",
+      "address2": "",
+      "city": "Whitefield",
+      "state": "New Hampshire",
+      "zip": "03598"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 200,
+    "fields": {
+      "title": "New Hampshire SportsPlex",
+      "code": "NHSPPL",
+      "type": "other",
+      "address1": "68 Technology Drive",
+      "address2": "",
+      "city": "Bedford",
+      "state": "New Hampshire",
+      "zip": "03110"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 201,
+    "fields": {
+      "title": "Ohio Expo Center",
+      "code": "OHEXCE",
+      "type": "facility",
+      "address1": "717 East 17th Avenue",
+      "address2": "",
+      "city": "Columbus",
+      "state": "Ohio",
+      "zip": "43211"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 202,
+    "fields": {
+      "title": "Omni Hotel - Providence",
+      "code": "OMNIHOPRRI",
+      "type": "facility",
+      "address1": "One West Exchange St",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02903"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 203,
+    "fields": {
+      "title": "Oregon Convention Center",
+      "code": "OREGCOCE",
+      "type": "facility",
+      "address1": "777 Northeast Martin Luther King Jr. Boulevard",
+      "address2": "",
+      "city": "Portland",
+      "state": "Oregon",
+      "zip": "97232"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 204,
+    "fields": {
+      "title": "Pasadena Convention Center",
+      "code": "PASACOCE",
+      "type": "facility",
+      "address1": "125 South Marengo Avenue",
+      "address2": "",
+      "city": "Pasadena",
+      "state": "California",
+      "zip": "91101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 205,
+    "fields": {
+      "title": "Pennsylvania Convention Center",
+      "code": "PACOCE",
+      "type": "facility",
+      "address1": "1101 Arch Street",
+      "address2": "",
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "zip": "19107"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 206,
+    "fields": {
+      "title": "PNC Park",
+      "code": "PNCPA",
+      "type": "other",
+      "address1": "115 Federal Street",
+      "address2": "",
+      "city": "Pittsburgh",
+      "state": "Pennsylvania",
+      "zip": "15212"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 207,
+    "fields": {
+      "title": "Providence College-Peterson Recreation Center",
+      "code": "PROVCOLL",
+      "type": "other",
+      "address1": "One Cunningham Square",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02918"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 208,
+    "fields": {
+      "title": "Radisson Hotel - Nashua",
+      "code": "RADIHONANH",
+      "type": "facility",
+      "address1": "11 Tara Boulevard",
+      "address2": "",
+      "city": "Nashua",
+      "state": "New Hampshire",
+      "zip": "03062"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 209,
+    "fields": {
+      "title": "Radisson Hotel Manchester Downtown",
+      "code": "RADIHOCENH",
+      "type": "facility",
+      "address1": "700 Elm Street",
+      "address2": "",
+      "city": "Manchester",
+      "state": "New Hampshire",
+      "zip": "03101"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 210,
+    "fields": {
+      "title": "Renaissance Las Vegas",
+      "code": "RENILAVE",
+      "type": "facility",
+      "address1": "3400 Paradise Road",
+      "address2": "",
+      "city": "Las Vegas",
+      "state": "Nevada",
+      "zip": "89169"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 211,
+    "fields": {
+      "title": "Resort and Conference Center at Hyannis",
+      "code": "RESOCOCEHY",
+      "type": "facility",
+      "address1": "35 Scudder Ave",
+      "address2": "",
+      "city": "Hyannis",
+      "state": "Massachusetts",
+      "zip": "02601"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 212,
+    "fields": {
+      "title": "Rhode Island Convention Center",
+      "code": "RICOCE",
+      "type": "facility",
+      "address1": "One Sabin Street",
+      "address2": "",
+      "city": "Providence",
+      "state": "Rhode Island",
+      "zip": "02903"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 213,
+    "fields": {
+      "title": "Seacrest Hotel and Resort-North Falmouth, MA",
+      "code": "SEACHOREFA",
+      "type": "facility",
+      "address1": "350 Quaker Road",
+      "address2": "",
+      "city": "North Falmouth",
+      "state": "Massachusetts",
+      "zip": "02556"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 214,
+    "fields": {
+      "title": "SER exposition services",
+      "code": "SERWORCMASS",
+      "type": "terminal",
+      "address1": "35b New Street",
+      "address2": "",
+      "city": "Worcester",
+      "state": "Massachusetts",
+      "zip": "01605"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 215,
+    "fields": {
+      "title": "Sheraton Hotel - S Burlington, VT",
+      "code": "SHERHOBUVT",
+      "type": "facility",
+      "address1": "870 Williston Road",
+      "address2": "",
+      "city": "South Burlington",
+      "state": "Vermont",
+      "zip": "05403"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 216,
+    "fields": {
+      "title": "Sheraton Hotel-Framingham, MA",
+      "code": "SHERHOFRMA",
+      "type": "facility",
+      "address1": "1657 Worcester Road",
+      "address2": "",
+      "city": "Framingham",
+      "state": "Massachusetts",
+      "zip": "01701"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 217,
+    "fields": {
+      "title": "Sheraton Springfield Monarch Place Hotel",
+      "code": "SHERSPMA",
+      "type": "facility",
+      "address1": "One Monarch Place",
+      "address2": "",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "zip": "01144"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 218,
+    "fields": {
+      "title": "Shriners Auditorium",
+      "code": "SHRIAU",
+      "type": "facility",
+      "address1": "99 Fordham Road",
+      "address2": "",
+      "city": "Wilmington",
+      "state": "Massachusetts",
+      "zip": "01887"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 219,
+    "fields": {
+      "title": "South Shore Expo Center",
+      "code": "SSHEXCE",
+      "type": "facility",
+      "address1": "Eight Natalie Way",
+      "address2": "",
+      "city": "Plymouth",
+      "state": "Massachusetts",
+      "zip": "02360"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 220,
+    "fields": {
+      "title": "SportsZone Indoor Sports Complex",
+      "code": "SPORINSPCO",
+      "type": "other",
+      "address1": "Seven A Street",
+      "address2": "",
+      "city": "Derry",
+      "state": "New Hampshire",
+      "zip": "03038"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 221,
+    "fields": {
+      "title": "Stowe Mountain Resort",
+      "code": "STOWMORE",
+      "type": "other",
+      "address1": "....",
+      "address2": "",
+      "city": "Stowe",
+      "state": "Vermont",
+      "zip": ""
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 222,
+    "fields": {
+      "title": "Sturbridge Host Hotel-Sturbridge, MA",
+      "code": "STURHOHO",
+      "type": "facility",
+      "address1": "366 Main Street",
+      "address2": "",
+      "city": "Sturbridge",
+      "state": "Massachusetts",
+      "zip": "01566"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 223,
+    "fields": {
+      "title": "Tampa Convention Center",
+      "code": "TAMPCOCE",
+      "type": "facility",
+      "address1": "333 South Franklin Street",
+      "address2": "",
+      "city": "Tampa",
+      "state": "Florida",
+      "zip": "33602"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 224,
+    "fields": {
+      "title": "The Matrix",
+      "code": "MATR",
+      "type": "other",
+      "address1": "39 Old Ridgebury Road",
+      "address2": "",
+      "city": "Danbury",
+      "state": "Connecticut",
+      "zip": "06810"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 225,
+    "fields": {
+      "title": "The Westin Boston Waterfront",
+      "code": "WESTBOWA",
+      "type": "facility",
+      "address1": "425 Summer Street",
+      "address2": "",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "zip": "02210"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 226,
+    "fields": {
+      "title": "Tsongas Center at UMass Lowell",
+      "code": "TSONAR",
+      "type": "facility",
+      "address1": "300 Martin Luther King Jr. Way",
+      "address2": "",
+      "city": "Lowell",
+      "state": "Massachusetts",
+      "zip": "01852"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 227,
+    "fields": {
+      "title": "Twin River Casino",
+      "code": "TWINRI",
+      "type": "facility",
+      "address1": "100 Twin River Road",
+      "address2": "",
+      "city": "Lincoln",
+      "state": "Rhode Island",
+      "zip": "02865"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 228,
+    "fields": {
+      "title": "UMass - Amherst, MA",
+      "code": "UMASAM",
+      "type": "facility",
+      "address1": "918 Campus Center",
+      "address2": "",
+      "city": "Amherst",
+      "state": "Massachusetts",
+      "zip": "01003"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 229,
+    "fields": {
+      "title": "University Sports Complex @ Starland",
+      "code": "UNIVSPCO",
+      "type": "other",
+      "address1": "645 Washington Street",
+      "address2": "",
+      "city": "Hanover",
+      "state": "Massachusetts",
+      "zip": "02339"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 230,
+    "fields": {
+      "title": "UPS Albany New York",
+      "code": "UPSALBANEWYORK",
+      "type": "terminal",
+      "address1": "11 Apollo Drive",
+      "address2": "",
+      "city": "Albany",
+      "state": "New York",
+      "zip": "12205"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 231,
+    "fields": {
+      "title": "UPS Anaheim California",
+      "code": "UPSANAHCALI",
+      "type": "terminal",
+      "address1": "650 South Acacia Avenue",
+      "address2": "",
+      "city": "Fullerton",
+      "state": "California",
+      "zip": "92831"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 232,
+    "fields": {
+      "title": "UPS Atlanta, GA",
+      "code": "UPSATGA",
+      "type": "terminal",
+      "address1": "c/o J&S Cartage",
+      "address2": "3770 Zip Industrial Boulevard, Suite B",
+      "city": "Atlanta",
+      "state": "Georgia",
+      "zip": "30354"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 233,
+    "fields": {
+      "title": "UPS Austin Texas",
+      "code": "UPSAUSTTEXA",
+      "type": "terminal",
+      "address1": "16130 Bratton Lane",
+      "address2": "Bldg #3, Suite #300",
+      "city": "Austin",
+      "state": "Texas",
+      "zip": "78728"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 234,
+    "fields": {
+      "title": "UPS Boston Massachusetts",
+      "code": "UPSBOSTMASS",
+      "type": "terminal",
+      "address1": "280 Eastern Ave",
+      "address2": "",
+      "city": "Chelsea",
+      "state": "Massachusetts",
+      "zip": "02150"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 235,
+    "fields": {
+      "title": "UPS Boxboro Massachusetts",
+      "code": "UPSBOMA",
+      "type": "terminal",
+      "address1": "185 Boston Road",
+      "address2": "",
+      "city": "Southborough",
+      "state": "Massachusetts",
+      "zip": "01772"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 236,
+    "fields": {
+      "title": "UPS Bronx New York",
+      "code": "UPSBRONEWYORK",
+      "type": "terminal",
+      "address1": "295 Lombardy Street",
+      "address2": "",
+      "city": "Brooklyn",
+      "state": "New York",
+      "zip": "11222"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 237,
+    "fields": {
+      "title": "UPS Burlington Vermont",
+      "code": "UPSBURLVERM",
+      "type": "terminal",
+      "address1": "2 Holmes Road",
+      "address2": "",
+      "city": "South Burlington",
+      "state": "Vermont",
+      "zip": "05403"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 238,
+    "fields": {
+      "title": "UPS Charlotte N Carolina",
+      "code": "UPSCHARNORTCARL",
+      "type": "terminal",
+      "address1": "5204 North Graham Street",
+      "address2": "",
+      "city": "Charlotte",
+      "state": "North Carolina",
+      "zip": "28269"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 239,
+    "fields": {
+      "title": "UPS Columbus Ohio",
+      "code": "UPSCOLUOHIO",
+      "type": "terminal",
+      "address1": "3400 Refugee Road",
+      "address2": "",
+      "city": "Columbus",
+      "state": "Ohio",
+      "zip": "43232"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 240,
+    "fields": {
+      "title": "UPS Denver Colorado",
+      "code": "UPSDENVCOLO",
+      "type": "terminal",
+      "address1": "7040 East 56th Avenue",
+      "address2": "",
+      "city": "Commerce City",
+      "state": "Colorado",
+      "zip": "80022"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 241,
+    "fields": {
+      "title": "UPS Detroit Michigan ",
+      "code": "UPSDETRMICH",
+      "type": "terminal",
+      "address1": "6150 Inkster Road",
+      "address2": "",
+      "city": "Romulus",
+      "state": "Michigan",
+      "zip": "48174"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 242,
+    "fields": {
+      "title": "UPS Hamburg New York",
+      "code": "UPSHAMBNEWYORK",
+      "type": "terminal",
+      "address1": "2580 Kenmore Avenue",
+      "address2": "",
+      "city": "Tonawanda",
+      "state": "New York",
+      "zip": "14150"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 243,
+    "fields": {
+      "title": "UPS Hartford Connecticut",
+      "code": "UPSHARTCONN",
+      "type": "terminal",
+      "address1": "130 North Plain Industrial RD",
+      "address2": "",
+      "city": "Wallingford",
+      "state": "Connecticut",
+      "zip": "06492"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 244,
+    "fields": {
+      "title": "UPS Honolulu Hawaii",
+      "code": "UPSHONOHAWA",
+      "type": "terminal",
+      "address1": "3375 Koapaka Street",
+      "address2": "",
+      "city": "Honolulu",
+      "state": "Hawaii",
+      "zip": "96819"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 245,
+    "fields": {
+      "title": "UPS Indianapolis Indiana",
+      "code": "UPSINDIINDI",
+      "type": "terminal",
+      "address1": "800 Commerce Pkwy W. Drive",
+      "address2": "Suite A",
+      "city": "Greenwood",
+      "state": "Indiana",
+      "zip": "46143"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 246,
+    "fields": {
+      "title": "UPS King of Prussia Penn",
+      "code": "UPSKINGPRUSSPEN",
+      "type": "terminal",
+      "address1": "624 Old Reading Pike",
+      "address2": "",
+      "city": "Pottstown",
+      "state": "Pennsylvania",
+      "zip": "19464"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 247,
+    "fields": {
+      "title": "UPS Louisville Kentucky ",
+      "code": "UPSLOUIKENT",
+      "type": "terminal",
+      "address1": "9828 E. Bluegrass Pkwy",
+      "address2": "",
+      "city": "Louisville",
+      "state": "Kentucky",
+      "zip": "40299"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 248,
+    "fields": {
+      "title": "UPS Manchester New Hampsh",
+      "code": "UPSMANCNEWHAMP",
+      "type": "terminal",
+      "address1": "31 S. Perimeter Road",
+      "address2": "",
+      "city": "Londonderry",
+      "state": "New Hampshire",
+      "zip": "03053"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 249,
+    "fields": {
+      "title": "UPS Norfolk Virginia",
+      "code": "UPSNORFVIRG",
+      "type": "terminal",
+      "address1": "2053 S. Military Highway",
+      "address2": "",
+      "city": "Chesapeake",
+      "state": "Virginia",
+      "zip": "23320"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 250,
+    "fields": {
+      "title": "UPS Orlando Florida",
+      "code": "UPSORLAFLORI",
+      "type": "terminal",
+      "address1": "9858 Sidney Hayes RD",
+      "address2": "",
+      "city": "Orlando",
+      "state": "Florida",
+      "zip": "32824"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 251,
+    "fields": {
+      "title": "UPS Philadelphia Penn",
+      "code": "UPSPHILPENN",
+      "type": "terminal",
+      "address1": "525 Imperial Court",
+      "address2": "",
+      "city": "Bensalem",
+      "state": "Pennsylvania",
+      "zip": "19020"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 252,
+    "fields": {
+      "title": "UPS Pittsburgh Pennsylvania",
+      "code": "UPSPITTPENN",
+      "type": "terminal",
+      "address1": "20 39th Street",
+      "address2": "",
+      "city": "Pittsburgh",
+      "state": "Pennsylvania",
+      "zip": "15201"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 253,
+    "fields": {
+      "title": "UPS Portland Oregon",
+      "code": "UPSPORTOREG",
+      "type": "terminal",
+      "address1": "1025 Northeast Columbia Boulevard",
+      "address2": "",
+      "city": "Portland",
+      "state": "Oregon",
+      "zip": "97211"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 254,
+    "fields": {
+      "title": "UPS Providence Rhode Island",
+      "code": "UPSPROVRHODISLA",
+      "type": "terminal",
+      "address1": "617 George Washington Hwy",
+      "address2": "",
+      "city": "Lincoln",
+      "state": "Rhode Island",
+      "zip": "02865"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 255,
+    "fields": {
+      "title": "UPS San Antonio Texas",
+      "code": "UPSSANANTOTEXA",
+      "type": "terminal",
+      "address1": "4111 NE Loop ",
+      "address2": "",
+      "city": "San Antonio",
+      "state": "Texas",
+      "zip": "78218"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 256,
+    "fields": {
+      "title": "UPS Savannah Georgia ",
+      "code": "UPSSAVAGEOR",
+      "type": "terminal",
+      "address1": "1503 Lissner Avenue",
+      "address2": "",
+      "city": "Savannah",
+      "state": "Georgia",
+      "zip": "31408"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 257,
+    "fields": {
+      "title": "UPS Seattle Washington",
+      "code": "UPSSEATWASH",
+      "type": "terminal",
+      "address1": "11231 East Marginal Way South",
+      "address2": "",
+      "city": "Seattle",
+      "state": "Washington",
+      "zip": "98168"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 258,
+    "fields": {
+      "title": "UPS Springfield Massachusetts",
+      "code": "UPSSPRIMASS",
+      "type": "terminal",
+      "address1": "710 Cottage Street",
+      "address2": "",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "zip": "01104"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 259,
+    "fields": {
+      "title": "XL Center",
+      "code": "XLCE",
+      "type": "facility",
+      "address1": "1 Civic Center Street",
+      "address2": "",
+      "city": "Hartford",
+      "state": "Connecticut",
+      "zip": "06120"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 260,
+    "fields": {
+      "title": "YRC Bangor Maine",
+      "code": "YRCBANGMAIN",
+      "type": "terminal",
+      "address1": "44 Sheridan Drive",
+      "address2": "",
+      "city": "Fairfield",
+      "state": "Maine",
+      "zip": "04937"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 261,
+    "fields": {
+      "title": "YRC Boston Massachusetts",
+      "code": "YRCBOSTMASS",
+      "type": "terminal",
+      "address1": "95 Concord Street",
+      "address2": "",
+      "city": "North Reading",
+      "state": "Massachusetts",
+      "zip": "01864"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 262,
+    "fields": {
+      "title": "YRC Burlington Vermont",
+      "code": "YRCBURLVERM",
+      "type": "terminal",
+      "address1": "199 Krupp Drive",
+      "address2": "",
+      "city": "Williston",
+      "state": "Vermont",
+      "zip": "05495"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 263,
+    "fields": {
+      "title": "YRC Flushing New York - M",
+      "code": "YRCFLUSNEWYORK",
+      "type": "terminal",
+      "address1": "1313 Grand Street",
+      "address2": "",
+      "city": "Brooklyn",
+      "state": "New York",
+      "zip": "11211"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 264,
+    "fields": {
+      "title": "YRC Hartford CT",
+      "code": "YRCHARTCONN",
+      "type": "terminal",
+      "address1": "117 W. Jonhson Ave",
+      "address2": "",
+      "city": "Cheshire",
+      "state": "Connecticut",
+      "zip": "06410"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 265,
+    "fields": {
+      "title": "YRC Long Branch New Jerse",
+      "code": "YRCLONGBRANNEWJ",
+      "type": "terminal",
+      "address1": "49 Thomas J Rhodes Industrial ",
+      "address2": "",
+      "city": "Hamilton",
+      "state": "New Jersey",
+      "zip": "08619"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 266,
+    "fields": {
+      "title": "YRC Palm Springs Californ",
+      "code": "YRCPALMSPRINCAL",
+      "type": "terminal",
+      "address1": "1500 W. Rialto Ave.",
+      "address2": "",
+      "city": "San Bernardino",
+      "state": "California",
+      "zip": "92410"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 267,
+    "fields": {
+      "title": "YRC Pittsburg Pennsylvani",
+      "code": "YRCPITTPENN",
+      "type": "terminal",
+      "address1": "1243 Thompson Ave",
+      "address2": "",
+      "city": "Mc Kees Rocks",
+      "state": "Pennsylvania",
+      "zip": "15136"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 268,
+    "fields": {
+      "title": "YRC Providence Rhode Island",
+      "code": "YRCPROVERHODISL",
+      "type": "terminal",
+      "address1": "55 Industrial drive",
+      "address2": "",
+      "city": "Cumberland",
+      "state": "Rhode Island",
+      "zip": "02864"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 269,
+    "fields": {
+      "title": "YRC Seattle Washington",
+      "code": "YRCSEATWASH",
+      "type": "terminal",
+      "address1": "12855 48th Ave. S.",
+      "address2": "",
+      "city": "Seattle",
+      "state": "Washington",
+      "zip": "98168"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 270,
+    "fields": {
+      "title": "YRC Springfield Massachusetts",
+      "code": "YRCSPRIMASS",
+      "type": "terminal",
+      "address1": "160 Falcon Drive",
+      "address2": "",
+      "city": "Westfield",
+      "state": "Massachusetts",
+      "zip": "01085"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 271,
+    "fields": {
+      "title": "YRC Watkins Glen New York",
+      "code": "YRCWATKGLENNEWY",
+      "type": "terminal",
+      "address1": "1620 Grand Central Ave.",
+      "address2": "",
+      "city": "Elmira",
+      "state": "New York",
+      "zip": "14903"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 272,
+    "fields": {
+      "title": "YRC Worcester Massachusetts",
+      "code": "YRCWORCMASS",
+      "type": "terminal",
+      "address1": "464 Hartford Turnkpike",
+      "address2": "",
+      "city": "Shrewsbury",
+      "state": "Massachusetts",
+      "zip": "01545"
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 273,
+    "fields": {
+      "title": "Jonathan",
+      "code": "JONATHAN",
+      "type": "salesperson",
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "zip": ""
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 274,
+    "fields": {
+      "title": "Test MGMT",
+      "code": "TESTMGMT",
+      "type": "showmgmt",
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "zip": ""
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 275,
+    "fields": {
+      "title": "TESTFACILITY",
+      "code": "TESTFACILITY",
+      "type": "facility",
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "zip": ""
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 276,
+    "fields": {
+      "title": "TESTCARRIER",
+      "code": "TESTCARRIER",
+      "type": "terminal",
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "zip": ""
+    }
+  },
+  {
+    "model": "kitcreate.place",
+    "pk": 277,
+    "fields": {
+      "title": "McDonald’s Boston ROA",
+      "code": "MCDONALD",
+      "type": "showmgmt",
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "zip": ""
+    }
+  }
+]

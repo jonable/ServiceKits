@@ -1,0 +1,207 @@
+{% extends "kitcreate/base.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+
+{% block header %}{{ form.media }}{% endblock header %}
+
+
+        {% block menu %}
+        <nav id="sidebar-nav" class="col-4 col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+	            <li class="nav-item">
+                	<a class="nav-link" href="/">Home</a>                
+              	</li>
+	        	  <li class="nav-item">
+	    	      	<a class="nav-link" href="{% url 'edit_kit_info' pk=eventinfo.pk %}">Event Info</a> 
+		          </li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'edit_kit_schedule' pk=eventinfo.pk %}">Schedule</a> 
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'edit_kit_pricelevel' pk=eventinfo.pk %}">Service Level</a> 
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'edit_kit_services' pk=eventinfo.pk %}">Service Forms</a> 
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'edit_kit_addforms' pk=eventinfo.pk %}">Additional Forms</a> 
+				</li>
+            </ul>
+		</nav>
+        {% endblock menu %}
+
+<body>
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<h1 class="h2">{{form.form_title}}</h1>
+		<p>{{form.form_description}}</p>
+	</div>
+
+	<a href="/" onclick="return confirm('You are about to leave this form. Changes made will not be saved.\nClick Ok to leave.')">Home</a>
+	{% if eventinfo.pk %}
+		<a href="{% url 'servicekit_complete' pk=eventinfo.pk %}" onclick="return confirm('You are about to leave this form. Changes made will not be saved.\nClick Ok to leave.')">{{eventinfo	}}</a>	
+	{% endif %}
+	<div>
+		<span>Edit</span>
+		<a href="{% url 'edit_kit_info' pk=eventinfo.pk %}">Event Info</a> 
+
+
+
+{% if messages %}
+	<div>
+		<ul class="messagelist">
+			{% for message in messages %}
+			<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}
+
+
+	<form action="" method="post">
+		{% csrf_token %}
+		{% if form.forms %}
+			{{form.management_form}}
+			{% for form in form.forms %}
+				<div class="row">
+				{% for hidden in form.hidden_fields %}
+					{{ hidden }}
+				{% endfor %}							
+				{# {% for field in form.visible_fields %}
+					{% if field.label == 'Delete' %}
+					Clear
+					{% else %}
+					{{field.label}}
+					{% endif %}
+				{% endfor %} #}							
+				{% for field in form.visible_fields %}
+					<div class="col">																	
+						{{field}}
+						{{ field.errors }}
+					</div>
+				{% endfor %}
+				</div>				
+			{% endfor %}
+			<input type="button" value="Add More" id="add_more">
+		{% elif form.has_fieldsets %}		
+			{% if not form.fieldsets %}
+				No forms selected for this service kit		 	
+			 {% endif %}
+			 {% for fieldset in form.fieldsets %}
+				<span>data-fieldset="{{fieldset.title}}">{{ fieldset.title }}</span>	    
+				{% if not fieldset.fields %}
+					No forms found for this servicelevel		
+				{% endif %}
+				  {% for field in fieldset.fields %}
+					<span data-fieldset-id="{{fieldset.title}}" data-field="{{field.auto_id}}">
+							{{ field.label_tag }}
+							{{ field }}
+							{{ field.help_text }}
+							{{ field.errors }}
+					</span>
+				  {% endfor %}
+			  {% endfor %}
+		{% else %}
+			{{ form }}
+		{% endif %}	
+	
+	<a href="{% url 'servicekit_complete' pk=eventinfo.pk %}">Cancel</a>
+	<input type="submit" name="on_save" value="{% trans "Save" %}"/>
+	<input type="submit" name="on_save" value="{% trans "Save and Finish" %}"/>
+	{% if on_save_action %}
+		<input type="submit" name="on_save" value="{% trans on_save_action %}"/>
+	{% endif %}
+	</form>
+
+	<small><i>[KIT-{{eventinfo.service_kit.pk}}]</i></small>
+</main>
+{% endblock %}
+
+<script type="text/javascript">
+	function cloneMore(selector, type) {
+		var newElement = $(selector).clone(true);
+		var total = $('#id_' + type + '-TOTAL_FORMS').val();
+		newElement.find(':input').each(function() {
+			if(typeof $(this).attr('name') == 'undefined'){
+				return;
+			}
+			var name = $(this).attr('name').replace('-'+(total-1)+'-','-'+(total)+'-');
+			var id = 'id_' + name;
+			$(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+			// if(this.tagName === 'SELECT'){
+			// 	$(this).select2();
+			// }
+		});
+		newElement.find('label').each(function() {
+			var newFor = $(this).attr('for').replace('-'+(total-1)+'-','-'+(total)+'-');
+			$(this).attr('for', newFor);
+		});
+		total++;
+		$('#id_' + type + '-TOTAL_FORMS').val(total);
+		$(selector).after(newElement);
+
+		newElement.find('input[id*=start_time]').each(function(){
+			var $this = $(this);
+			$this.off('blur');
+			$this.on('blur', function(){
+				parse_user_date($this);
+			});
+		});
+		newElement.find('input[id*=end_time]').each(function(){
+			var $this = $(this);
+			$this.off('blur');
+			$this.on('blur', function(){
+				parse_user_date($this);
+			});
+		});	
+	}
+	$('#add_more').click(function() {
+		if($("#service_kit_wizard-current_step").val() == 'AdditionalFormsFormset'){
+			select_form_addmore('.formset-row:last', 'AdditionalFormsFormset')
+		}else{
+			cloneMore('.formset-row:last', $("#service_kit_wizard-current_step").val());	
+		}	
+	});	
+
+	$('tr[data-fieldset]').each(function(){
+		var $this = $(this);
+		var fieldsetId = $this.data('fieldset');
+		$this.click(function(e){
+			$('[data-fieldset-id="'+fieldsetId+'"]').each(function(){
+				var _field = $(this).data('field');
+				var $cb = $('[id="'+_field+'"]');
+				$cb.prop('checked', !$cb.prop('checked'));
+			});
+		});
+	});	
+	function parse_user_date($this){
+		var current_val = $this.val();
+		if (current_val.length == 0){
+			return;
+		}
+		var newtime = moment($this.val(), ['h:m a', 'H:m']).format("h:mm A");
+		console.log(newtime);
+		if (newtime === 'Invalid date'){
+			alert('Invalid Date: ' + $this.val()+' Please use format HH:MM AM/PM');
+			newtime = '';
+			$this.focus();
+		}
+		$this.val(newtime);	
+	}
+	$('input[id*=start_time]').each(function(){
+		var $this = $(this);
+		$this.on('blur', function(){
+			parse_user_date($this);
+		});
+	});
+	$('input[id*=end_time]').each(function(){
+		var $this = $(this);
+		$this.on('blur', function(){
+			parse_user_date($this);
+		});
+	});
+</script>
+</body>
+</html>

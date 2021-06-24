@@ -1,0 +1,71 @@
+{% load eventinfo_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quick Export</title>
+
+<link rel="stylesheet" href="/static/kitforms/css/styles.css">
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+
+	{{form.media}}
+
+</head>
+<body>	
+<a href="{% url 'servicekit_complete' eventinfo.pk %}">Back</a>
+{% if previous_export %}
+|
+<a href="{{previous_export}}" target="_blank">View Previously Exported File</a>	
+{% endif %}
+{% if messages %}
+<ul class="messagelist">
+	{% for message in messages %}
+	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+
+<h2>Select Forms</h2>
+<p>Check the forms you wish to export. When you finish selecting your forms click, "Export Forms" to generate the pdf.</p>
+<form action="./" method="POST">
+{% csrf_token %}
+<label style="margin-right:10px;"><input type="checkbox" id="select-all" checked="checked"/> Clear Checked</label>
+{{form}}
+<p><small>Order and form selection are specific to this page and do not effect {{eventinfo}}'s service kit</small></p>
+	<div style="position:relative;" id="footer">
+		<div style="display:inline;">
+			<input type="submit" id="eventinfo-reorder" class="fake-btn" name="export" value="Export Forms" onclick="show_blockout()" >
+		</div>		
+	</div>
+</form>
+<div class="block-out">
+	<div class="loader-container">
+	<div class="loader"></div>
+	<div class="loader-text"><p>Your request is being processed. This may take several minutes.</p></div>
+	</div>
+</div>
+<script>
+	function show_blockout(){
+		var blockout = document.getElementsByClassName('block-out')[0];
+		blockout.style.display = 'block';
+	}
+	function hide_blockout(){
+		var blockout = document.getElementsByClassName('block-out')[0];
+		blockout.style.display = 'hide';	
+	}
+	django.jQuery("#select-all").on("change", function(){
+		django.jQuery(".sortedm2m").prop('checked', false)	
+	});
+
+	
+</script>
+</body>
+</html>

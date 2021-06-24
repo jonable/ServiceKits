@@ -1,0 +1,157 @@
+{% extends "kitcreate/base.html" %}
+{% load i18n %}
+{% load humanize %}
+{% load static from staticfiles %}
+{% load eventinfo_extras %}
+{% block title %}Select a form{% endblock title %}
+{% block header %}
+{{block.super}}{{servicekits_filterform.media.css}}
+{% endblock header %}
+{% block menu %}
+{% if not is_popup %}
+<nav id="sidebar-nav" class="col-4 col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'kitcreate_home' %} ">Home</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'servicekit_wizard2_new' %}">Create A Service Kit</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'storefrontstatus_list' %}?search=&amp;servicekitstatus=approved_goshow&amp;storefrontstatus=pending">View Storefronts</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'servicekitforms_listview' %}">Edit Service Kit Forms</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:pricelists_pricelist_changelist' %}">Pricelists</a>
+    </li>            
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_logout' %}" title="Logout of Service Kit App">Logout</a>              
+    </li>
+    <div class="dropdown-divider"></div>
+    </ul>
+    <div class="row mx-2">
+        <div class="col-12">
+                <form action="{% url 'servicekitforms_listview' %}" method="GET">
+                    <div class="input-group bmd-form-group">
+                        <label class="control-label bmd-label-static">Search</label>
+                        <input class="form-control" type="text" name="search" value="{{search}}">
+                    </div>                                        
+                    <input class="btn btn-primary" type="submit" value="Search">
+                    {% if is_popup %}
+                        <input class="form-control" type="hidden" name="_popup" value="1">
+                    {% endif %}                
+                </form>                      
+        </div>
+    </div>
+</nav>
+{% endif %}
+
+{% endblock menu %}
+
+
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h1 d-md-none">Service Kit Forms</h1>
+        <div class="d-md-none col-12">
+                <form action="{% url 'servicekitforms_listview' %}" method="GET">
+                    <div class="input-group bmd-form-group">
+                        <label class="control-label bmd-label-static">Search</label>
+                        <input class="form-control" type="text" name="search" value="{{search}}">
+                        <input class="btn btn-primary" type="submit" value="Search">
+                        {% if is_popup %}
+                            <input class="form-control" type="hidden" name="_popup" value="1">
+                        {% endif %}
+                    </div>                                                        
+                </form>             
+        </div>
+        <ul class="nav">    
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'file_upload_form' %}{% if is_popup %}?_popup=1{% endif %}">Upload A Service Kit Form</a>
+            </li>           
+        </ul>        
+    </div>
+        <div class="row">
+            <div class="col-12">
+                {% if is_popup %}                                    
+                <form action="{% url 'servicekitforms_listview' %}" method="GET">
+                    <div class="input-group bmd-form-group">
+                        <label class="control-label bmd-label-static">Search</label>
+                        <input class="form-control" type="text" name="search" value="{{search}}">
+                        <input class="btn btn-primary" type="submit" value="Search">
+                        {% if is_popup %}
+                            <input class="form-control" type="hidden" name="_popup" value="1">
+                        {% endif %}
+                    </div>                                                        
+                </form>
+                {% endif %}
+                <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            {% if is_popup %}<th></th>{% endif %}
+                            <th>Form</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in object_list %}
+                            <tr class="{% cycle 'row-odd' 'row-even' %}">
+                                {% if is_popup %}                                
+                                <td class="align-middle">
+                                    <a class="btn btn-sm btn-primary" href="{% url 'file_edit_form' pk=object.pk %}?_popup=1" onclick="opener.dismissRelatedLookupPopup(window, '{{object.pk}}', '{{object}}'); return false;">ADD</a>
+                                </td>
+                                {% endif %}
+                                <td class="align-middle w-25">                                   
+                                    <a class="btn btn-sm btn-primary" href="{% url 'file_edit_form' pk=object.pk %}">edit</a>
+                                </td>                                                                
+                                <td class="align-middle">
+                                   {{object}} 
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        {% if not object_list %}
+                            <tr><td>No forms found</td></tr>
+                        {% endif %}                     
+                    </tbody>
+                </table>
+                </div>
+
+
+
+            {% if is_paginated %}
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+              </ul>
+            {% endif %}                 
+            </div>
+        </div>          
+
+</main> 
+ 
+{% endblock content %}
+
+
+{% block footer %}
+{{block.super}}
+
+<script type="text/javascript">
+
+
+</script>
+{% endblock footer %}

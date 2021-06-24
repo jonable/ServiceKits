@@ -1,0 +1,35 @@
+<style>
+    #import-results td, #import-results th{
+        text-align: left;
+    }
+    #import-results > tr{
+        border:none;
+    }
+</style>
+<div>
+    <a href="{{pricelist.get_admin_url}}">Back to PL {{pricelist}}</a>
+    <p></p>
+</div>
+<div>
+    <p><b>Choose a pricelist spreadsheet to upload.</b></p>
+    <form action="./" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+     {{ formset.management_form }}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>File</th>
+            <th>Price Tier</th>
+        </tr>
+    {% for form in formset %}
+        <tr>
+        {% for field in form %}
+            <td>{{field}}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+        
+    <input type="submit" value="Submit" name="Submit">
+    </form>
+</div>

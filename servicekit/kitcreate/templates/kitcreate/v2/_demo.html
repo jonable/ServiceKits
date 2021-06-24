@@ -1,0 +1,36 @@
+{% extends "kitcreate/base.html" %}
+{% load i18n %}
+{% load humanize %}
+{% load static from staticfiles %}
+{% load eventinfo_extras %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/bootstrap/css/stepper.css">
+{% endblock header %}
+
+{% block menu %}
+
+<nav id="sidebar-nav" class="col-4 col-md-2 d-none d-md-block bg-light sidebar">
+  	<div class="sidebar-sticky">
+		<ul class="nav flex-column">
+			<li class="nav-item">
+				<a class="nav-link" href="/">Home</a>                
+			</li>
+		</ul>
+	</div>	
+</nav>
+{% endblock menu %}
+
+
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<h1 class="h1">Demo Page</h1>
+		<ul class="nav">	
+			<li class="nav-item">
+				<a href="#" class="nav-link">Link 1</a>			
+			</li>													
+		</ul>
+	</div>
+</main>		
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load static from staticfiles %}
+{% if eventinfo %}
+		<div class="btn-group" role="group">
+			<a class="btn btn-secondary btn-raised" href="{% url 'servicekit_complete' pk=eventinfo.pk %}">Cancel</a>
+		</div>	
+		<div class="btn-group float-right" role="group">
+			<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans "Save" %}"/>
+			<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans "Save and Continue" %}"/>
+			<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans "Save and Finish" %}"/>
+			{% if on_save_action %}
+				<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans on_save_action %}"/>
+			{% endif %}
+		</div>
+	{% elif wizard.steps %}
+		<div class="row">
+		<div class="col-6">
+		  <ul class="pagination">
+		    <li class="page-item"><span class="page-link" href="#">Step</span></li>
+		    <li class="page-item"><span class="page-link" href="#">{{ wizard.steps.step1 }}</span></li>
+		    <li class="page-item"><span class="page-link" href="#">of</span></li>
+		    <li class="page-item"><span class="page-link" href="#">{{ wizard.steps.count }}</span></li>
+		  </ul>
+		</div>
+		<div class="col-4">
+		{% if wizard.steps.prev %}	
+		<button class="btn btn-primary" name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
+		<button class="btn btn-primary" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
+		{% endif %}
+		</div>
+		<div class="col-2">
+		<input class="btn btn-primary btn-raised float-right" type="submit" value="{% trans "next" %}"/>
+		</div>
+		</div>
+
+{% else %}
+		<div class="btn-group float-right" role="group">
+			<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans "Save" %}"/>
+			<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans "Save and Continue" %}"/>
+			<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans "Save and Finish" %}"/>
+			{% if on_save_action %}
+				<input class="btn btn-primary btn-raised" type="submit" name="on_save" value="{% trans on_save_action %}"/>
+			{% endif %}
+		</div>
+{% endif %}

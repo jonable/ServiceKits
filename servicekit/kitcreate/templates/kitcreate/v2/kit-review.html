@@ -1,0 +1,586 @@
+{% extends "kitcreate/base.html" %}
+{% load i18n %}
+{% load humanize %}
+{% load static from staticfiles %}
+{% load eventinfo_extras %}
+
+{% block header %}{{ form.media }}{{sort_sk_form.media.js}}
+<link rel="stylesheet" href="/static/bootstrap/css/stepper.css">
+{% endblock header %}
+		{% block menu %}
+		<nav id="sidebar-nav" class="col-4 col-md-2 d-none d-md-block bg-light sidebar">
+		  <div class="sidebar-sticky">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>                
+				</li>
+				<li class="nav-item">
+					<div class="dropdown-divider"></div>
+					<span class="nav-link"><b>Edit Kit</b></span>
+					<div class="dropdown-divider"></div>          
+				</li>
+			</ul>
+			<ul class="stepper stepper-vertical">										
+				  <li class="completed">
+					<a class="" href="{% url 'edit_kit_info' pk=eventinfo.pk %}">
+						<span class="circle">1</span>
+						<span class="label">Event Info</span> 
+				  	</a>
+				  </li>
+				<li class="completed">
+					<a class="" href="{% url 'edit_kit_schedule' pk=eventinfo.pk %}">
+						<span class="circle">2</span>
+						<span class="label">Schedule</span> 
+					</a>
+				</li>
+				<li class="completed">
+					<a class="" href="{% url 'edit_kit_pricelevel' pk=eventinfo.pk %}">
+						<span class="circle">3</span>
+						<span class="label">Service Level</span> 
+					</a>
+				</li>
+				<li class="completed">
+					<a class="" href="{% url 'edit_kit_services' pk=eventinfo.pk %}">
+						<span class="circle">4</span>
+						<span class="label">Service Forms</span> 
+					</a>
+				</li>
+				<li class="completed">
+					<a class="" href="{% url 'edit_kit_addforms' pk=eventinfo.pk %}">
+						<span class="circle">5</span>
+						<span class="label">Additional Forms</span> 
+					</a>
+				</li>				
+			</ul>			
+		</nav>
+		{% endblock menu %}
+
+
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<h1 class="h1">Kit Review</h1>
+		<ul class="nav">	
+			<li class="nav-item">
+				<form id="update_kit_status" style="display:inline;" action="{% url 'serviceskitstatus_status_update' pk=eventinfo.pk %}" method="POST">
+					{% csrf_token %}
+					{{status_form.servicekitstatus}}
+					<input type="hidden" name="search_query" value="{{ request.GET.urlencode }}">
+					<input type="hidden" name="_continue" value="_continue">{{status_form.send_notification}}
+				</form>				
+			</li>
+			{% if pdf_exists %}
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'view_service_kit' pk=eventinfo.pk %}" target="_blank" title="View PDF in Browser">View PDF</a>			
+			</li>					
+			{% endif %}			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle dropleft" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="{% url 'quick_export_form' pk=eventinfo.pk %}" title="Export selected forms">Quick Export</a>
+					<a class="dropdown-item" href="{% url 'goshow_quick_notes' pk=eventinfo.pk %}" title="View archives">Storefront Info</a>
+					<a class="dropdown-item" href="{% url 'view_kit_archive' pk=eventinfo.pk %}" title="View archives">Archive List</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="{% url 'account_logout' %}">Logout of Service Kits</a>					
+				</div>
+			</li>													
+		</ul>
+	</div>
+
+
+<div class="row mb-2">
+  <div class="col-sm-12">
+	<div class="card">
+	  <div class="card-body">      
+		<div class="row">
+			<div class="col-12 mb-2">
+				<h2>{{eventinfo.event_name.description}} [{{eventinfo.event_name.event_code}} - {{eventinfo.event_name.event_subcode}}]</h2>
+				<h6>{% show_open_date eventinfo %}</h6>        		
+			</div>
+		</div>
+		<h5 class="card-title">Overview</h5>        
+		<div class="row mb-2">        	
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Facility</b><br/>{{eventinfo.facility.title}}</div>
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Sales Person</b><br/>{{eventinfo.salesperson}}</div>
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Sales Tax</b><br/>{{eventinfo.sales_tax}}</div>
+		</div>
+		<div class="row mb-2">
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Carrier</b><br/>{{eventinfo.carrier}}</div>
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Adv Warehouse</b><br/>{{eventinfo.adv_wh.title}}</div>        	
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Direct Warehouse</b><br/>{{eventinfo.dir_wh.title}}</div>        	        	
+		</div>        
+		<div class="row mb-2">
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Discount Deadline</b><br/>{% for x in eventinfo|get_date_by_type:"discount_date" %}{{x.date}}{% endfor %}</div>
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Adv Shipping Cutoff</b><br/>{% for x in eventinfo|get_date_by_type:"advance_ship_date" %}{{x.date}}{% endfor %}</div>        	
+			<div class="col-12 my-2 col-sm-4 my-sm-0"><b>Direct Ship Start</b><br/>{% for x in eventinfo|get_date_by_type:"advance_ship_date" %}{{x.date}}{% endfor %}</div>        	        	
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Address</h5>
+				<div class="row">
+					<div class="col-12 my-2 col-sm-4 my-sm-0">
+						<h4>Facility</h4>
+						<address>
+						<b>{{eventinfo.facility.title}} [{{eventinfo.facility.code}}]</b><br/>
+						{{eventinfo.facility.address1}}<br/>
+						{{eventinfo.facility.address2}}<br/>
+						{{eventinfo.facility.city}}, {{eventinfo.facility.state}} {{eventinfo.facility.zip}}
+						</address>
+					</div>        	
+					<div class="col-12 my-2 col-sm-4 my-sm-0">
+						<h4>Advance Warehouse</h4>
+						<address>
+						<b>{{eventinfo.adv_wh.title}} [{{eventinfo.adv_wh.code}}]</b><br/>
+						{{eventinfo.adv_wh.address1}}<br/>
+						{{eventinfo.adv_wh.address2}}<br/>
+						{{eventinfo.adv_wh.city}}, {{eventinfo.adv_wh.state}} {{eventinfo.adv_wh.zip}}
+						</address>
+					</div>
+					<div class="col-12 my-2 col-sm-4 my-sm-0">
+						<h4>Direct Warehouse</h4>
+						<address>
+						<b>{{eventinfo.dir_wh.title}} [{{eventinfo.dir_wh.code}}]</b><br/>
+						{{eventinfo.dir_wh.address1}}<br/>
+						{{eventinfo.dir_wh.address2}}<br/>
+						{{eventinfo.dir_wh.city}}, {{eventinfo.dir_wh.state}} {{eventinfo.dir_wh.zip}}
+						</address>
+					</div>       
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-12 my-2 col-sm-4 my-sm-0">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Company</h4>	
+				<table class="table">
+					<tbody>
+						{% for date in eventinfo|get_date_by_type:"company_in" %}
+							<tr>
+								<th>Move In</th>
+								<td>{{date.date|naturalday}} {{date.start_and_end_time}}</td>
+							</tr>
+						{% endfor %}
+						{% for date in eventinfo|get_date_by_type:"company_out" %}
+							<tr>
+								<th>Move Out</th>
+								<td>{{date.date|naturalday}} {{date.start_and_end_time}}</td>
+							</tr>
+						{% endfor %}		
+					</tbody>		
+				</table>							
+			</div>
+		</div>
+	</div>
+	<div class="col-12 my-2 col-sm-4 my-sm-0">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Exhibitor</h4>
+				<table class="table">
+					<tbody>
+					{% for date in eventinfo|get_date_by_type:"exhibitor_in" %}
+						<tr>								
+							<th>Move In</th>
+							<td>{{date.date}} {{date.start_and_end_time}}</td>
+						</tr>
+					{% endfor %}
+					{% for date in eventinfo|get_date_by_type:"exhibitor_out" %}
+						<tr>
+							<th>Move Out</th>
+							<td>{{date.date}} {{date.start_and_end_time}}</td>
+						</tr>
+					{% endfor %}		
+					</tbody>		
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 my-2 col-sm-4 my-sm-0">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Event</h4>
+					<table class="table">
+					<tbody>
+					{% for date in eventinfo|get_date_by_type:"event_date" %}
+						<tr>								
+							<td>{{date.date|naturalday}} {{date.start_and_end_time}}</td>
+						</tr>
+					{% endfor %}		
+					</tbody>
+					</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% comment %}
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Schedule</h5>
+				<table class="table">
+				{% order_schedule2 eventinfo as schedules_dict %}
+				{% for schedules in schedules_dict %}
+					<tr>
+						<th style="text-align:left;padding-top:15px;"><strong>{{schedules.schedule_type}}:</strong></th>
+					</tr>
+					{% for schedule in schedules.schedule_values %}
+						<tr>
+							<td style="padding-left:25px;">{{schedule.date}} {{schedule.start_and_end_time}}</td>
+						</tr>		
+					{% endfor %}
+
+				{% endfor %}
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endcomment %}
+<div class="row mb-2">
+	<div class="col-12 my-2 col-sm-4 my-sm-0">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Booth Info</h5>	
+				<textarea class="form-control" readonly="readonly">{{eventinfo.booth_info}}</textarea>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 my-2 col-sm-4 my-sm-0">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Carpet Info</h5>	
+				<textarea  class="form-control" readonly="readonly">{{eventinfo.carpet}}</textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-12 my-2 col-sm-4 my-sm-0">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Notes</h5>	
+				<textarea  class="form-control" readonly="readonly">{{eventinfo.notes}}</textarea>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row mb-2">
+	<div class="col-12 my-2 col-sm-8 my-sm-0">
+		<div class="card">
+			<div class="card-body">				
+			<h5 class="card-title">Reorder ServiceKit Forms</h5>
+			{% if eventinfo.service_kit %}							
+			<form action="./" method="POST" id="reorder-servicekit-forms" class="form-horizontal">
+			{{sort_sk_form}}
+			{% csrf_token %}
+			<input type="submit" id="eventinfo-reorder" class="btn btn-primary" name="reorder" value="Save Form Order" {% if not is_editable %}style="color:gray;" disabled="disabled"{% endif %}>
+			</form>
+			{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="col-12 my-2 col-sm-4 my-sm-0">
+		<div class="row">
+			<div class="col-12 my-2">
+				<div class="card">
+					<div class="card-body">				
+						<h5 class="card-title">Price Levels</h5>
+						<ul>
+							{% for level in eventinfo.price_levels.all %}
+							 {% get_pl_forms eventinfo level as plforms %}
+							<li>{{level}}
+								<ul>
+									{% for plform in plforms %}
+										<li>{{plform}}</li>
+									{% endfor %}
+								</ul>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 my-2">
+				<div class="card">
+					<div class="card-body">				
+						<h5 class="card-title">Additional Forms</h5>
+						{% get_additional_forms eventinfo as additional_forms %}
+						<ul>
+							{% for form in additional_forms %}
+							<li>{{form}}</li>	
+							{% endfor %}	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+<div class="row my-2">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body text-right">
+				<form id="form-createservicekit" class="mb-0" action="{% url 'create_service_kit' eventinfo.pk %}" method="POST">
+					{% csrf_token %}							
+						{% if pdf_exists %}			
+							<a href="{% url 'download_service_kit' pk=eventinfo.pk %}" class="btn btn-raised btn-primary" title="Download the previously created service kit pdf for this event">Download PDF</a>
+							<input type="hidden" id="eventinfo-create" class="btn btn-raised btn-primary" name="create" value="Create Service Kit PDF">
+							{% if is_editable %}
+							<a class="btn btn-raised btn-primary" id="create_servicekit_btn">Create Service Kit PDF</a>	
+							{% else %}
+							<a class="btn btn-raised btn-primary" style="color:gray; text-decoration:none; pointer-events: none;" onclick="return false;">Create Service Kit PDF</a>
+							{% endif %}						
+							<input type="hidden" id="eventinfo-overwrite" name="overwrite" value="" />
+						{% else %}
+							<input type="submit" id="eventinfo-create" class="btn btn-raised btn-primary" name="create" value="Create Service Kit PDF" onclick="show_blockout()">
+							<input type="hidden" id="eventinfo-overwrite" name="overwrite" value="true" />
+						{% endif %}	
+						<input type="hidden" name="forms" value="" />
+				</form>	
+			</div>
+			<div class="card-footer text-muted">
+				<small>Service Kit Forms Version: {{eventinfo.form_version}}. [KIT-{{eventinfo.service_kit.pk}}] </small>
+			</div>			
+		</div>
+	</div>
+	
+</div>
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="block-out" >
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title">Your request is being processed.</h5>
+	  </div>
+	  <div class="modal-body">
+		This may take several minutes.
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="modal fade" id="rerender-forms" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Re-render forms.</h5>
+		  </div>
+		  <div class="modal-body">
+			<p>Click "Yes" to re-render this service kit's forms.*</p>
+			<p>Click "No" to to use previously rendered forms.</p>
+			<p><small><i>*Manual adjustments made to forms outside the application will be overwritten.</i></small></p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<div class="btn-grp">
+				<button id="modal-overwrite-btn-yes" class="btn btn-primary remodal-confirm">Yes</button>
+				<button id="modal-overwrite-btn-no" class="btn btn-primary remodal-confirm">No</button>    	    	    		  				
+			</div>
+		  </div>	      			
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="send-status" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Send Status Update.</h5>
+		  </div>
+		  <div class="modal-body">
+			 <p>Choose an option below.</p>
+			 <!-- <div class="form-group">
+			    <label for="send-status-message">Add Message</label>
+			    <textarea class="form-control" id="send-status-message" rows="3"></textarea>
+			  </div> -->
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<div class="btn-grp">
+  				<button type="button" id="modal-sendstatus-btn-yes" class="btn btn-primary" >Yes</button>
+  				<button type="button" id="modal-sendstatus-btn-no" class="btn btn-primary">No</button>   	    	    		  				
+			</div>
+		  </div>	      			
+		</div>
+	</div>
+</div>
+
+{% comment %}
+<div class="modal fade" id="edit-notification" tabindex="-1" role="dialog"> 
+	<div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Edit Notification.</h5>
+		  </div>
+		  <div class="modal-body">
+			<form action="{% url 'send_status_message' eventinfo.pk %}" method="POST">
+				{% csrf_token %}
+				{% for hidden in status_message_form.hidden_fields %}{{ hidden }}{% endfor %}
+				<h3>Send Status</h3>
+				{% for field in status_message_form.visible_fields %}
+		            {% if field.errors %}
+		                <div class="control-group error">
+		                    <label class="control-label">{{ field.label }}</label> 
+		                    <div class="controls">{{ field }}
+		                        <span class="help-inline">
+		                            {% for error in  field.errors %}{{ error }}{% endfor %}
+		                        </span>
+		                    </div>
+		                </div>
+		            {% else %}
+		                <div class="control-group">
+		                    <label class="control-label">{{ field.label }}</label> 
+		                    <div class="controls">{{ field }}
+		                        {% if field.help_text %}
+		                            <p class="help-inline"><small>{{ field.help_text }}</small></p>
+		                        {% endif %}
+		                    </div>
+		                </div>
+		            {% endif %}				
+				{% endfor %}						
+				<div class="btn-grp float-right">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn btn-primary" id="modal-editmessage-btn-send">Send</button>
+				</div>					
+			</form>
+		  </div>	      			
+		</div>
+	</div>
+</div>
+{% endcomment %}
+
+
+<script>
+	// overlay functions
+	function show_blockout(){
+		$('#block-out').modal('show');		
+	}
+	function hide_blockout(){
+		$('#block-out').modal('hide');	
+	}
+	$(function(){
+		// One way data binding so createservicekit form can update the form order.
+		$('.sortedm2m-items').on("sortupdate", function (event, ui) {
+			var values = $('#reorder-servicekit-forms').find('[name="forms"]').val();
+			$("#form-createservicekit").find('[name="forms"]').val(values);			
+		});		
+		// One way data binding so createservicekit form can update the form order.
+		$('#reorder-servicekit-forms').on('keyup change', 'input, select, textarea', function () {			
+			var values = $('#reorder-servicekit-forms').find('[name="forms"]').val();
+			$("#form-createservicekit").find('[name="forms"]').val(values);
+		});		
+		// helper method to submit createservicekit form
+		function submit_createservicekit(overwrite){
+			show_blockout();
+			$('#eventinfo-overwrite').val(overwrite);
+			$('#form-createservicekit').submit();
+			// $('#eventinfo-create').click();
+		}	
+		function submit_kitstatus(notify){
+			$('[name="send_notification"]').each(function(){
+				this.value = notify;		
+			});				
+			$("#update_kit_status").submit();
+		}
+		function submit_storefrontstatus(notify){
+			$('[name="notify2"]').each(function(){
+				this.value = notify;		
+			});				
+			$("#storefrontstatus_update").submit();
+		}
+		
+		function set_previous_values(){
+			$('[id=id_servicekitstatus]').each(function (){			
+				// this.previous_value = this.value;
+				debugger;
+				var value = this.value;
+				$('select[name="servicekitstatus"]').each(function(){
+					$(this).data('previous_value', value);
+				});
+			});	
+			// $('#id_storefrontstatus').each(function (){			
+			// 	// this.previous_value = this.value;
+			// 	var value = this.value;
+			// 	$('select[name="storefrontstatus"]').each(function(){
+			// 		$(this).data('previous_value', value);
+			// 	});
+			// });
+		}	
+
+		function set_previous_status(){
+			$('select[name="servicekitstatus"]').each(function(){
+				this.value = $(this).data('previous_value');
+			});	
+		}	
+		function set_previous_storefrontstatus(){
+			$('select[name="storefrontstatus"]').each(function(){
+				this.value = $(this).data('previous_value');
+			});	
+		}
+		$("#id_servicekitstatus").on('change', function(){
+			var value = $(this).val();			
+			$("#send-status").modal('show');
+		});
+		$("#send-status").find('[data-dismiss=modal]').on('click', function(){
+			var previous_value = $("#id_servicekitstatus").data('previous_value');
+			$("#id_servicekitstatus").val(previous_value);
+
+		})
+
+		$('[id=id_servicekitstatus]').each(function (){			
+			var value = this.value;
+			$(this).data('previous_value', value);
+		});
+
+
+		$("#modal-sendstatus-btn-yes").on('click', function(){
+			$("#id_send_notification").val("true");
+			$("#update_kit_status").submit();
+		});
+		$("#modal-sendstatus-btn-no").on('click', function(){
+			$("#id_send_notification").val("");
+			$("#update_kit_status").submit();
+		});
+
+		// $("#form-createservicekit").on('submit', function(){
+		// 	return false;
+		// })
+		$("#create_servicekit_btn").on('click', function(event){
+			// debugger;
+			// event.preventDefault();
+			$("#rerender-forms").modal('show');
+			// proreturn false;
+		});
+		$("#modal-overwrite-btn-yes").on('click', function(){
+			$("#eventinfo-overwrite").val('true');
+			$("#form-createservicekit").submit();
+		});
+		$("#modal-overwrite-btn-no").on('click', function(){
+			$("#eventinfo-overwrite").val('');
+			$("#form-createservicekit").submit();
+		});
+
+	});
+</script>
+
+
+
+
+
+	
+{% endblock content %}

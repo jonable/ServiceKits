@@ -1,0 +1,116 @@
+{% extends "kitcreate/base.html" %}
+{% load i18n %}
+{% load humanize %}
+{% load static from staticfiles %}
+{% load eventinfo_extras %}
+{% block title %}Upload a form{% endblock title %}
+{% block header %}
+{{block.super}}{{form.media}}
+<style type="text/css">
+	.popup-add-item{
+		position: absolute;
+		right: 15px;	
+	}
+</style>
+{% endblock header %}
+{% block menu %}
+{% if not is_popup %}
+<nav id="sidebar-nav" class="col-4 col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+	<ul class="nav flex-column">
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'kitcreate_home' %} ">Home</a></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'servicekit_wizard2_new' %}">Create A Service Kit</a></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'storefrontstatus_list' %}?search=&amp;servicekitstatus=approved_goshow&amp;storefrontstatus=pending">View Storefronts</a></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'servicekitforms_listview' %}">Edit Service Kit Forms</a></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'admin:pricelists_pricelist_changelist' %}">Pricelists</a>
+	</li>            
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'account_logout' %}" title="Logout of Service Kit App">Logout</a>              
+	</li>
+	<div class="dropdown-divider"></div>
+	</ul>
+	<div class="row mx-2">
+		<div class="col-12">
+				<form action="{% url 'servicekitforms_listview' %}" method="GET">
+					<div class="input-group bmd-form-group">
+						<label class="control-label bmd-label-static">Search</label>
+						<input class="form-control" type="text" name="search" value="{{search}}">
+					</div>                                        
+					<input class="btn btn-primary" type="submit" value="Search">
+					{% if is_popup %}
+						<input class="form-control" type="hidden" name="_popup" value="1">
+					{% endif %}                
+				</form>                      
+		</div>
+	</div>
+</nav>
+{% endif %}
+
+{% endblock menu %}
+
+
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<h1 class="h1">{% if is_edit %}Edit {% else %}Upload {% endif %}A Service Kit Form</h1>
+		<ul class="nav">    
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'servicekitforms_listview' %}{% if is_popup %}?_popup=1{% endif %}">View Forms</a>
+			</li>           
+		</ul>        
+	</div>                
+	<div class="row">
+		<div class="col-12">
+			<form action="" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{% for field in form %}					
+					{% if is_popup and field.name != 'service_kits' %}					
+						<div class="input-group bmd-form-group">
+							<label class="control-label bmd-label-static">{{field.label}}</label>
+							{{field}}
+			                {% if field.help_text %}
+				                <p class="help-inline"><small>{{ field.help_text }}</small></p>
+				            {% endif %}
+						</div>
+					{% elif not is_popup %}					
+						<div class="input-group bmd-form-group">
+							<label class="control-label bmd-label-static">{{field.label}}</label>
+							{{field}}
+							{% if field.help_text %}
+								<p class="help-inline"><small>{{ field.help_text }}</small></p>
+							{% endif %}
+						</div>
+					{% endif %}
+					{% if servicekitform.document and field.name == 'file' %}									
+							Click "choose file" to upload a new file
+							Current file is:							
+						<a class="btn btn-primary" href="{{servicekitform.get_url}}" target="_blank">
+							{{servicekitform.document.filename}}
+						</a>											
+					{% endif %}					
+				{% endfor %}
+				<small class="form-text text-muted">Accepted File Types: .pdf, .docx</small>
+				<a class="btn btn-primary" href="{% url 'servicekitforms_listview' %}{% if is_popup %}?_popup=1{% endif %}">Cancel</a>		
+				<input class="btn btn-primary" type="submit" name="upload" value="{% if is_edit %}edit{% else %}upload{% endif %}">	
+			</form>			
+		</div>
+	</div>
+
+</main> 
+ 
+{% endblock content %}
+
+
+{% block footer %}
+{{block.super}}
+
+<script type="text/javascript">
+
+
+</script>
+{% endblock footer %}

@@ -1,0 +1,60 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+<div class="row mb-2">
+  <div class="col-sm-12">
+	<div class="card">
+	  <div class="card-body">      
+		<h5 class="card-title">{{service_type}}</h5>        
+		<div class="row mb-2">  
+			<div class="col-12">
+				<form action="" method="post" class="form-horizontal" >
+					{{form.management_form}}
+					{% csrf_token %}
+					<input type="hidden" id="service_kit_wizard-current_step" value="{{wizard.steps.current}}"/>
+					{% for form in form.forms %}					
+						<div class="row formset-row">
+						{% for hidden in form.hidden_fields %}
+							{{ hidden }}
+						{% endfor %}
+						{% for field in form.visible_fields %}
+							<div class="col col-xs-12">																	
+						        <div class="control-group">
+						        	{% if forloop.parentloop.first %}
+						        	<label class="control-label">{{ field.label }}</label> 
+						        	{% endif %}
+						            <div class="controls">{{ field }}
+						                {% if field.help_text %}
+						                    <p class="help-inline"><small>{{ field.help_text }}</small></p>
+						                {% endif %}
+						            </div>
+						        </div>
+							</div>
+						{% endfor %}
+						</div>				
+					{% endfor %}
+					<div class="my-2" role="group" aria-label="Basic example">
+						<button type="button" class="btn btn-secondary bmd-btn-fab bmd-btn-fab-sm" id="add_more">
+						  +
+						</button>				
+					</div>
+				</div>		
+				<div class="col-12">
+					{% include "kitcreate/v2/forms/wizard-btngrp.html" %}
+				</div>			
+			</form>				
+		</div>      	
+	</div>
+	</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	$("#id_kit_forms-0-pricelist").on('change', function(){
+		var result = confirm('Apply this pricelist to all forms?')
+		if(result){
+			// when the form is select, auto fill the pricelist.
+		}
+	});		
+</script>

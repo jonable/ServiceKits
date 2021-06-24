@@ -1,0 +1,19 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+	<li>
+		<a href="{% url 'update_all_events' %}" class="addlink" title="Update Event Data From EventPath">Update Event List</a>
+	</li>        
+    {{block.super}}
+{% endblock %}
+
+
+
+{% block result_list %}
+{{block.super}}
+	
+	{% if not cl.result_list %}
+    <h3>{{request.GET.q}} not found, <a href="{% url 'update_all_events' %}" title="Update Event Data From EventPath">click here to update the events list</a></h3>
+	{% endif %}
+{% endblock %}

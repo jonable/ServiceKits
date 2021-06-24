@@ -1,0 +1,33 @@
+{% load eventinfo_extras %}
+<h3>ADVANCE RECEIVING AT THE WAREHOUSE</h3>
+<p>SER exposition services will accept crated, boxed or skidded materials between: <b>{{sk.advance_ship_date}} - {{sk.discount_date}}</b></p>
+ 
+<strong><i>Advance Shipping Address</i></strong><br>
+{{sk.event_name}}<br>
+Company Name / Booth#<br>
+c/o SER exposition services<br>
+{{sk.terminal_title}}<br>
+{{sk.terminal_address1}}<br>
+{% if sk.terminal_address2 %}
+{{sk.terminal_address2}}<br>	
+{% endif %}
+{{sk.terminal_city}}, {{sk.terminal_state}} {{sk.terminal_zip}}<br>
+
+{% if no_direct_shipments %}
+<h3>NO DIRECT SHIPMENTS TO {{sk.facility_title}}{% if not sk.facility_title %}FACILITY{% endif %}</h3>	
+{% else %}
+<h3>DIRECT SHIPMENTS TO EXHIBIT FACILITY</h3>
+<p>SER exposition services will receive shipments at the exhibit facility on <b>{{sk.direct_ship_date}}</b>. <br>Shipments sent directly to the facility earlier than move-in day will be refused.
+	For additional information, please refer to the “Material Handling Information/Rate Schedule” form within the Exhibitor Services Manual.</p>
+ 
+<strong><i>Direct Shipping Address</i></strong><br>
+{{sk.event_name}}<br>
+Company Name / Booth#<br>
+c/o SER exposition services<br>
+{{sk.facility_title}}<br>
+{{sk.facility_address1}}<br>
+{% if sk.facility_address2 %}
+{{sk.facility_address2}}<br>	
+{% endif %}
+{{sk.facility_city}}, {{sk.facility_state}} {{sk.facility_zip}}<br>
+{% endif %}

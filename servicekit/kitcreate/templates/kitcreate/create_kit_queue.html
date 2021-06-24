@@ -1,0 +1,48 @@
+{% load eventinfo_extras static %}
+<style>
+	th, td{
+		text-align: left;
+	}
+	table{
+		width:500px;
+	}
+</style>
+<a href="{% url 'servicekit_complete' pk=eventinfo.pk %}">back</a>
+<h1>Create Service Kit Queue for {{eventinfo}}</h1>
+<p>Refresh this page to check on the progress of your Service Kit's creation. An email will notify you when your kit is created.</p>
+{% if task and not task.has_errors %}
+	<h3>Service Kit still waiting to be processed.</h3>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Run At</th>
+			<th>Attempts To Run</th>
+
+		</tr>
+		<tr>
+			<td>#{{task.pk}}</td>
+			<td>{{task.run_at}}</td>
+			<td>{{task.attempts}}</td>		
+		</tr>
+	</table>
+{% elif task and task.has_errors %}
+	<i>An error occured creating this Service Kit. Check the table below to see if the task Rescheduled itself. If it did not, run the create service kit function again.</i>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Failed At</th>
+			<th>Rescheduled</th>
+			<th>Attempts</th>
+			<th>Last Error</th>		
+		</tr>
+		<tr>
+			<td>#{{task.pk}}</td>
+			<td>{{task.failed_at</td>
+			<td>{{task.run_at}}</td>			
+			<td>{{task.attempts}}</td>	
+			<td>{{task.last_error}}</td>	
+		</tr>
+	</table>	
+{% else %}
+	<i>This Task no longer exists. It was either completed or removed from the system.</i>
+{% endif %}

@@ -1,0 +1,409 @@
+{% load eventinfo_extras static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{eventinfo}} | Service Kit Info</title>
+
+<link rel="stylesheet" href="/static/kitforms/css/vendor/remodal.css">
+<link rel="stylesheet" href="/static/kitforms/css/vendor/remodal-default-theme.css">
+<link rel="stylesheet" href="/static/kitforms/css/styles.css">
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+<script> window.$  = window.jQuery = django.jQuery;</script>
+<script type="text/javascript" src="/static/kitforms/js/vendor/remodal.js"></script>
+	{{sort_sk_form.media}}
+	{{ status_message_form.media }}	
+</head>
+<body>	
+<div style="position:relative;border-bottom:3px solid black; padding:20px 10px;" id="footer">
+	<div style="display:inline;">
+		<a href="/">Home</a> 
+		|
+		<a href=" {% url 'servicekit_complete' pk=eventinfo.pk %} ">Kit Review</a> 		
+		|
+		<a href="{% url 'admin:kitcreate_servicekit_change' eventinfo.service_kit.pk %}#ServiceKit_forms-group" title="Export selected forms" target="_blank" >Admin:ServiceKit</a>
+		|
+		<a href="/admin/filebrowser/browse/?&dir=kits/{{eventinfo.filebrowser_dir_name}}" title="Export selected forms" target="_blank" >Admin:FileBrowser</a>
+		|
+		<a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" title="Export selected forms" target="_blank" >View PDF</a>
+	</div>		
+	<div style="display:inline; position:absolute; right:25px">	</div>
+</div>
+
+<h1 id="top">Storefront Information</h1>
+<p>Information and Assistance for creating online Storefronts.</p>
+<select id="menu_select">
+	<option value="top">top</option>
+	<option value="event_header">Eventdata json</option>
+	<option value="event_information">Event information</option>
+	<option value="discount_deadline">Discount deadline</option>
+	<option value="event_schedule">Event schedule</option>
+	<option value="shipping_information">Shipping information</option>
+	<option value="price_levels">Price levels</option>
+	<option value="download_forms">Forms</option>
+	<option value="help">Importing Tools</option>
+</select>
+
+<h2 id="event_header">	
+{{eventinfo.event_name.description}}
+{% if not eventinfo.event_name.description %}
+		<a href="{% url 'admin:kitcreate_eventdata_change' eventinfo.event_name.pk %}">No Event Name: Click to add an event name</a>
+{% endif %} <br>
+{{eventinfo.facility.title}}<br>	
+{% show_open_date eventinfo %}
+</h2>
+<p><small><i>Copy and Paste code below into the GoShow prompt displayed after clicking "import _____" link.</i></small></p>
+<textarea id="eventdata_json" onfocus="this.select();" style="margin: 0px;width: 645px;height: 83px;">{{eventdata_json}}</textarea>
+	<ul>
+		<li>EventCode: {{eventinfo.event_name.event_code}}</li>
+		<li>Show Manager: {{eventinfo.event_mgmt}}</li>
+		<li>Acct Manager: {{eventinfo.salesperson}}</li>
+		<li>Sales Tax: {{eventinfo.sales_tax}}</li>		
+	</ul>
+<h2 id="client">Client</h2>
+<ul>
+	<li>title: {{eventinfo.event_mgmt.title}}</li>
+	<li>code: {{eventinfo.event_mgmt.code}}</li>
+	<li>type: {{eventinfo.event_mgmt.type}}</li>
+	<li>address1: {{eventinfo.event_mgmt.address1}}</li>
+	<li>address2: {{eventinfo.event_mgmt.address2}}</li>
+	<li>city: {{eventinfo.event_mgmt.city}}</li>
+	<li>state: {{eventinfo.event_mgmt.state}}</li>
+	<li>zip: {{eventinfo.event_mgmt.zip}}</li>
+</ul>
+<h2 id="facility">Facility</h2>
+<ul>
+	<li>{{eventinfo.facility.title}}</li>
+	<li>{{eventinfo.facility.code}}</li>
+	<li>{{eventinfo.facility.address1}}</li>
+	<li>{{eventinfo.facility.address2}}</li>
+	<li>{{eventinfo.facility.city}}</li>
+	<li>{{eventinfo.facility.state}}</li>
+	<li>{{eventinfo.facility.zip}}</li>
+</ul>
+<h2 id="carrier">Carrier: {{eventinfo.carrier}}</h2>
+
+<h2 id="event_information">EVENT INFORMATION</h2>
+<p>We are pleased to inform you that SER exposition services has been selected by {{sk.event_name}} to serve as your Official Service Contractor.</p>
+
+<h2 id="discount_deadline">DISCOUNT DEADLINE</h2>
+<p>All orders and payments must be received by <b>{{sk.discount_date}}</b><br>
+A credit card on file with SER exposition services is required for all exhibitor orders. If you need assistance, additional information or special services, please contact us at 508.757.3397, fax 508.757.9136 or email us at <a href="mailto: "> </a>. You may also find answers to your questions by visiting our website serexpo.com</p>
+
+{% if eventinfo.booth_info %}	
+<h2>Booth Info</h2>
+<p>{{eventinfo.booth_info|linebreaks}}</p>
+{% endif %}
+{% if eventinfo.carpet %}	
+<h2>Carpet Info</h2>
+<p>{{eventinfo.carpet|linebreaks}}</p>
+{% endif %}
+{% if eventinfo.notes %}	
+<h2>Notes</h2>
+<p>{{eventinfo.notes|linebreaks}}</p>
+{% endif %}
+<h2>SAFETY</h2>
+<p>Standing on chairs, tables or other rental furniture is prohibited. This furniture is not engineered to support your standing weight. SER exposition services cannot be responsible for injuries from falls caused by the improper use of this furniture.</p>
+ 
+<p>For services, other than what is included in your booth, please see our show service order forms within the Exhibitor Services Manual. All orders and payments must be received by {{sk.discount_date}}
+A credit card on file with SER exposition services is required for all exhibitor orders. If you need assistance, additional information or special services, please contact us at 508.757.3397 or fax 508.757.9136. You may also find answers to your questions by visiting our website at serexpo.com.</p>
+
+<h2 id="event_schedule">Event Schedule</h2>
+<table style="width:100%; text-align:left;">
+{% order_schedule3 eventinfo as schedules_dict %}
+{% for schedules in schedules_dict %}
+	<tr>
+		<th colspan="3" style="text-align:left;padding-top:15px;"><strong>{{schedules.schedule_type}}:</strong></th>
+	</tr>
+	{% for schedule in schedules.schedule_values %}
+		<tr>
+			<td style="padding-left:25px;">{{schedule.date|date:"l, F d, Y"}}</td><td>{{schedule.start_and_end_time}}</td><td>{{schedule.note}}</td>
+		</tr>		
+	{% endfor %}
+
+{% endfor %}
+</table>
+
+
+All carriers must check in by {{sk.carrier_pickup}}
+
+<h2 id="discount_deadline">DISCOUNT DEADLINE</h2>
+<p>All orders and payments must be received by <b>{{sk.discount_date}}</b><br>
+A credit card on file with SER exposition services is required for all exhibitor orders. If you need assistance, additional information or special services, please contact us at 508.757.3397, fax 508.757.9136 or email us at <a href="mailto: "> </a>. You may also find answers to your questions by visiting our website serexpo.com</p>
+
+<h2 id="shipping_information">SHIPPING INFORMATION</h2>
+<h3>ADVANCE RECEIVING AT THE WAREHOUSE</h3>
+<p>SER exposition services will accept crated, boxed or skidded materials between: <b>{{sk.advance_ship_date}} - {{sk.discount_date}}</b></p>
+ 
+<strong id="advance_shipping_address"><i>Advance Shipping Address</i></strong><br>
+{{sk.event_name}}<br>
+Company Name / Booth#<br>
+c/o SER exposition services<br>
+{{sk.terminal_title}}<br>
+{{sk.terminal_address1}}<br>
+{% if sk.terminal_address2 %}
+{{sk.terminal_address2}}<br>	
+{% endif %}
+{{sk.terminal_city}}, {{sk.terminal_state}} {{sk.terminal_zip}}<br>
+
+{% if no_direct_shipments %}
+<h3>NO DIRECT SHIPMENTS TO {{sk.facility_title}}{% if not sk.facility_title %}FACILITY{% endif %}</h3>
+{% else %}
+<h3>DIRECT SHIPMENTS TO EXHIBIT FACILITY</h3>
+<p>SER exposition services will receive shipments at the exhibit facility on <b>{{sk.direct_ship_date}}</b>. <br>Shipments sent directly to the facility earlier than move-in day will be refused.
+	For additional information, please refer to the “Material Handling Information/Rate Schedule” form within the Exhibitor Services Manual.</p>
+ 
+<strong id="direct_shipping_address"><i>Direct Shipping Address</i></strong><br>
+{{sk.event_name}}<br>
+Company Name / Booth#<br>
+c/o SER exposition services<br>
+{{sk.facility_title}}<br>
+{{sk.facility_address1}}<br>
+{% if sk.facility_address2 %}
+{{sk.facility_address2}}<br>	
+{% endif %}
+{{sk.facility_city}}, {{sk.facility_state}} {{sk.facility_zip}}<br>
+{% endif %}
+
+
+<h2 id="price_levels">Price Levels</h2>
+<ul>
+	{% for level in eventinfo.price_levels.all %}
+	 {% get_pl_forms eventinfo level as plforms %}
+	<li>{{level}}
+		<ul>
+			{% for plform in plforms %}
+				<li>{{plform}}</li>
+			{% endfor %}
+		</ul>
+	</li>
+	{% endfor %}
+</ul>
+<h2 id="download_forms">Download Forms</h2>
+<p><small><i>It is recommended to use a service like <a href="https://smallpdf.com/compress-pdf">SmallPDF</a> to compress the files before upload and mailing.</i></small></p>
+<h3 id="service_kit">Service Kit</h3>
+<a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" download="{{eventinfo.get_output_filename}}" title="Export selected forms">Service Kit PDF</a>
+
+<h3 id="addtional_forms">Additional Forms</h3>
+{% get_additional_forms eventinfo as additional_forms %}
+<ul>	
+	{% for form in additional_forms %}
+	<!--<li><a href="/admin/filebrowser/detail/?&dir=kits/{{eventinfo.filebrowser_dir_name}}&filename={{form.document.filename}}" target="_blank" title="Export selected forms">{{form}}</a></li>-->
+	<li style="list-style:none;"><a href="{% get_media_prefix %}{{form.get_url}}" download="{{form.document.filename}}" title="Export selected forms">{{form}}</a></li>
+	{% endfor %}	
+</ul>
+<h3>SER Storefront Logo</h3>
+<a href="/static/kitforms/imgs/ser-sk-logo.jpeg" download="ser-sk-logo.jpeg" title="SER Storefront Logo"><img src="/static/kitforms/imgs/ser-sk-logo.jpeg"></a>
+<h2 id="intenral_note">Internal Note</h2>
+{{eventinfo.internal_note}}
+<h4>Storefront Status</h4>
+<form id="storefrontstatus_update" style="display:inline;" action="{% url 'storefrontstatus_update' eventinfo.pk %} " method="POST">
+	<div style="margin-bottom:30px;">{% csrf_token %}
+	{{storefrontstatus_form.storefrontstatus}}
+	<small>{% storefront_help %}</small>
+	{{storefrontstatus_form.notify2}}
+	</div>
+</form>
+<h3 id="help">Importing Tools: Tamper Monkey and Scripts</h3>
+<p>To import event data into GoShow, make sure you have <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">TamperMonkey addon</a> installed in chrome.</p>
+<p>Tampermonkey scripts. <br><small>To install: Click a link below, tampermonkey will prompt you to install the script, click "install".</small></p>
+<ul>
+	<li><a href="https://gist.github.com/jonable/156c87154ca8b6b7d29af04d70259570/raw/d49d3ba419870883ee81acc2f6a38237f0ec3bfd/show-menus.user.js">GoShow, Show Menus</a></li>
+	<li><a href="https://gist.github.com/anonymous/211a9beb346b781626cef93d4c4d8e18/raw/0c615075fd47d69e889e012e0a75259f44703f0d/import-eventdata.user.js">GoShow, Load Event Data</a></li>
+	<li><a href="https://gist.github.com/jonable/0a26f13710ad9e4530468d6ae7f4a97f/raw/156b362e62498f7898c4589155c190d922aafc4d/enable-eventid.user.js">GoShow, Add EventID On Create</a></li>
+
+</ul>
+<div style="position:relative;border-top:3px solid black; padding:20px 10px;" id="footer">
+	<div style="display:inline;">
+		<a href="/">Home</a> 
+		|
+		<a href=" {% url 'servicekit_complete' pk=eventinfo.pk %} ">Kit Review</a> 
+		|
+		<a href="{% url 'admin:kitcreate_servicekit_change' eventinfo.service_kit.pk %}#ServiceKit_forms-group" title="Export selected forms" target="_blank" >Admin:ServiceKit</a>
+		|
+		<a href="/admin/filebrowser/browse/?&dir=kits/{{eventinfo.filebrowser_dir_name}}" title="Export selected forms" target="_blank" >Admin:FileBrowser</a>
+		|
+		<a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" title="Export selected forms">View PDF</a>		
+	</div>		
+	<div style="display:inline; position:absolute; right:25px">	</div>
+</div>
+<div class="remodal" data-remodal-id="send-storefrontstatus">
+  <button data-remodal-action="cancel" class="remodal-close"></button>
+  <p>Send status update?</p>
+  <br>
+  <!--<button data-remodal-action="confirm" class="remodal-alt" id="modal-sendstatus-btn-edit" style="margin-right:150px;">Edit Notification</button>-->
+  <a class="remodal-alt" href="#edit-notification" style="margin-right:150px;">Edit Notification</a>
+  <button type="button" id="modal-sendstorfrontstatus-btn-yes" data-remodal-action="confirm" class="remodal-confirm" >Yes</button>
+  <button type="button" id="modal-sendstorfrontstatus-btn-no" data-remodal-action="cancel" class="remodal-cancel">No</button>
+</div>
+<script>
+	$(function(){
+		$("#eventdata_json").focus();
+		$("#menu_select").change(function(){
+			document.getElementById($(this).val()).scrollIntoView();
+		})
+	});
+	// overlay functions
+	function show_blockout(){
+		var blockout = django.jQuery('.block-out')[0];
+		blockout.style.display = 'block';
+	}
+	function hide_blockout(){
+		var blockout = django.jQuery('.block-out')[0];
+		blockout.style.display = 'hide';	
+	}
+	$(function(){
+		$(document).on('confirmation', '.remodal', function () {
+			console.log('Confirmation button is clicked');
+		});
+		// helper method to submit createservicekit form
+		function submit_createservicekit(overwrite){
+			show_blockout();
+			django.jQuery('#eventinfo-overwrite').val(overwrite);
+			django.jQuery('#form-createservicekit').submit();
+			// django.jQuery('#eventinfo-create').click();
+		}	
+		function submit_kitstatus(notify){
+			django.jQuery('[name="notify"').each(function(){
+				this.value = notify;		
+			});				
+			django.jQuery("#update_kit_status").submit();
+		}
+		function submit_storefrontstatus(notify){
+			django.jQuery('[name="notify2"').each(function(){
+				this.value = notify;		
+			});				
+			$("#storefrontstatus_update").submit();
+		}
+		function set_previous_values(){
+			django.jQuery('#id_status').each(function (){			
+				// this.previous_value = this.value;
+				var value = this.value;
+				django.jQuery('select[name="status"]').each(function(){
+					$(this).data('previous_value', value);
+				});
+			});	
+			django.jQuery('#id_storefrontstatus').each(function (){			
+				// this.previous_value = this.value;
+				var value = this.value;
+				django.jQuery('select[name="storefrontstatus"]').each(function(){
+					$(this).data('previous_value', value);
+				});
+			});
+		}											
+		function set_previous_status(){
+			django.jQuery('select[name="status"]').each(function(){
+				this.value = $(this).data('previous_value');
+			});	
+		}	
+		function set_previous_storefrontstatus(){
+			django.jQuery('select[name="storefrontstatus"]').each(function(){
+				this.value = $(this).data('previous_value');
+			});	
+		}	
+		// cache previous status value
+		django.jQuery('select[name="status"]').on('focus', function (){			
+			// this.previous_value = this.value;
+			var value = this.value;
+			django.jQuery('select[name="status"]').each(function(){
+				$(this).data('previous_value', value);
+			});
+		});
+		django.jQuery('select[name="status"]').on('change', function(){
+			var inst = django.jQuery('[data-remodal-id=send-status]').remodal();
+			var value = this.value;			
+			var defaultgroup = $(this).data('defaultgroup');
+			django.jQuery('select[name="status"]').each(function(){
+				this.value = value;
+			})
+			django.jQuery('#statusmessageform__status_type').val('status');
+			django.jQuery('#statusmessageform__group').val(defaultgroup);			
+			inst.open();
+			$('#statusmessageform__group').trigger('change');
+		});
+		django.jQuery(document).on('opened', '[data-remodal-id="edit-notification"]', function () {
+			var $form = $($(this).find('form'));
+			if(django.jQuery('#statusmessageform__status_type').val() == 'storefrontstatus'){
+				$('#statusmessageform__status').val(django.jQuery('#id_storefrontstatus').val());
+			}else{
+				$('#statusmessageform__status').val(django.jQuery('#id_status').val());
+			}
+			$("#statusmessageform__status").attr("readonly", true);
+		});
+		django.jQuery(document).on('cancellation', '[data-remodal-id="edit-notification"]', function () {
+			set_previous_status();
+			set_previous_storefrontstatus();
+		});
+		django.jQuery(document).on('cancellation', '[data-remodal-id="send-status"]', function () {
+			set_previous_status();
+		});
+		django.jQuery(document).on('cancellation', '[data-remodal-id="send-storefrontstatus"]', function () {
+			set_previous_storefrontstatus();
+		});	
+		django.jQuery("#modal-sendstatus-btn-edit").on("click",function(){		
+			var inst = django.jQuery('[data-remodal-id=edit-notification]').remodal();
+			inst.open();
+		});
+		django.jQuery("#modal-overwrite-btn-no").on("click",function(){
+			console.log('No Clicked');
+			var inst = django.jQuery('[data-remodal-id=rerender-forms]').remodal();
+			inst.close();				
+			return submit_createservicekit(null);
+		});	
+		django.jQuery("#modal-overwrite-btn-yes").on("click", function(){
+			var inst = django.jQuery('[data-remodal-id=rerender-forms]').remodal();
+			inst.close();				
+			return submit_createservicekit(true);
+		});		
+		django.jQuery("#modal-sendstatus-btn-yes").on('click', function(){
+			// django.jQuery('#id_notify').value = true;
+			submit_kitstatus(true);
+		});
+		django.jQuery("#modal-sendstatus-btn-no").on("click",function(){
+			// django.jQuery('#id_notify').value = false;
+			submit_kitstatus(false);
+		});
+
+		django.jQuery("#modal-sendstorfrontstatus-btn-yes").on('click', function(){
+			// django.jQuery('#id_notify').value = true;
+			submit_storefrontstatus(true);
+		});
+		django.jQuery("#modal-sendstorfrontstatus-btn-no").on("click",function(){
+			// django.jQuery('#id_notify').value = false;
+			submit_storefrontstatus(false);
+		});
+		// On Storefront Status change
+		django.jQuery('#id_storefrontstatus').on('focus', function (){
+			$(this).data('previous_value', this.value);
+		});
+		
+		django.jQuery('#id_storefrontstatus').on('change', function (){	
+			var inst = django.jQuery('[data-remodal-id="send-storefrontstatus"]').remodal();
+			// django.jQuery('[data-remodal-id="send-storefrontstatus"]').data('status_type', 'storefrontstatus');
+			var defaultgroup = $(this).data('defaultgroup');
+			django.jQuery('#statusmessageform__status_type').val('storefrontstatus');
+
+
+			django.jQuery('#statusmessageform__group').val(defaultgroup);
+			console.log(defaultgroup, django.jQuery('#statusmessageform__group').val());			
+			inst.open();
+			$("#statusmessageform__group").trigger('change');
+
+		});	
+
+		$('#statusmessageform__emails').on('change', function(){
+			$("#statusmessageform__group").val("");
+			$("#statusmessageform__group").trigger('change');
+		});	
+		set_previous_values();
+	});
+</script>
+</body>
+</html>

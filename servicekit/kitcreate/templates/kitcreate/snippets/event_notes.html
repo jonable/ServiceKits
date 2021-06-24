@@ -1,0 +1,25 @@
+{% load eventinfo_extras %}
+<h2>EVENT INFORMATION</h2>
+<p>We are pleased to inform you that SER exposition services has been selected by {{sk.event_name}} to serve as your Official Service Contractor.</p>
+
+<h2>DISCOUNT DEADLINE</h2>
+<p>All orders and payments must be received by <b>{{sk.discount_date}}</b><br>
+A credit card on file with SER exposition services is required for all exhibitor orders. If you need assistance, additional information or special services, please contact us at 508.757.3397, fax 508.757.9136 or email us at <a href="mailto: "> </a>. You may also find answers to your questions by visiting our website serexpo.com</p>
+
+{% if eventinfo.booth_info %}	
+<h2>Booth Info</h2>
+<p>{{eventinfo.booth_info|linebreaks}}</p>
+{% endif %}
+{% if eventinfo.carpet %}	
+<h2>Carpet Info</h2>
+<p>{{eventinfo.carpet|linebreaks}}</p>
+{% endif %}
+{% if eventinfo.notes %}	
+<h2>Notes</h2>
+<p>{{eventinfo.notes|linebreaks}}</p>
+{% endif %}
+<h2>SAFETY</h2>
+<p>Standing on chairs, tables or other rental furniture is prohibited. This furniture is not engineered to support your standing weight. SER exposition services cannot be responsible for injuries from falls caused by the improper use of this furniture.</p>
+ 
+<p>For services, other than what is included in your booth, please see our show service order forms within the Exhibitor Services Manual. All orders and payments must be received by {{sk.discount_date}}
+A credit card on file with SER exposition services is required for all exhibitor orders. If you need assistance, additional information or special services, please contact us at 508.757.3397 or fax 508.757.9136. You may also find answers to your questions by visiting our website at serexpo.com.</p>

@@ -1,0 +1,18 @@
+{% if status == 'pending' %}
+	<span>Storefront not created. Pending Service Kit Approval.</span>
+{% endif %}
+{% if status == 'draft' %}
+	<span>Storefront is being edited.</span>
+{% endif %}
+{% if status == 'review' %}
+	<span>Storefront under review.</span>
+{% endif %}
+{% if status == 'approved' %}
+	<span>Storefront is ready to be published.</span>	
+{% endif %}
+{% if status == 'published' %}
+	<span>Storefront logins and service kit sent to exhibitors.</span>	
+{% endif %}
+{% if status == 'expired' %}
+	<span>Storefront deactivated.</span>
+{% endif %}

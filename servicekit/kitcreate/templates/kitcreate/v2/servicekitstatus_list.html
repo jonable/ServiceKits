@@ -1,0 +1,192 @@
+{% extends "kitcreate/base.html" %}
+{% load i18n %}
+{% load humanize %}
+{% load static from staticfiles %}
+{% load eventinfo_extras %}
+{% block title %}SER exposition services Service Kits{% endblock title %}
+{% block header %}
+{{block.super}}{{servicekits_filterform.media.css}}
+{% endblock header %}
+{% block menu %}
+<nav id="sidebar-nav" class="col-4 col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+	<ul class="nav flex-column">
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'kitcreate_home' %} ">Home</a></li>
+    <li class="nav-item">
+    	<a class="nav-link" href="{% url 'servicekit_wizard2_new' %}">Create A Service Kit</a></li>
+    <li class="nav-item">
+    	<a class="nav-link" href="{% url 'storefrontstatus_list' %}?search=&amp;servicekitstatus=approved_goshow&amp;storefrontstatus=pending">View Storefronts</a></li>
+    <li class="nav-item">
+    	<a class="nav-link" href="{% url 'servicekitforms_listview' %}">Edit Service Kit Forms</a></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'admin:pricelists_pricelist_changelist' %}">Pricelists</a>
+	</li>            
+    <li class="nav-item">
+    	<a class="nav-link" href="{% url 'account_logout' %}" title="Logout of Service Kit App">Logout</a>				
+    </li>
+    <div class="dropdown-divider"></div>
+	</ul>
+	<div class="row mx-2">
+		<div class="col-12">
+				<form action="./" method="GET" id="filter-form" class="">					
+						{% for field in servicekits_filterform %}
+							<div class="input-group bmd-form-group">
+								<label class="control-label bmd-label-static">{{ field.label }}</label>
+								{{field}}
+							</div>
+						{% endfor %}
+					<input type="submit" class="btn btn-primary btn-sm" id="filter" name="filter" value="filter">					 
+					<input type="submit" class="btn btn-primary btn-sm" id="download" name="download" value="download">
+					<a href="./" class="btn btn-primary btn-sm">Clear</a>																			
+				 </form>			
+		</div>
+	</div>
+</nav>
+{% endblock menu %}
+
+
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<h1 class="h1">Service Kits</h1>
+	</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="table-responsive-lg">
+				<table class="table">
+					<thead>
+						<tr>
+							<th></th>
+							<th class="align-middle">Event</th>
+							<th class="align-middle">Event Date</th>
+							<th class="align-middle">AE</th>
+							<th class="align-middle">Service Kit Status</th>
+							<th class="align-middle">Status Updated</th>
+							<th class="align-middle"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for eventinfo in object_list %}
+							<tr class="{% cycle 'row-odd' 'row-even' %}">
+								<td class="align-middle">
+									<div style="background-color:{{eventinfo.servicekitstatus_html_color}};height:25px;width:25px;"></div></td>
+								<td class="align-middle"><a href="{% url 'servicekit_complete' pk=eventinfo.pk %}">{{eventinfo.event_name.description}}</a></td>
+								<td class="align-middle">{{eventinfo.get_event_date}}</td>
+								<td class="align-middle">{{eventinfo.salesperson.title}}</td>
+								<td class="align-middle">									
+									<select class="form-control" data-defaultgroup="1" data-formaction="{% url 'serviceskitstatus_status_update' pk=eventinfo.pk %}" id="id_servicekitstatus__{{eventinfo.pk}}" name="servicekitstatus" title="Servicekit Status: {{eventinfo.get_servicekitstatus_display}}" style="width:100px;">						
+										<option value="" {% if not eventinfo.servicekitstatus %}selected="selected"{% endif %}>----</option>
+										<option {% if eventinfo.servicekitstatus == 'ae_pulled'%}selected="selected"{% endif %}  value="ae_pulled">AE Pulled</option>
+										<option {% if eventinfo.servicekitstatus == 'given_to_ae'%}selected="selected"{% endif %}  value="given_to_ae">Given to AE</option>
+										<option {% if eventinfo.servicekitstatus == 'completed_by_ae'%}selected="selected"{% endif %}  value="completed_by_ae">Completed by AE</option>
+										<option {% if eventinfo.servicekitstatus == 'proofed_by_exhibitor_services'%}selected="selected"{% endif %}  value="proofed_by_exhibitor_services">Proofed by Exhibitor services</option>
+										<option {% if eventinfo.servicekitstatus == 'sent_to_sm'%}selected="selected"{% endif %}  value="sent_to_sm">Sent to SM</option>
+										<option {% if eventinfo.servicekitstatus == 'approved_goshow'%}selected="selected"{% endif %}  value="approved_goshow">Approved, Ready For GoShow</option>
+										<option {% if eventinfo.servicekitstatus == 'list_received'%}selected="selected"{% endif %}  value="list_received">List received</option>
+										<option {% if eventinfo.servicekitstatus == 'published'%}selected="selected"{% endif %}  value="published">Published, Sent To Exhibitors</option>
+										<option {% if eventinfo.servicekitstatus == 'expired'%}selected="selected"{% endif %}  value="expired">Expired/Archived</option>
+									</select>	
+									<input type="hidden" name="search_query" value="{{ request.GET.urlencode }}">
+									<input type="hidden" name="send_notification" value="">				
+								</td>
+								<td class="align-middle">{% show_servicekitstatus_date eventinfo %}</td>
+								<td class="align-middle">				
+					                {% if eventinfo.get_pdf_url %}
+					                    {# <a href="{% get_media_prefix %}{{eventinfo.get_pdf_url}}" class="fake-btn" title="View PDF in Browser">View PDF</a> #}
+					                    <a href="{% url 'view_service_kit' pk=eventinfo.pk %}" class="btn btn-primary"  target="_blank" title="View PDF in Browser">View PDF</a>
+
+					                {% endif %}				
+								</td>			
+							</tr>
+						{% endfor %}
+						{% if not object_list %}
+							<tr><td>No events found</td></tr>
+						{% endif %}						
+					</tbody>
+				</table>
+			</div>
+
+			{% if is_paginated %}
+			  <ul class="pagination">
+			    {% if page_obj.has_previous %}
+			      <li><a href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo;</a></li>
+			    {% else %}
+			      <li class="disabled"><span>&laquo;</span></li>
+			    {% endif %}
+			    {% for i in paginator.page_range %}
+			      {% if page_obj.number == i %}
+			        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+			      {% else %}
+			        <li><a href="?page={{ i }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a></li>
+			      {% endif %}
+			    {% endfor %}
+			    {% if page_obj.has_next %}
+			      <li><a href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a></li>
+			    {% else %}
+			      <li class="disabled"><span>&raquo;</span></li>
+			    {% endif %}
+			  </ul>
+			{% endif %}				
+			</div>
+		</div>			
+
+</main>	
+<div class="modal fade" id="send-status" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Send Status Update.</h5>
+		  </div>
+		  <div class="modal-body">
+		  	<p>Select an option below.</p>
+		  </div>
+		  <div class="modal-footer">
+			
+			<form action="" method="post">	
+			{% csrf_token %}		
+			<div class="btn-grp">
+				<input type="hidden" name="redirect" value="serviceskitstatus_listview">
+				<input type="hidden" name="servicekitstatus" id="modal_status_field" value="">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  				<button type="submit" name="send_notification" value="true"class="btn btn-primary">Yes</button>
+  				<button type="submit" name="send_notification" value="" class="btn btn-primary">No</button>   	    	    		  				
+			</div>
+
+		  </div>	      			
+		</div>
+	</div>
+</div>	
+{% endblock content %}
+
+
+{% block footer %}
+{{block.super}}
+
+<script type="text/javascript">
+	$(function(){
+		var $modal = $("#send-status");
+		$('[data-formaction]').each(function(){
+			var $this = $(this);
+			var previous_value = $this.val();
+			$this.data('previous_value', previous_value);
+			
+			$this.on('change', function(){
+				var form_action = $(this).data('formaction');
+				var form = $($modal.find('form'));
+				$("#modal_status_field").val($(this).val())
+				form.attr('action', form_action);
+				$modal.modal('show');
+				$modal.data('control', $this);
+			});
+		});
+		$modal.find('[data-dismiss=modal]').on('click', function(){
+			var $controll = $("#send-status").data('control');
+			var previous_value = $controll.data('previous_value');
+			$controll.val(previous_value);
+
+		})				
+	})
+
+</script>
+{% endblock footer %}

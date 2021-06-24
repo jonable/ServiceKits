@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/kitforms/css/styles.css">
+    <script src="/static/kitforms/js/jquery.js"></script>
+    <title>Merge a form</title>
+</head>
+<body>
+    
+</body>
+</html>
+{{form.errors}}
+<form action="./" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="submit" name="submit"/>
+</form>
+
+
+<script>
+    $(document).on('dragover',
+        function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    )
+    $(document).on('dragenter',
+        function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    )
+    $(document).on('drop',
+        function(e){
+            if(e.originalEvent.dataTransfer){
+                if(e.originalEvent.dataTransfer.files.length) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    /*UPLOAD FILES HERE*/
+                     $("#id_file")[0].files = e.originalEvent.dataTransfer.files;
+                }   
+            }
+        }
+    );    
+</script>

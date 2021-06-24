@@ -1,0 +1,8 @@
+<h2>{{object}} is {{status}}</h2>
+{% if message %}
+	<p>Message: </p>
+	<p>"{{message}}"</p>
+{% endif %}
+<h4>Click the link to review the information</h4>
+<a href="http://kits.ser.local:8111{% url 'servicekit_complete' object.pk %}">http://kits.ser.local:8111{% url 'servicekit_complete' object.pk %}</a>
+

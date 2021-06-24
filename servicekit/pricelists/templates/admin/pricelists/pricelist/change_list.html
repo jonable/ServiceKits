@@ -1,0 +1,9 @@
+{% extends "admin/change_list.html" %} {% load i18n admin_urls %}
+
+
+{% block object-tools-items %}
+<li><a href="{% url 'pricelists:create_form' %}" class="addlink">Create Form Template</a></li>
+<li><a href="{% url 'admin:kitcreate_servicepricelistmap_changelist' %}" class="addlink">Map Service Level to Pricelist</a></li>
+{{ block.super }}
+{% endblock object-tools-items %}
+    

@@ -1,0 +1,16 @@
+{% load eventinfo_extras %}
+<table>
+{% order_schedule3 eventinfo as schedules_dict %}
+{% for schedules in schedules_dict %}
+	{% if schedules.schedule_type == 'Exhibitor Move in' %}
+	<tr>
+		<th style="text-align:left;padding-top:15px;"><strong>{{schedules.schedule_type}}:</strong></th>
+	</tr>
+	{% for schedule in schedules.schedule_values %}
+		<tr>
+			<td style="padding-left:25px;">{{schedule.date}} {{schedule.start_and_end_time}}</td>
+		</tr>		
+	{% endfor %}
+	{% endif %}
+{% endfor %}
+</table>

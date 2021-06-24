@@ -1,0 +1,32 @@
+<form action="" method="POST">
+	{% csrf_token %}
+	{% for field in form %}
+	    <div class="fieldWrapper">
+	        {{ field.errors }}
+	        {{ field.label_tag }} {{ field }}
+	        {% if field.help_text %}
+	        <p class="help">{{ field.help_text|safe }}</p>
+	        {% endif %}
+	    </div>
+	
+	{% endfor %}
+	<input type="submit" value="submit">
+</form>
+
+
+<form action="" method="POST">
+	{% csrf_token %}
+	{% for form in forms %}	
+		<h3>{{form.prefix}}</h3>
+	{% for field in form %}
+	    <div class="fieldWrapper">
+	        {{ field.errors }}
+	        {{ field.label_tag }} {{ field }}
+	        {% if field.help_text %}
+	        <p class="help">{{ field.help_text|safe }}</p>
+	        {% endif %}
+	    </div>	
+	{% endfor %}
+	{% endfor %}
+	<input type="submit" value="submit">
+</form>

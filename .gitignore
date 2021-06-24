@@ -1,0 +1,139 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Sqlite 
+*.db
+*.sqlite3
+*.sqlite
+
+# Mac
+*.DS_Store
+
+# DBISAM
+*.BLB
+*.DAT
+*.IDX
+*dbconfig.ini
+
+# servicekit ignores
+servicekit/uploads/*
+servicekit/uploads/kits/*
+servicekit/uploads/forms/*
+misc/furn-form.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_180.docx
+servicekit/uploads/documents/forms/default/event_schedule.docx
+servicekit/uploads/documents/forms/default/recap_of_services.docx
+servicekit/uploads/documents/forms/default/third_party_auth_billing.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_118.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_124.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_129.8.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_159.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_180.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_185.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_212.docx
+servicekit/uploads/documents/forms/furn/LED_LIGHTS_99.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_118.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_124.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_129.8.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_159.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_185.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_212.docx
+servicekit/uploads/documents/forms/furn/STD_FURN_99.docx
+servicekit/uploads/documents/forms/furn/booth_equipment_special.docx
+servicekit/uploads/documents/forms/furn/computer_kiosk.docx
+servicekit/uploads/documents/forms/furn/counters.docx
+servicekit/uploads/documents/forms/furn/floral.docx
+servicekit/uploads/documents/forms/furn/graphics.docx
+servicekit/uploads/documents/forms/furn/gridwall.docx
+servicekit/uploads/documents/forms/furn/modular_rental.docx
+servicekit/uploads/documents/forms/furn/showcases.docx
+servicekit/uploads/documents/forms/labor/banner_hanging.docx
+servicekit/uploads/documents/forms/labor/booth_cleaning.docx
+servicekit/uploads/documents/forms/labor/booth_labor_125.docx
+servicekit/uploads/documents/forms/labor/booth_labor_152.docx
+servicekit/uploads/documents/forms/labor/booth_labor_204.75.docx
+servicekit/uploads/documents/forms/labor/booth_labor_75.docx
+servicekit/uploads/documents/forms/labor/booth_labor_80.docx
+servicekit/uploads/documents/forms/labor/booth_labor_85.docx
+servicekit/uploads/documents/forms/labor/forklift_125.docx
+servicekit/uploads/documents/forms/labor/forklift_152.docx
+servicekit/uploads/documents/forms/labor/forklift_204.75.docx
+servicekit/uploads/documents/forms/labor/forklift_75.docx
+servicekit/uploads/documents/forms/labor/forklift_80.docx
+servicekit/uploads/documents/forms/labor/forklift_85.docx
+servicekit/uploads/documents/forms/labor/non_official_service_contractor.docx
+servicekit/uploads/documents/forms/labor/porter_125.docx
+servicekit/uploads/documents/forms/labor/porter_152.docx
+servicekit/uploads/documents/forms/labor/porter_204.75.docx
+servicekit/uploads/documents/forms/labor/porter_75.docx
+servicekit/uploads/documents/forms/labor/porter_80.docx
+servicekit/uploads/documents/forms/labor/porter_85.docx
+servicekit/uploads/documents/forms/material_handling/MH_131.docx
+servicekit/uploads/documents/forms/material_handling/MH_137.docx
+servicekit/uploads/documents/forms/material_handling/MH_69.docx
+servicekit/uploads/documents/forms/material_handling/MH_72.docx
+servicekit/uploads/documents/forms/material_handling/MH_74.docx
+servicekit/uploads/documents/forms/material_handling/MH_85.docx
+servicekit/uploads/documents/forms/material_handling/MH_91.docx
+servicekit/uploads/documents/forms/material_handling/MH_ADV_ONLY_131.docx
+servicekit/uploads/documents/forms/material_handling/MH_ADV_ONLY_137.docx
+servicekit/uploads/documents/forms/material_handling/MH_ADV_ONLY_69.docx
+servicekit/uploads/documents/forms/material_handling/MH_ADV_ONLY_72.docx
+servicekit/uploads/documents/forms/material_handling/MH_ADV_ONLY_74.docx
+servicekit/uploads/documents/forms/material_handling/MH_ADV_ONLY_85.docx
+servicekit/uploads/documents/forms/material_handling/MH_ADV_ONLY_91.docx
+servicekit/uploads/documents/forms/misc/ricc_Letter.pdf
+servicekit/uploads/documents/misc/dcu_center_all_forms.docx
+servicekit/uploads/documents/misc/ricc_Letter.pdf

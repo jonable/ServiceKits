@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% if is_edit %}Edit {% else %}Upload {% endif %} A File</title>
+	<link rel="stylesheet" href="/static/kitforms/css/styles.css">
+	<script src="/static/kitforms/js/vendor/moment.js"></script>
+	<script src="/static/kitforms/js/jquery.js"></script>
+	{{ form.media }}	
+</head>
+<body>
+{% if not is_popup %}<a href="/">Home</a> | {% endif %}<a href="{% url 'servicekitforms_listview' %}{% if is_popup %}?_popup=1{% endif %}">Service Kit Forms</a>
+{% if messages %}
+<ul class="messagelist">
+	{% for message in messages %}
+	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	{% endfor %}	
+</ul>
+{% endif %}
+	<h1>{% if is_edit %}Edit {% else %}Upload {% endif %}A Service Kit Form</h1>
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<table>
+		{% for field in form %}
+			<tr>
+			{% if is_popup and field.name != 'service_kits' %}
+			<td>{{field.label_tag}}</td> <td>{{field}}</td>
+			{% elif not is_popup %}
+			<td>{{field.label_tag}}</td> <td>{{field}}</td>
+			{% endif %}
+
+			{% if servicekitform.document and field.name == 'file' %}
+				<tr>				
+					<td><small><i>Click "choose file" to upload a new file</i></small></td>
+					<td></td>
+					 <!--<a href="/admin/filebrowser/upload/?dir=documents/forms/misc&pop=1"></a>-->					
+				</tr>
+				<tr>
+					<td>
+						<small><i>Current file is: </i></small>
+					</td>
+					<td>
+						<small>
+							<i>
+								<a href="{{servicekitform.get_url}}" target="_blank">
+									{{servicekitform.document.filename}}
+								</a>
+							</i>
+						</small>
+					</td>
+				</tr>
+			{% endif %}
+			</tr>
+		{% endfor %}
+		</table>
+		<p><small><i>Accepted File Types: .pdf, .docx</i></small></p>
+		<a href="{% url 'servicekitforms_listview' %}{% if is_popup %}?_popup=1{% endif %}">Cancel</a>		
+		<input type="submit" name="upload" value="{% if is_edit %}edit{% else %}upload{% endif %}">	
+	</form>
+
+
+</body>
+</html>
+

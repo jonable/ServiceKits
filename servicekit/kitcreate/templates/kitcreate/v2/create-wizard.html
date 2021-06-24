@@ -1,0 +1,271 @@
+{% extends "kitcreate/base.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+{% load eventinfo_extras %}
+{% block header %}{{ wizard.form.media }}
+<link rel="stylesheet" href="/static/bootstrap/css/stepper.css">
+{% endblock header %}
+
+
+		{% block menu %}
+		<nav id="sidebar-nav" class="col-4 col-md-2 d-none d-md-block bg-light sidebar">
+		  <div class="sidebar-sticky">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>                
+				</li>								
+			</ul>						
+			<ul class="stepper stepper-vertical">
+				{% for stepper in wizard.steps|wizard_stepper %}					
+					<li class="{% if stepper.active %}active{% elif stepper.complete %}completed{% endif %}">
+						<a href="#">
+							<span class="circle">{{stepper.index}}</span>
+							<span class="label">{{stepper.title}}</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+		{% endblock menu %}
+
+
+{% block content %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+	
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+		<h1 class="h2">{{form.form_title}}</h1>
+		<p>{{form.form_description}}</p>
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/" onclick="return confirm('You are about to leave this form. Changes made will not be saved.\nClick Ok to leave.')">Home</a>
+			</li>			
+			{% if eventinfo.pk %}
+			<li class="nav-item">
+			<a class="nav-link" href="{% url 'servicekit_complete' pk=eventinfo.pk %}" onclick="return confirm('You are about to leave this form. Changes made will not be saved.\nClick Ok to leave.')">{{eventinfo}}</a>	
+			</li>		
+			{% endif %}
+			
+		</ul>
+	</div>
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">      
+
+	<form action="" method="post" class="form-horizontal" >
+		{% csrf_token %}
+		{{ wizard.management_form }}
+		{% if wizard.form.forms %}
+			{{ wizard.form.management_form }} 
+			<input type="hidden" id="service_kit_wizard-current_step" value="{{wizard.steps.current}}"/>
+			<div style="display:none;">		
+				<input type="hidden" id="service_kit_wizard-current_step" value="{{wizard.steps.current}}"/>
+			</div>					
+			{% for form in wizard.form.forms %}
+				<div class="row formset-row">
+				{% for hidden in form.hidden_fields %}
+					{{ hidden }}
+				{% endfor %}	
+				{% comment %}																				
+				{% for field in form.visible_fields %}
+					{% if field.label == 'Delete' %}
+					Clear
+					{% else %}
+					{{field.label}}
+					{% endif %}
+				{% endfor %}		
+				{% endcomment %}											
+				{% for field in form.visible_fields %}
+					<div class="col col-xs-12">																	
+				        <div class="control-group">
+				        	{% if forloop.parentloop.first %}
+				        	<label class="control-label">{{ field.label }}</label> 
+				        	{% endif %}
+				            <div class="controls">{{ field }}
+				                {% if field.help_text %}
+				                    <p class="help-inline"><small>{{ field.help_text }}</small></p>
+				                {% endif %}
+				            </div>
+				        </div>
+					</div>
+				{% endfor %}
+				</div>				
+			{% endfor %}
+			<div class="my-2" role="group" aria-label="Basic example">
+				<button type="button" class="btn btn-secondary bmd-btn-fab bmd-btn-fab-sm" id="add_more">
+				  +
+				</button>				
+			</div>
+		{% elif wizard.form.has_fieldsets %}
+
+			{% if not wizard.form.fieldsets %}
+				<p>No forms selected for this service kit</p>	 	
+			 {% endif %}
+			 {% for fieldset in wizard.form.fieldsets %}
+				<fieldset>
+				<legend class="h3 border-bottom"><span data-fieldset="{{fieldset.title}}">{{ fieldset.title }}</span></legend>
+				<div class="row">
+				{% for field in fieldset.fields %}
+					<div class="col-xs-12 col-sm-6">
+				    {% if field.errors %}
+				        <div class="control-group error">
+				            <label class="control-label">{{ field.label }}</label> 
+				            <div class="controls">{{ field }}
+				                <span class="help-inline">
+				                    {% for error in  field.errors %}{{ error }}{% endfor %}
+				                </span>
+				            </div>
+				        </div>
+				    {% else %}
+				        <div class="control-group">
+				            <label class="control-label">{{ field.label }}</label> 
+				            <div class="controls">{{ field }}
+				                {% if field.help_text %}
+				                    <p class="help-inline"><small>{{ field.help_text }}</small></p>
+				                {% endif %}
+				            </div>
+				        </div>
+				    {% endif %}
+				    </div>
+				{% endfor %}
+				</div>
+				</fieldset>
+
+				{% if not fieldset.fields %}
+					<p>No forms found for this servicelevel</p>	
+				{% endif %}	
+			  {% endfor %}
+		{% else %}
+
+			<div class="row">
+	        {% for field in wizard.form %}
+	        	<div class="col-xs-12 col-sm-6">
+	            {% if field.errors %}
+	                <div class="control-group error">
+	                    <label class="control-label">{{ field.label }}</label> 
+	                    <div class="controls">{{ field }}
+	                        <span class="help-inline">
+	                            {% for error in  field.errors %}{{ error }}{% endfor %}
+	                        </span>
+	                    </div>
+	                </div>
+	            {% else %}
+	                <div class="control-group">
+	                    <label class="control-label">{{ field.label }}</label> 
+	                    <div class="controls">{{ field }}
+	                        {% if field.help_text %}
+	                            <p class="help-inline"><small>{{ field.help_text }}</small></p>
+	                        {% endif %}
+	                    </div>
+	                </div>
+	            {% endif %}
+	            </div>
+	        {% endfor %}
+	        </div>
+		{% endif %}	
+
+		{% include "kitcreate/v2/forms/wizard-btngrp.html" %}
+	
+
+</form>
+{% if eventinfo %}
+	<small><i>[KIT-{{eventinfo.service_kit.pk}}]</i></small>
+{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+	
+</main>
+{% endblock %}
+
+{% block footer %}
+{{block.super}}
+	<script type="text/javascript">
+	function cloneMore(selector, type) {
+		var newElement = $(selector).clone(true);
+		var total = $('#id_' + type + '-TOTAL_FORMS').val();
+		newElement.find(':input').each(function() {
+			if(typeof $(this).attr('name') == 'undefined'){
+				return;
+			}
+			var name = $(this).attr('name').replace('-'+(total-1)+'-','-'+(total)+'-');
+			var id = 'id_' + name;
+			$(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+			// if(this.tagName === 'SELECT'){
+			// 	$(this).select2();
+			// }
+		});
+		newElement.find('label').each(function() {
+			var newFor = $(this).attr('for').replace('-'+(total-1)+'-','-'+(total)+'-');
+			$(this).attr('for', newFor);
+		});
+		total++;
+		$('#id_' + type + '-TOTAL_FORMS').val(total);
+		$(selector).after(newElement);
+
+		newElement.find('input[id*=start_time]').each(function(){
+			var $this = $(this);
+			$this.off('blur');
+			$this.on('blur', function(){
+				parse_user_date($this);
+			});
+		});
+		newElement.find('input[id*=end_time]').each(function(){
+			var $this = $(this);
+			$this.off('blur');
+			$this.on('blur', function(){
+				parse_user_date($this);
+			});
+		});	
+	}
+	$('#add_more').click(function() {
+		console.log('clicked')
+		if($("#service_kit_wizard-current_step").val() == 'AdditionalFormsFormset'){
+			select_form_addmore('.formset-row:last', 'AdditionalFormsFormset')
+		}else{
+			cloneMore('.formset-row:last', $("#service_kit_wizard-current_step").val());	
+		}	
+	});	
+
+	$('tr[data-fieldset]').each(function(){
+		var $this = $(this);
+		var fieldsetId = $this.data('fieldset');
+		$this.click(function(e){
+			$('[data-fieldset-id="'+fieldsetId+'"]').each(function(){
+				var _field = $(this).data('field');
+				var $cb = $('[id="'+_field+'"]');
+				$cb.prop('checked', !$cb.prop('checked'));
+			});
+		});
+	});	
+	function parse_user_date($this){
+		var current_val = $this.val();
+		if (current_val.length == 0){
+			return;
+		}
+		var newtime = moment($this.val(), ['h:m a', 'H:m']).format("h:mm A");
+		console.log(newtime);
+		if (newtime === 'Invalid date'){
+			alert('Invalid Date: ' + $this.val()+' Please use format HH:MM AM/PM');
+			newtime = '';
+			$this.focus();
+		}
+		$this.val(newtime);	
+	}
+	$('input[id*=start_time]').each(function(){
+		var $this = $(this);
+		$this.on('blur', function(){
+			parse_user_date($this);
+		});
+	});
+	$('input[id*=end_time]').each(function(){
+		var $this = $(this);
+		$this.on('blur', function(){
+			parse_user_date($this);
+		});
+	});
+</script>
+{% endblock footer %}
